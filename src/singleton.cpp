@@ -10,7 +10,7 @@ singleton::singleton()
 singleton& singleton::instance()
 {
     std::call_once(_Myonce_flag, []() {
-        _Myinstance.reset(new model_manager);
+        _Myinstance.reset(new singleton);
     });
     return *(_Myinstance.get());
 }
