@@ -1,3 +1,6 @@
+#include <memory>
+#include <mutex>
+
 class singleton
 {
 private:
