@@ -32,6 +32,9 @@ std::int32_t main(std::int32_t argc, char_t *argv[])
                   // 해결방안 ?
             }
       }
+      { // MISRA_CPP_18_04_01 동적 힙 메모리 할당은 사용하면 안됨 
+            
+      }
       
       return 1;
 }
