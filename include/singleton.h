@@ -1,6 +1,8 @@
 #include <memory>
 #include <mutex>
 
+namespace proj_devs
+{
 class singleton
 {
 private:
@@ -13,5 +15,7 @@ private:
 public:
     static singleton& instance();
 
-};
+};  
+}
+
 
