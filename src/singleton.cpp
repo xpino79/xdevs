@@ -1,4 +1,4 @@
-#inclde "../include/singleton.h"
+#include "../include/singleton.h"
 
 namespace proj_devs
 {
