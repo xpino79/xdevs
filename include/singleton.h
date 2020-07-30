@@ -16,6 +16,8 @@ public:
     static singleton& instance();
 
 };  
-}
+} /* namespace proj_devs */
+
+
 
 
