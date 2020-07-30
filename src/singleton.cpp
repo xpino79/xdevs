@@ -1,3 +1,5 @@
+#inclde "../include/singleton.h"
+
 namespace proj_devs
 {
 std::unique_ptr<singleton> singleton::_Myinstance;
