@@ -12,7 +12,7 @@ std::int32_t main(std::int32_t argc, char_t *argv[])
             
       }
       { // MISRA_CPP_05_02_03 상위(base) 클래스를 하위(derived)클래스로 변환하는 것은 다형(polymorphic) 타입 간에 이루어져서는 안됨
-            for (auto _Elem : api_devs::xmanager::instance().xobjects())
+            for (auto &_Elem : api_devs::xmanager::instance().xobjects())
             {
                 api_devs::xair *_Xair = dynamic_cast<api_devs::xair *>(_Elem.second.get());
                 // 해결방안 ?
