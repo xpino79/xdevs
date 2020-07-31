@@ -2,9 +2,7 @@
 #include <map>
 #include <list>
 
-
-// proj_devs
-
+ 
 // MISRA_CPP_03_09_02 기본 숫자 타입 대신 크기와 부호를 나타내는 typedef를 사용해야 함
 #include "../include/xmanager.h"
 
@@ -14,9 +12,9 @@ std::int32_t main(std::int32_t argc, char_t *argv[])
             
       }
       { // MISRA_CPP_05_02_03 상위(base) 클래스를 하위(derived)클래스로 변환하는 것은 다형(polymorphic) 타입 간에 이루어져서는 안됨
-            for (auto _Elem : xobjects())
+            for (auto _Elem : api_devs::xmanager::instance().xobjects())
             {
-                   xair *_Xair = dynamic_cast<xair *>(_Elem.second.get());
+                   api_devs::xair *_Xair = dynamic_cast<api_devs::xair *>(_Elem.second.get());
             }
       }
       { // MISRA_CPP_00_01_07 함수 반환 값 미사용 금지
