@@ -20,7 +20,8 @@ private:
 public:
     static xmanager& instance();
     const std::map<int32_t, std::unique_ptr<xobject>>& xobjects();
-
+    void insert( std::unique_ptr<xobject> _Ptr);
+    void erase( std::int32_t _Key);
 };  
 } /* namespace proj_devs */
 
