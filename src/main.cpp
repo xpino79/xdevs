@@ -7,14 +7,16 @@
 
 std::int32_t main(std::int32_t argc, char_t *argv[])
 {
-      std::int32_t _Key = 1;
-      std::map<std::int32_t, std::int32_t> _Map;
-      std::list<std::int32_t> _List;
+      { // MISRA_CPP_18_04_01 동적 힙 메모리 할당은 사용하면 안됨 
+            
+      }
+      { // MISRA_CPP_05_02_03 상위(base) 클래스를 하위(derived)클래스로 변환하는 것은 다형(polymorphic) 타입 간에 이루어져서는 안됨
       
-      _Map.insert(std::make_pair(_Key, 0));
-      _List.push_back(_Key);
-
+      }
       { // MISRA_CPP_00_01_07 함수 반환 값 미사용 금지
+            std::int32_t _Key = 1;
+            std::map<std::int32_t, std::int32_t> _Map;
+            _Map.insert(std::make_pair(_Key, 0));
             auto _Pair = _Map.insert(std::make_pair(key, 0));
             if (!_Pair.second) {
                   // error
@@ -24,6 +26,9 @@ std::int32_t main(std::int32_t argc, char_t *argv[])
             }
       }
       { // MISRA_CPP_00_01_07 함수 반환 값 미사용 금지
+            std::int32_t _Key = 1;
+            std::list<std::int32_t> _List;
+            _List.push_back(_Key);
             auto _Iter = std::find(_List.begin(), _List.end(), _Key);
             if ( _Iter != _List.end() )
             {
@@ -32,9 +37,7 @@ std::int32_t main(std::int32_t argc, char_t *argv[])
                   // 해결방안 ?
             }
       }
-      { // MISRA_CPP_18_04_01 동적 힙 메모리 할당은 사용하면 안됨 
-            
-      }
+
       
       return 1;
 }
