@@ -18,7 +18,6 @@ std::int32_t main(std::int32_t argc, char_t *argv[])
         for (auto &_Elem : api_devs::xmanager::instance().xobjects())
         { 
             api_devs::xair *_Xair = std::dynamic_cast<api_devs::xair *>(_Elem.second.get());
-            api_devs::xsea *_Xsea = std::dynamic_cast<api_devs::xsea *>(_Elem.second.get());
             // down casting, cross casting 해결방안 ?
           }
     }
