@@ -22,4 +22,20 @@ const std::map<int32_t, std::unique_ptr<xobject>>& xmanager::xobjects()
     return _Myxobjects;
 }
 
+void xmanager::insert_xobject( std::unique_ptr<xobject> _Ptr)
+{
+    auto _Pair = xobjects.insert(std::make_pair(_Ptr->ket(), _Ptr));
+    if (!_Pair.second) {
+        // error
+    }
+}
+
+void xmanager::erase_xobject( std::int32_t _Key)
+{
+    if (0 = xobjects.erase(_Key))
+    {
+        // error
+    }
+}
+    
 } /* namespace proj_devs */
