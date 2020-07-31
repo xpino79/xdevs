@@ -10,6 +10,7 @@ public:
     xobject() = default;
     virtual ~xobject() = default;
     int32_t key() const { return _Mykey;}
+    void set_key(int32_t _Key) { _Mykey = _Key;}
 };
 
 class xair : public xobject
