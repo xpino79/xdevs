@@ -1,5 +1,5 @@
-
-
+namespace proj_devs
+{
 class xobject
 {
 public:
@@ -27,3 +27,5 @@ public:
     xground() = default;
     virtual ~xground() = default;
 };
+}
+
