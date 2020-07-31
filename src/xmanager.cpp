@@ -16,4 +16,10 @@ xmanager& xmanager::instance()
     });
     return *(_Myinstance.get());
 }
+    
+const std::map<int32_t, std::unique_ptr<xobject>>& xmanager::xobjects()
+{
+    return _Myxobjects;
+}
+
 } /* namespace proj_devs */
