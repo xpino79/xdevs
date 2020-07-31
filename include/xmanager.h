@@ -2,6 +2,8 @@
 #include <mutex>
 #include <map>
 
+#include "xtypedefs.h"
+
 namespace proj_devs
 {
 class xmanager
