@@ -10,7 +10,7 @@ std::int32_t main(std::int32_t argc, char_t *argv[])
 {
     { // MISRA_CPP_18_04_01 동적 힙 메모리 할당은 사용하면 안됨 
         std::int32_t _Key = 1;
-        unique_ptr<api_devs::xair> _Uptr = std::make_unique<api_devs::xair>();
+        std::unique_ptr<api_devs::xair> _Uptr = std::make_unique<api_devs::xair>();
         _Uptr->set_key(_Key);
         api_devs::xmanager::instance().insert( std::move(_Uptr) );
     }
