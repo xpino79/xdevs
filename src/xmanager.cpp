@@ -24,7 +24,7 @@ const std::map<int32_t, std::unique_ptr<xobject>>& xmanager::xobjects()
 
 void xmanager::insert( std::unique_ptr<xobject> _Ptr)
 {
-    auto _Pair = xobjects.insert(std::make_pair(_Ptr->ket(), _Ptr));
+    auto _Pair = xobjects.insert(std::make_pair(_Ptr->ket(), std::move(_Ptr)));
     if (!_Pair.second) {
         // error
     }
