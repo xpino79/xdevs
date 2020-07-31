@@ -1,5 +1,6 @@
 #include <memory>
 #include <mutex>
+#include <map>
 
 namespace proj_devs
 {
@@ -12,8 +13,11 @@ private:
     
     static std::unique_ptr<xmanager> _Myinstance;
     static std::once_flag _Myonce_flag;
+    std::map<int32_t, std::unique_ptr<xobject>> _Myxobjects;
+    
 public:
     static xmanager& instance();
+    const std::map<int32_t, std::unique_ptr<xobject>>& xobjects();
 
 };  
 } /* namespace proj_devs */
