@@ -16,7 +16,7 @@ std::int32_t main(std::int32_t argc, char_t *argv[])
             {
                 api_devs::xair *_Xair = dynamic_cast<api_devs::xair *>(_Elem.second.get());
                 api_devs::xsea *_Xsea = dynamic_cast<api_devs::xsea *>(_Elem.second.get());
-                // cross casting 해결방안 ?
+                // down casting, cross casting 해결방안 ?
             }
       }
       { // MISRA_CPP_00_01_07 함수 반환 값 미사용 금지
