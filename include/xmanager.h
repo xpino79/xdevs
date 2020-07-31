@@ -2,7 +2,7 @@
 #include <mutex>
 #include <map>
 
-#include "xtypedefs.h"
+#include "xobject.h"
 
 namespace proj_devs
 {
