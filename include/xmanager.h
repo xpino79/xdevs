@@ -24,7 +24,7 @@ public:
     static int32_t generate_unique_identifier();
     
     const std::map<int32_t, std::unique_ptr<xobject>>& xobjects();
-    xobject *insert( std::unique_ptr<xobject> _Ptr);
+    xobject *insert( std::unique_ptr<xobject> _Uptr);
     void erase( std::int32_t _Key);
 };  
 
