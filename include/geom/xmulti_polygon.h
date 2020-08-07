@@ -10,4 +10,13 @@ private:
 public:
     xmulti_polygon() = default;
     virtual ~xmulti_polygon() = default;
+    
+    void push_back(std::unique_ptr<xpolygon>);
+    
+    std::float64_t area();
+    std::float64_t length();
+    
+    bool empty();
+    bool within(std::int32_t _x, std::int32_t _y);
+    
 };
