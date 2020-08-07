@@ -85,6 +85,11 @@ public:
         std::cout << this->name() << std::endl;
         std::cout << "xsupport::refresh end " << std::endl;
     }
+    virtual std::int32_t course() const final
+    {
+        return 0; 
+    }
+    virtual void set_course(std::int32_t _Val) final default;
 };
     
 }
