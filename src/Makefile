@@ -19,6 +19,7 @@ OFILES = $(CFILES:.cpp=.o)
 
 CFILES = \
 main.cpp \
+xobject.cpp \
 xmanager.cpp
 $(END)
 
