@@ -45,5 +45,12 @@ void xsupport::refresh()
     std::cout << this->name() << std::endl;
     std::cout << "xsupport::refresh end " << std::endl;
 }
+std::int32_t xsupport::course() const
+{
+    return 0; 
+}
+void xsupport::set_course(std::int32_t _Val)
+{ 
+}
 
 }
