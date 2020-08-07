@@ -15,10 +15,14 @@ private:
     
     static std::unique_ptr<xmanager> _Myinstance;
     static std::once_flag _Myonce_flag;
+    static int32_t _Myunique_identifier;
+    
     std::map<int32_t, std::unique_ptr<xobject>> _Myxobjects;
     
 public:
     static xmanager& instance();
+    static int32_t generate_unique_identifier();
+    
     const std::map<int32_t, std::unique_ptr<xobject>>& xobjects();
     xobject *insert( std::unique_ptr<xobject> _Ptr);
     void erase( std::int32_t _Key);
