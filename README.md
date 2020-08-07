@@ -8,6 +8,6 @@ $ cd workspace
 
 $ git clone https://github.com/xpino79/xdevs.git 
 
-$ cd $(HOME)/workspace/xdevs/src 
+$ cd xdevs/src 
 
 $ make 
