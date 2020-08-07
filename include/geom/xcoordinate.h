@@ -9,8 +9,8 @@ namespace proj_devs
 class xcoordinate
 {
 private:
-  std::int32_t _Myx;
-  std::int32_t _Myy;
+    std::int32_t _Myx;
+    std::int32_t _Myy;
   
 public:
     xcoordinate(std::int32_t _X, std::int32_t _Y)
