@@ -30,7 +30,7 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
           std::int32_t _Key = 1;
           std::map<std::int32_t, std::int32_t> _Map;
           _Map.insert(std::make_pair(_Key, 0));
-          auto _Pair = _Map.insert(std::make_pair(key, 0));
+          auto _Pair = _Map.insert(std::make_pair(_Key, 0));
           if (!_Pair.second) {
                 // error
           }
