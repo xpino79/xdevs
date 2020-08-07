@@ -1,2 +1,2 @@
 # MISRA_CPP
-https://github.com/xpino79/xdevs.git
+git clone https://github.com/xpino79/xdevs.git
