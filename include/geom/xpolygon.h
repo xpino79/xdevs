@@ -19,7 +19,15 @@ private:
 public:
     xpolygon() = default;
     ~xpolygon() = default;
-    
+
+    void clear()
+    {
+        this->_Mycoordinates.clear();
+    }    
+    bool empty()
+    {
+        this->_Mycoordinates.empty();
+    }
     void push_back(std::int32_t _x, std::int32_t _y)
     {
         this->_Mycoordinates.push_back( std::make_unique<proj_devs::xcoordinate>(_x, _y) );
@@ -35,11 +43,7 @@ public:
     std::float64_t length();
     {
     }
-    
-    bool empty()
-    {
-        this->_Mycoordinates.empty();
-    }
+
     bool within(std::int32_t _x, std::int32_t _y)
     {
     }
