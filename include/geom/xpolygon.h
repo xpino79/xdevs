@@ -28,6 +28,15 @@ public:
     {
         this->_Mycoordinates.empty();
     }
+    void set_wkt(const std::string &_WKT)
+    {
+        // WKT(Well-Known Text) Geometry
+        // POLYGON((1 1,2 1,2 2,1 2,1 1))
+        // MULTIPOLYGON(((1 1,2 1,2 2,1 2,1 1)),((3 3,3 5,5 5,5 3,3 3)))
+        this->clear();
+        
+    }
+    
     xcoordinate *get_coordinateN (std::size_t _Num)
     {
     }
