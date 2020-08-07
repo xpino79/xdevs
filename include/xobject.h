@@ -83,7 +83,6 @@ public:
         std::cout << "xsupport::refresh start " << std::endl;
         std::cout << this->key() << std::endl;
         std::cout << this->name() << std::endl;
-        std::cout << this->course() << std::endl;
         std::cout << "xsupport::refresh end " << std::endl;
     }
 };
