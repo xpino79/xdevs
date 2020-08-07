@@ -9,7 +9,13 @@
 std::int32_t main(std::int32_t argc, std::char_t *argv[])
 {
     { // MISRA_CPP_18_04_01 동적 힙 메모리 할당은 사용하면 안됨 
-        proj_devs::xobject *_Ptr = proj_devs::xmanager::instance().insert( std::make_unique<proj_devs::xmaneuver>() );
+        proj_devs::xobject *_Ptr = nullptr;
+        _Ptr = proj_devs::xmanager::instance().insert( std::make_unique<proj_devs::xmaneuver>() );
+        if (nullptr != _Ptr)
+        {
+            // something
+        }
+        _Ptr = proj_devs::xmanager::instance().insert( std::make_unique<proj_devs::xsupport>() );
         if (nullptr != _Ptr)
         {
             // something
