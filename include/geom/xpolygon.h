@@ -18,7 +18,7 @@ private:
     
 public:
     xpolygon() = default;
-    virtual ~xpolygon() = default;
+    ~xpolygon() = default;
     
     void push_back(std::int32_t _x, std::int32_t _y)
     {
