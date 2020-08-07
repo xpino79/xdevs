@@ -52,9 +52,9 @@ void xmanager::erase( std::int32_t _Key)
 }
 
 // api
-proj_devs::xmanager* get_xmanager_ptr()
+xmanager* get_xmanager_ptr()
 {
-    return proj_devs::xmanager::instance();
+    return *xmanager::instance();
 }
  
 } /* namespace proj_devs */
