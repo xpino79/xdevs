@@ -25,7 +25,7 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
     { // MISRA_CPP_05_02_03 상위(base) 클래스를 하위(derived)클래스로 변환하는 것은 다형(polymorphic) 타입 간에 이루어져서는 안됨
         for (auto &_Elem : proj_devs::xmanager::instance().xobjects())
         { 
-            // proj_devs::xmaneuver *_Ptr = std::dynamic_cast<proj_devs::xmaneuver *>(_Elem.second.get());
+            // proj_devs::xground *_Ptr = std::dynamic_cast<proj_devs::xground *>(_Elem.second.get());
             // _Ptr->refresh();
             // down casting, cross casting 해결방안 ?
             // 하위(derived)클래스의 함수를 상위(base)클래스 pure virtual 로 만든다.
