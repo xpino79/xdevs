@@ -57,9 +57,11 @@ public:
     
     virtual void refresh() final 
     { 
+        std::cout << "xmaneuver::refresh start " << std::endl;
         std::cout << this->key() << std::endl;
         std::cout << this->name() << std::endl;
         std::cout << this->course() << std::endl;
+        std::cout << "xmaneuver::refresh end " << std::endl;
     }
     virtual std::int32_t course() const final
     {
@@ -78,9 +80,11 @@ public:
     
     virtual void refresh() final 
     { 
+        std::cout << "xsupport::refresh start " << std::endl;
         std::cout << this->key() << std::endl;
         std::cout << this->name() << std::endl;
         std::cout << this->course() << std::endl;
+        std::cout << "xsupport::refresh end " << std::endl;
     }
 };
     
