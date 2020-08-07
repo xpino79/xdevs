@@ -5,7 +5,7 @@ namespace proj_devs
 class xobject
 {
 private:
-    int32_t _Mykey;
+    int32_t _Mykey = 0;
 public:
     xobject() = default;
     virtual ~xobject() = default;
