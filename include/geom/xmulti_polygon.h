@@ -20,3 +20,5 @@ public:
     bool within(std::int32_t _x, std::int32_t _y);
     
 };
+
+} /* namespace proj_devs */
