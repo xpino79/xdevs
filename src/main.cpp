@@ -9,10 +9,11 @@
 std::int32_t main(std::int32_t argc, char_t *argv[])
 {
     { // MISRA_CPP_18_04_01 동적 힙 메모리 할당은 사용하면 안됨 
-        std::int32_t _Key = 1;
-        auto _Uptr = std::make_unique<api_devs::xair>();
-        _Uptr->set_key(_Key);
-        api_devs::xmanager::instance().insert( std::move(_Uptr) );
+        xobject *_Ptr = api_devs::xmanager::instance().insert( std::make_unique<api_devs::xair>() );
+        if (nullptr != _Ptr)
+        {
+            // something
+        }
     }
     { // MISRA_CPP_05_02_03 상위(base) 클래스를 하위(derived)클래스로 변환하는 것은 다형(polymorphic) 타입 간에 이루어져서는 안됨
         for (auto &_Elem : api_devs::xmanager::instance().xobjects())
