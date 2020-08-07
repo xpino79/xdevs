@@ -13,8 +13,8 @@ private:
   std::int32_t _Myy;
   
 public:
-    xcoordinate(std::int32_t _x, std::int32_t _y)
-    : _Myx(_x), _Myy(_y)
+    xcoordinate(std::int32_t _X, std::int32_t _Y)
+    : _Myx(_X), _Myy(_Y)
     {
     }
     ~xcoordinate() = default;
