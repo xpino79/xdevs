@@ -16,8 +16,6 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
             // something
         }
         
-        // xobject의 pure virtual함수인 course 에 대한 재선언 안함.
-        // 해결방안 ? 
         _Ptr = proj_devs::xmanager::instance().insert( std::make_unique<proj_devs::xsupport>() );
         if (nullptr != _Ptr)
         {
