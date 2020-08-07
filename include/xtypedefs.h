@@ -1,3 +1,8 @@
+/**
+ * Copyright (C) 2020 xpino79@gmail.com
+ * All rights reserved.
+ */
+
 #include <cstdint>
 
 namespace std
