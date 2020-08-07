@@ -31,8 +31,10 @@ const std::map<int32_t, std::unique_ptr<xobject>>& xmanager::xobjects()
 xobject *xmanager::insert( std::unique_ptr<xobject> _Uptr)
 {
     xobject *_Ptr = _Uptr.get();
-    _Ptr->set_key( generate_unique_identifier() );
-    
+    if (0==_Ptr->key)
+    {
+        _Ptr->set_key( generate_unique_identifier() );
+    }
     auto _Pair = this->xobjects.insert(std::make_pair(_Uptr->key(), std::move(_Uptr)));
     if (!_Pair.second) {
         // error
