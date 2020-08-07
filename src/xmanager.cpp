@@ -34,6 +34,7 @@ xobject *xmanager::insert( std::unique_ptr<xobject> _Uptr)
     if (0==_Ptr->key())
     {
         _Ptr->set_key( generate_unique_identifier() );
+        _Ptr->set_name( std::to_string(_Ptr->key()));
     }
     auto _Pair = this->_Myxobjects.insert(std::make_pair(_Uptr->key(), std::move(_Uptr)));
     if (!_Pair.second) {
