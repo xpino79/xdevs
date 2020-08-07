@@ -22,10 +22,6 @@ public:
     std::float64_t length();
     
     bool empty();
-    bool disjoint(std::int32_t _x, std::int32_t _y);
-    bool intersects(std::int32_t _x, std::int32_t _y);
-    bool crosses(std::int32_t _x, std::int32_t _y);
     bool within(std::int32_t _x, std::int32_t _y);
-    bool contains(std::int32_t _x, std::int32_t _y);
-
+ 
 };
