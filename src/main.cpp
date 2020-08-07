@@ -9,7 +9,7 @@
 std::int32_t main(std::int32_t argc, char_t *argv[])
 {
     { // MISRA_CPP_18_04_01 동적 힙 메모리 할당은 사용하면 안됨 
-        api_devs::xobject *_Ptr = api_devs::xmanager::instance().insert( std::make_unique<api_devs::xair>() );
+        api_devs::xobject *_Ptr = api_devs::xmanager::instance().insert( std::make_unique<api_devs::xmaneuver>() );
         if (nullptr != _Ptr)
         {
             // something
@@ -18,7 +18,7 @@ std::int32_t main(std::int32_t argc, char_t *argv[])
     { // MISRA_CPP_05_02_03 상위(base) 클래스를 하위(derived)클래스로 변환하는 것은 다형(polymorphic) 타입 간에 이루어져서는 안됨
         for (auto &_Elem : api_devs::xmanager::instance().xobjects())
         { 
-            // api_devs::xair *_Ptr = std::dynamic_cast<api_devs::xair *>(_Elem.second.get());
+            // api_devs::xmaneuver *_Ptr = std::dynamic_cast<api_devs::xmaneuver *>(_Elem.second.get());
             // _Ptr->refresh();
             // down casting, cross casting 해결방안 ?
             // 하위(derived)클래스의 함수를 상위(base)클래스 pure virtual 로 만든다.
