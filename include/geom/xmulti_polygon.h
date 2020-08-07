@@ -14,7 +14,7 @@ private:
     
 public:
     xmulti_polygon() = default;
-    virtual ~xmulti_polygon() = default;
+    ~xmulti_polygon() = default;
     
     void push_back(std::unique_ptr<xpolygon>);
     
