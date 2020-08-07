@@ -60,6 +60,8 @@ public:
     virtual ~xsupport() = default;
     
     virtual void refresh() final;
+    
+    // TODO xobject 클래스의 pure virtual 함수로 인한 불필요한 함수 선언
     virtual std::int32_t course() const final;
     virtual void set_course(std::int32_t _Val) final;
 };
