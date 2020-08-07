@@ -17,31 +17,28 @@ public:
     virtual void refresh() = 0;
 };
 
-class xair : public xobject
-{
-public:
-    xair() = default;
-    virtual ~xair() = default;
-    // MISRA_CPP_10_03_02 virtual 함수를 상속 받은 함수에 virtual 속성을 명시해야 함.
-    virtual void refresh() final {} 
-};
-
-class xsea : public xobject
-{
-public:
-    xsea() = default;
-    virtual ~xsea() = default;
-    
-    virtual void refresh() final {} 
-};
-
 class xground : public xobject
 {
 public:
     xground() = default;
     virtual ~xground() = default;
+};
+class xmaneuver : public xground
+{
+public:
+    xmaneuver() = default;
+    virtual ~xmaneuver() = default;
     
     virtual void refresh() final {} 
 };
+class xsupport : public xground
+{
+public:
+    xsupport() = default;
+    virtual ~xsupport() = default;
+    
+    virtual void refresh() final {} 
+};
+    
 }
 
