@@ -1,4 +1,6 @@
 # MISRA_CPP_2008
+ - MISRA_CPP_00_01_07
+ - MISRA_CPP_03_09_02 
+ - MISRA_CPP_05_02_03 
  - MISRA_CPP_10_03_01
-
- - git clone https://github.com/xpino79/xdevs.git 
+ - MISRA_CPP_18_04_01 
