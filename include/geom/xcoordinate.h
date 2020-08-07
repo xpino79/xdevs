@@ -19,8 +19,8 @@ public:
     }
     ~xcoordinate() = default;
     
-    std::int32_t x() { return _Myx; }
-    std::int32_t y() { return _Myy; }
+    std::int32_t x() { return this->_Myx; }
+    std::int32_t y() { return this->_Myy; }
 };
 
 } /* namespace proj_devs */
