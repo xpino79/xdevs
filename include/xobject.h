@@ -60,8 +60,8 @@ public:
     virtual ~xsupport() = default;
     
     virtual void refresh() final;
-    virtual std::int32_t course() const final = delete;
-    virtual void set_course(std::int32_t _Val) final = delete;
+    virtual std::int32_t course() const final = default;
+    virtual void set_course(std::int32_t _Val) final = default;
 };
     
 }
