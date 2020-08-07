@@ -45,7 +45,7 @@ xobject *xmanager::insert( std::unique_ptr<xobject> _Uptr)
 
 void xmanager::erase( std::int32_t _Key)
 {
-    if (0 = this->_Myxobjects.erase(_Key))
+    if (0 == this->_Myxobjects.erase(_Key))
     {
         // error
     }
