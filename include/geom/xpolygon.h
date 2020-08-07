@@ -28,9 +28,13 @@ public:
     {
         this->_Mycoordinates.empty();
     }
-    void push_back(std::int32_t _x, std::int32_t _y)
+    xcoordinate *get_coordinateN (std::size_t _Num)
     {
-        this->_Mycoordinates.push_back( std::make_unique<proj_devs::xcoordinate>(_x, _y) );
+    }
+
+    void push_back(std::int32_t _X, std::int32_t _Y)
+    {
+        this->_Mycoordinates.push_back( std::make_unique<proj_devs::xcoordinate>(_X, _Y) );
     }
     void push_back(std::unique_ptr<xcoordinate> _Uptr)
     {
