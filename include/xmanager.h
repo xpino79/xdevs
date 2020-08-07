@@ -23,6 +23,10 @@ public:
     void insert( std::unique_ptr<xobject> _Ptr);
     void erase( std::int32_t _Key);
 };  
+
+// api
+xmanager* get_xmanager_ptr();
+        
 } /* namespace proj_devs */
 
 
