@@ -19,7 +19,8 @@ std::int32_t main(std::int32_t argc, char_t *argv[])
         { 
             api_devs::xair *_Xair = std::dynamic_cast<api_devs::xair *>(_Elem.second.get());
             // down casting, cross casting 해결방안 ?
-          }
+            // 하위(derived)클래스의 함수를 상위(base)클래스 pure virtual 로 만든다.
+        }
     }
     { // MISRA_CPP_00_01_07 함수 반환 값 미사용 금지
           std::int32_t _Key = 1;
