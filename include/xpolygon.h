@@ -15,5 +15,7 @@ public:
     xpolygon() = default;
     virtual ~xpolygon() = default;
     
-    void add(std::int32_t _x, std::int32_t _y)
+    void push_back(std::int32_t _x, std::int32_t _y);
+    void push_back(std::unique_ptr<xcoordinate>);
+    
 };
