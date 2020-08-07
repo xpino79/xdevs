@@ -1,4 +1,3 @@
-#include "xtypedefs.h"
 #include "xpolygon.h"
 
 namespace proj_devs
