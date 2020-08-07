@@ -22,15 +22,25 @@ public:
 
 class xground : public xobject
 {
+private:
+    std::string _Myname;
+    
 public:
     xground() = default;
     virtual ~xground() = default;
+    
+    virtual std::string name() const final 
+    { 
+        return this->_Myname; 
+    }
+    virtual void set_name(const std::string &_Val) final 
+    { 
+        this->_Myname = _Val; 
+    }
 };
     
 class xmaneuver : public xground
 {
-private:
-    std::string _Myname;
 public:
     xmaneuver() = default;
     virtual ~xmaneuver() = default;
@@ -40,15 +50,6 @@ public:
         std::cout << this->key() << std::endl;
         std::cout << this->name() << std::endl;
     } 
-    virtual std::string name() const final 
-    { 
-        return this->_Myname; 
-    }
-    virtual void set_name(const std::string &_Val) final 
-    { 
-        this->_Myname = _Val; 
-    }
-    
 };
 class xsupport : public xground
 {
