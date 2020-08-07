@@ -5,11 +5,11 @@ namespace proj_devs
 {
 int32_t xobject::key() const 
 { 
-    return _Mykey;
+    return this->_Mykey;
 }
 void xobject::set_key(int32_t _Key) 
 { 
-    _Mykey = _Key;
+    this->_Mykey = _Key;
 }
 
 std::string xground::name() const 
@@ -37,6 +37,7 @@ void xmaneuver::set_course(std::int32_t _Val)
 {
     this->_Mycourse = _Val; 
 }
+    
 void xsupport::refresh() 
 { 
     std::cout << "xsupport::refresh start " << std::endl;
