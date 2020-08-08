@@ -22,7 +22,16 @@ public:
     bool empty()
     {
         this->_Mypolygons.empty();
-    }    
+    } 
+    void set_wkt(const std::string &_WKT)
+    {
+        // WKT(Well-Known Text) Geometry
+        // POLYGON((1 1,2 1,2 2,1 2,1 1))
+        // MULTIPOLYGON(((1 1,2 1,2 2,1 2,1 1)),((3 3,3 5,5 5,5 3,3 3)))
+        this->clear();
+        
+    }
+    
     void push_back(std::unique_ptr<xpolygon> _Uptr)
     {
         this->_Mypolygons.push_back( std::move(_Uptr) );
