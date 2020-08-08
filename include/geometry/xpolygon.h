@@ -44,7 +44,7 @@ public:
         // Notice that the first element has a position of 0 (not 1).
         if (this->_Mycoordinates.size() > _Num )
         {
-            _Ptr = this->_Mycoordinates.at(_num).get();
+            _Ptr = this->_Mycoordinates.at(_Num).get();
         }
         return _Ptr;
     }
