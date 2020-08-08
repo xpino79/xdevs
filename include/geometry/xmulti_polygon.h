@@ -13,7 +13,10 @@ private:
     
 public:
     xmulti_polygon() = default;
-    ~xmulti_polygon() = default;
+    ~xmulti_polygon()
+    {
+        std::cout << "~xmulti_polygon" << std::endl;
+    }
     
     void clear()
     {
