@@ -18,7 +18,10 @@ public:
     : _Myx(_X), _Myy(_Y)
     {
     }
-    ~xcoordinate() = default;
+    ~xcoordinate() 
+    {
+        std::cout << "~xcoordinate" << std::endl;
+    }
     
     std::int32_t x() { return this->_Myx; }
     std::int32_t y() { return this->_Myy; }
