@@ -63,7 +63,7 @@ public:
     {
     }
 
-    bool within(std::int32_t _x, std::int32_t _y)
+    bool within(std::int32_t _X, std::int32_t _Y)
     {
     }
  
