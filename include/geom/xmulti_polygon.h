@@ -15,15 +15,54 @@ public:
     xmulti_polygon() = default;
     ~xmulti_polygon() = default;
     
-    void clear();
-    bool empty();
+    void clear()
+    {
+        this->_Mypolygons.clear();
+    }
+    bool empty()
+    {
+        this->_Mypolygons.empty();
+    }    
+    void push_back(std::unique_ptr<xpolygon> _Uptr)
+    {
+        this->_Mypolygons.push_back( std::move(_Uptr) );
+    }
     
-    void push_back(std::unique_ptr<xpolygon>);
+    std::float64_t area()
+    {
+        std::float64_t _Val = 0.0;
+        for(auto &_Elem : _Mypolygons)
+        {
+            xpolygon *_Ptr = _Elem.get();
+            _Val += _Ptr->area();
+        }
+        return _Val;        
+    }
+    std::float64_t length()
+    {
+        std::float64_t _Val = 0.0;
+        for(auto &_Elem : _Mypolygons)
+        {
+            xpolygon *_Ptr = _Elem.get();
+            _Val += _Ptr->length();
+        }
+        return _Val;     
+    }
     
-    std::float64_t area();
-    std::float64_t length();
-    
-    bool within(std::int32_t _x, std::int32_t _y);
+    bool within(std::int32_t _X, std::int32_t _Y)
+    {
+        bool _Val = false;
+        for(auto &_Elem : _Mypolygons)
+        {
+            xpolygon *_Ptr = _Elem.get();
+            if( _Ptr->within(_X, _Y))
+            {
+                _Val = true;
+                break;
+            }
+        }
+        return _Val;
+    }
     
 };
 
