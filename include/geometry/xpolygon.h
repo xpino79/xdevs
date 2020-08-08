@@ -27,7 +27,7 @@ public:
     }    
     bool empty()
     {
-        this->_Mycoordinates.empty();
+        return this->_Mycoordinates.empty();
     }
     void read_wkt(const std::string &_WKT)
     {
