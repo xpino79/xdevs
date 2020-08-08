@@ -38,6 +38,13 @@ public:
     
     xcoordinate *get_coordinateN (std::size_t _Num)
     {
+        xcoordinate *_Ptr = nullptr;
+        // Notice that the first element has a position of 0 (not 1).
+        if (this->_Mycoordinates.size() > _Num )
+        {
+            _Ptr = this->_Mycoordinates.at(_num).get();
+        }
+        return _Ptr;
     }
 
     void push_back(std::int32_t _X, std::int32_t _Y)
