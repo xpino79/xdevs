@@ -58,9 +58,29 @@ public:
     
     std::float64_t area()
     {
+        std::float64_t _Val = 0.0;
+        std::int32_t _Max = this->_Mycoordinates.size();
+        
+        for (std::int32_t _Num = 0, _Num < _Max; ++_Num)
+        {
+            // _Num is the index of the first vertex, _Next is the next one.
+            std::int32_t _Next = (_Num + 1) % _Max;
+            
+            // The vertices of the edge we are checking.
+            std::int32_t _X0 = this->_Mycoordinates[_Num]->x();
+            std::int32_t _Y0 = this->_Mycoordinates[_Num]->y();
+            std::int32_t _X1 = this->_Mycoordinates[_Next]->x();
+            std::int32_t _Y1 = this->_Mycoordinates[_Next]->y();
+   
+            _Val += (0.5 * (_X0*_Y1 - _X1*_Y0));  
+        }
+        return _Val;        
     }
+    
     std::float64_t length();
     {
+        std::float64_t _Val = 0.0;
+        return _Val;
     }
 
     // https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm
