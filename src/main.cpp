@@ -20,15 +20,15 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
         _Puptr->push_back(2, 2);
         _Puptr->push_back(0, 2);
         _Puptr->push_back(0, 0);
-        std::cout << "POLYGON: " << _Puptr->area() << std::endl;
-        std::cout << "POLYGON: " << _Puptr->length() << std::endl;
-        std::cout << "POLYGON: " << _Puptr->within(1, 1) << std::endl;
+        std::cout << "POLYGON area: " << _Puptr->area() << std::endl;
+        std::cout << "POLYGON length: " << _Puptr->length() << std::endl;
+        std::cout << "POLYGON within: " << _Puptr->within(10, 10) << ", " << _Puptr->within(0, 0) << ", " << _Puptr->within(1, 1) << std::endl;
         
         std::unique_ptr<proj_devs::xmulti_polygon> _MPuptr = std::make_unique<proj_devs::xmulti_polygon>();
         _MPuptr->push_back( std::move(_Puptr) );
-        std::cout << "MULTIPOLYGON: " << _MPuptr->area() << std::endl;
-        std::cout << "MULTIPOLYGON: " << _MPuptr->length() << std::endl;
-        std::cout << "MULTIPOLYGON: " << _MPuptr->within(1, 1) << std::endl;       
+        std::cout << "MULTIPOLYGON area: " << _MPuptr->area() << std::endl;
+        std::cout << "MULTIPOLYGON length: " << _MPuptr->length() << std::endl;
+        std::cout << "MULTIPOLYGON within: " << _MPuptr->within(1, 1) << std::endl;       
  
     }
     { // MISRA_CPP_18_04_01 동적 힙 메모리 할당은 사용하면 안됨 
