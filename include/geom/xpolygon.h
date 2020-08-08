@@ -5,6 +5,8 @@
 #include <memory>
 #include <mutex>
 #include <vector>
+#include <algorithm>
+#include <cmath>
 
 #include "xcoordinate.h"
 
