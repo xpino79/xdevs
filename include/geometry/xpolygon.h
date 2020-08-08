@@ -19,8 +19,10 @@ private:
     
 public:
     xpolygon() = default;
-    ~xpolygon() = default;
-
+    ~xpolygon()
+    {
+        std::cout << "~xpolygon" << std::endl;
+    }
     void clear()
     {
         this->_Mycoordinates.clear();
