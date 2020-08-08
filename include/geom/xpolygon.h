@@ -67,8 +67,8 @@ public:
     // https://wrf.ecse.rpi.edu//Research/Short_Notes/pnpoly.html
     bool within(std::int32_t _X, std::int32_t _Y)
     {
-        // If we never cross any lines we're inside.
-        bool _Inside = false;
+		// If we never cross any lines we're inside.
+		bool _Inside = false;
 	    std::int32_t _Max = this->_Mycoordinates.size();
          
 	    for (std::int32_t _Num = 0, _Num < _Max; _Num++)
