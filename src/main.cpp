@@ -28,7 +28,7 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
         _MPuptr->push_back( std::move(_Puptr) );
         std::cout << "MULTIPOLYGON area: " << _MPuptr->area() << std::endl;
         std::cout << "MULTIPOLYGON length: " << _MPuptr->length() << std::endl;
-        std::cout << "MULTIPOLYGON within: " << _MPuptr->within(1, 1) << std::endl;       
+        std::cout << "MULTIPOLYGON within: " << _MPuptr->within(10, 10) << ", " << _MPuptr->within(0, 0) << ", " << _MPuptr->within(1, 1) << std::endl;      
  
     }
     { // MISRA_CPP_18_04_01 동적 힙 메모리 할당은 사용하면 안됨 
