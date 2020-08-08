@@ -79,7 +79,7 @@ public:
         return _Val;        
     }
     
-    std::float64_t length();
+    std::float64_t length()
     {
         std::float64_t _Val = 0.0;
         std::int32_t _Max = this->_Mycoordinates.size();
