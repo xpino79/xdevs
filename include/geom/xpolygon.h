@@ -69,7 +69,7 @@ public:
     {
         // If we never cross any lines we're inside.
         bool _Inside = false;
-	    std::int32_t _Max = this->_Mycoordinates.size();
+        std::int32_t _Max = this->_Mycoordinates.size();
     
         for (std::int32_t _Num = 0, _Num < _Max; _Num++)
         {
