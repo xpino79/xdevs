@@ -21,7 +21,7 @@ public:
     }
     bool empty()
     {
-        this->_Mypolygons.empty();
+        return this->_Mypolygons.empty();
     } 
     void read_wkt(const std::string &_WKT)
     {
