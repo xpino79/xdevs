@@ -29,7 +29,7 @@ public:
     {
         this->_Mycoordinates.empty();
     }
-    void set_wkt(const std::string &_WKT)
+    void read_wkt(const std::string &_WKT)
     {
         // WKT(Well-Known Text) Geometry
         // POLYGON((1 1,2 1,2 2,1 2,1 1))
