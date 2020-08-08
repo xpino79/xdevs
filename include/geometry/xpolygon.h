@@ -63,7 +63,7 @@ public:
         std::float64_t _Val = 0.0;
         std::int32_t _Max = this->_Mycoordinates.size();
         
-        for (std::int32_t _Num = 0, _Num < _Max; ++_Num)
+        for (std::int32_t _Num = 0; _Num < _Max; ++_Num)
         {
             // _Num is the index of the first vertex, _Next is the next one.
             std::int32_t _Next = (_Num + 1) % _Max;
@@ -84,7 +84,7 @@ public:
         std::float64_t _Val = 0.0;
         std::int32_t _Max = this->_Mycoordinates.size();
         
-        for (std::int32_t _Num = 0, _Num < _Max; ++_Num)
+        for (std::int32_t _Num = 0; _Num < _Max; ++_Num)
         {
             // _Num is the index of the first vertex, _Next is the next one.
             std::int32_t _Next = (_Num + 1) % _Max;
@@ -108,7 +108,7 @@ public:
         bool _Inside = false;
         std::int32_t _Max = this->_Mycoordinates.size();
     
-        for (std::int32_t _Num = 0, _Num < _Max; ++_Num)
+        for (std::int32_t _Num = 0; _Num < _Max; ++_Num)
         {
             // _Num is the index of the first vertex, _Next is the next one.
             std::int32_t _Next = (_Num + 1) % _Max;
