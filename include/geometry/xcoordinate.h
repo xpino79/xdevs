@@ -2,6 +2,7 @@
  * Copyright 2020. xpino79@gmail.com All rights reserved.
  */
 
+#include <iostream>
 #include "../xtypedefs.h"
 
 namespace proj_devs
