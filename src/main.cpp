@@ -9,10 +9,28 @@
  
 // MISRA_CPP_03_09_02 기본 숫자 타입 대신 크기와 부호를 나타내는 typedef를 사용해야 함
 #include "../include/xmanager.h"
-#include "../include/geometry/xpolygon.h"
+#include "../include/geometry/xmulti_polygon.h"
 
 std::int32_t main(std::int32_t argc, std::char_t *argv[])
 {
+    {// POLYGON || MULTIPOLYGON
+        std::unique_ptr<proj_devs::xpolygon> _Puptr = std::make_unique<proj_devs::xpolygon>();
+        _Puptr->push_back(0, 0);
+        _Puptr->push_back(2, 0);
+        _Puptr->push_back(2, 2);
+        _Puptr->push_back(0, 2);
+        _Puptr->push_back(0, 0);
+        std::cout << "POLYGON: " << _Puptr->area() << std::endl;
+        std::cout << "POLYGON: " << _Puptr->length() << std::endl;
+        std::cout << "POLYGON: " << _Puptr->within(1, 1) << std::endl;
+        
+        std::unique_ptr<proj_devs::xmulti_polygon> _MPuptr = std::make_unique<proj_devs::xmulti_polygon>();
+        _MPuptr->push_back( std::move(_Puptr) );
+        std::cout << "MULTIPOLYGON: " << _MPuptr->area() << std::endl;
+        std::cout << "MULTIPOLYGON: " << _MPuptr->length() << std::endl;
+        std::cout << "MULTIPOLYGON: " << _MPuptr->within(1, 1) << std::endl;       
+ 
+    }
     { // MISRA_CPP_18_04_01 동적 힙 메모리 할당은 사용하면 안됨 
         proj_devs::xobject *_Ptr = nullptr;
         _Ptr = proj_devs::xmanager::instance().insert( std::make_unique<proj_devs::xmaneuver>() );
