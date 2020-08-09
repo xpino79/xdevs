@@ -9,7 +9,7 @@
 #include <iostream>
 #include "xtypedefs.h"
 
-namespace proj_devs
+namespace my
 {
 class xobject
 {
@@ -74,7 +74,7 @@ public:
     virtual void set_course(std::int32_t _Val) final;
 };
     
-} /* proj_devs */
+} /* my */
 
 #endif /* AAA_H_ */
 
