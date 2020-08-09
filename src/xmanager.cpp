@@ -4,7 +4,7 @@
 
 #include "../include/xmanager.h"
 
-namespace proj_devs
+namespace my
 {
 std::unique_ptr<xmanager> xmanager::_Myinstance;
 std::once_flag xmanager::_Myonce_flag;
