@@ -73,7 +73,7 @@ public:
 
     void push_back(std::int32_t _X, std::int32_t _Y)
     {
-        this->_Mycoordinates.push_back( std::make_unique<proj_devs::xcoordinate>(_X, _Y) );
+        this->_Mycoordinates.push_back( std::make_unique<my::xcoordinate>(_X, _Y) );
     }
     void push_back(std::unique_ptr<xcoordinate> _Uptr)
     {
