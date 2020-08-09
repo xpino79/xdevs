@@ -2,6 +2,9 @@
  * Copyright 2020. xpino79@gmail.com All rights reserved.
  */
 
+#ifndef XMANAGER_H_
+#define XMANAGER_H_
+
 #include <memory>
 #include <mutex>
 #include <map>
@@ -36,6 +39,9 @@ public:
 xmanager* get_xmanager_ptr();
         
 } /* namespace proj_devs */
+
+
+#endif /* XMANAGER_H_ */
 
 
 
