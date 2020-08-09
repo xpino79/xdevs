@@ -40,6 +40,7 @@ public:
         // POLYGON((1 1,2 1,2 2,1 2,1 1))
         
         auto _Pos = _Geometry.find("POLYGON");
+        std::cout << _Pos << std::endl;
         if ((_Pos != std::string::npos) && (_Pos == 0)) 
         {
             auto _First = _Geometry.find_last_of("(")+1;
