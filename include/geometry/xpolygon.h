@@ -34,19 +34,19 @@ public:
     {
         return this->_Mycoordinates.empty();
     }
-    void read_wkt(const std::string &_WKT)
+    void read_wkt(const std::string &_Geometry)
     {
         // WKT(Well-Known Text) Geometry
         // POLYGON((1 1,2 1,2 2,1 2,1 1))
  
-        std::size_t _First = _WKT.find_last_of("(")+1;
-        std::size_t _Last = _WKT.find_first_of(")");
+        std::size_t _First = _Geometry.find_last_of("(")+1;
+        std::size_t _Last = _Geometry.find_first_of(")");
         if ((_First != _Last) && (_First < _Last))
         {
             this->clear();
             
             // >>>>>
-            std::string _Tmp = _WKT.substr( _First, _Last-_First );
+            std::string _Tmp = _Geometry.substr( _First, _Last-_First );
             std::vector<std::string> _Vec;
             my::stringtok(_Vec, _Tmp, ",");
             for (std::string &_Elem : _Vec)
