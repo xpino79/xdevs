@@ -2,6 +2,10 @@
  * Copyright 2020. xpino79@gmail.com All rights reserved.
  */
 
+#ifndef XOBJECT_H_
+#define XOBJECT_H_
+
+
 #include <iostream>
 #include "xtypedefs.h"
 
@@ -70,5 +74,7 @@ public:
     virtual void set_course(std::int32_t _Val) final;
 };
     
-}
+} /* proj_devs */
+
+#endif /* AAA_H_ */
 
