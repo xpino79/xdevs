@@ -38,25 +38,28 @@ public:
     {
         // WKT(Well-Known Text) Geometry
         // POLYGON((1 1,2 1,2 2,1 2,1 1))
- 
-        std::size_t _First = _Geometry.find_last_of("(")+1;
-        std::size_t _Last = _Geometry.find_first_of(")");
-        if ((_First != _Last) && (_First < _Last))
+        
+        auto _Pos = _Geometry.find("POLYGON");
+        if ((_Pos != std::string::npos) && (_Pos == 0)) 
         {
-            this->clear();
-            
-            // >>>>>
-            std::string _Tmp = _Geometry.substr( _First, _Last-_First );
-            std::vector<std::string> _Vec;
-            my::stringtok(_Vec, _Tmp, ",");
-            for (std::string &_Elem : _Vec)
+            auto _First = _Geometry.find_last_of("(")+1;
+            auto _Last = _Geometry.find_first_of(")");
+            if ((_First != _Last) && (_First < _Last))
             {
-                std::vector<std::string> _Pos;
-                my::stringtok(_Pos, _Elem, " ");
-                this->push_back( std::atoi(_Pos.at(0).c_str()), std::atoi(_Pos.at(1).c_str()) );
-            }
-            // <<<<<
+                this->clear();
             
+                // >>>>>
+                std::string _Tmp = _Geometry.substr( _First, _Last-_First );
+                std::vector<std::string> _Vec;
+                my::stringtok(_Vec, _Tmp, ",");
+                for (std::string &_Elem : _Vec)
+                {
+                    std::vector<std::string> _Point;
+                    my::stringtok(_Point, _Elem, " ");
+                    this->push_back( std::atoi(_Point.at(0).c_str()), std::atoi(_Point.at(1).c_str()) );
+                }
+                // <<<<<
+            }            
         }
     }
     
