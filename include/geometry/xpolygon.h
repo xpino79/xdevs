@@ -35,9 +35,15 @@ public:
     {
         // WKT(Well-Known Text) Geometry
         // POLYGON((1 1,2 1,2 2,1 2,1 1))
-        // MULTIPOLYGON(((1 1,2 1,2 2,1 2,1 1)),((3 3,3 5,5 5,5 3,3 3)))
-        this->clear();
-        
+ 
+        std::size_t _First = _WKT.find_last_of("(")+1;
+        std::size_t _Last = _WKT.find_first_of(")");
+        if ((_First != _Last) && (_First < _Last))
+        {
+            std::string _Tmp = _WKT.substr( _First, _Last-_First );
+            // >>>>>>>>>
+            this->clear();
+        }
     }
     
     xcoordinate *get_coordinateN (std::size_t _Num)
