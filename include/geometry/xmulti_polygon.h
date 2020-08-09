@@ -2,6 +2,9 @@
  * Copyright 2020. xpino79@gmail.com All rights reserved.
  */
 
+#ifndef XMULTI_POLYGON_H_
+#define XMULTI_POLYGON_H_
+
 #include "xpolygon.h"
 
 namespace proj_devs
@@ -79,3 +82,5 @@ public:
 };
 
 } /* namespace proj_devs */
+
+#endif /* XMULTI_POLYGON_H_ */
