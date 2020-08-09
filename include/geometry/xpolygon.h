@@ -38,9 +38,7 @@ public:
     {
         // WKT(Well-Known Text) Geometry
         // POLYGON((1 1,2 1,2 2,1 2,1 1))
-        
         auto _Pos = _Geometry.find("POLYGON");
-        std::cout << _Pos << std::endl;
         if ((_Pos != std::string::npos) && (_Pos == 0)) 
         {
             auto _First = _Geometry.find_last_of("(")+1;
@@ -48,8 +46,6 @@ public:
             if ((_First != _Last) && (_First < _Last))
             {
                 this->clear();
-            
-                // >>>>>
                 std::string _Tmp = _Geometry.substr( _First, _Last-_First );
                 std::vector<std::string> _Vec;
                 my::stringtok(_Vec, _Tmp, ",");
@@ -59,7 +55,6 @@ public:
                     my::stringtok(_Point, _Elem, " ");
                     this->push_back( std::atoi(_Point.at(0).c_str()), std::atoi(_Point.at(1).c_str()) );
                 }
-                // <<<<<
             }            
         }
     }
