@@ -2,6 +2,9 @@
  * Copyright 2020. xpino79@gmail.com All rights reserved.
  */
 
+#ifndef XCOORDINATE_H_
+#define XCOORDINATE_H_
+
 #include <iostream>
 #include "../xtypedefs.h"
 
@@ -28,3 +31,6 @@ public:
 };
 
 } /* namespace proj_devs */
+
+#endif /* XCOORDINATE_H_ */
+
