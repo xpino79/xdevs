@@ -97,7 +97,7 @@ public:
             std::int32_t _X1 = this->_Mycoordinates[_Next]->x();
             std::int32_t _Y1 = this->_Mycoordinates[_Next]->y();
    
-            _Val += (sqrt(pow(_X1 - _X0, 2) + pow(_Y1 - _Y0, 2)));
+            _Val += (std::sqrt(std::pow(_X1 - _X0, 2) + std::pow(_Y1 - _Y0, 2)));
         } 
         return _Val;
     }
