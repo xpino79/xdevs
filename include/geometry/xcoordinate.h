@@ -8,7 +8,7 @@
 #include <iostream>
 #include "../xtypedefs.h"
 
-namespace proj_devs
+namespace my
 {
 class xcoordinate
 {
@@ -30,7 +30,7 @@ public:
     std::int32_t y() { return this->_Myy; }
 };
 
-} /* namespace proj_devs */
+} /* namespace my */
 
 #endif /* XCOORDINATE_H_ */
 
