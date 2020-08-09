@@ -7,7 +7,7 @@
 
 #include "xpolygon.h"
 
-namespace proj_devs
+namespace my
 {
 class xmulti_polygon
 {
@@ -81,6 +81,6 @@ public:
     
 };
 
-} /* namespace proj_devs */
+} /* namespace my */
 
 #endif /* XMULTI_POLYGON_H_ */
