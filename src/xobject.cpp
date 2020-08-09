@@ -4,7 +4,7 @@
 
 #include "../include/xobject.h"
 
-namespace proj_devs
+namespace my
 {
 int32_t xobject::key() const 
 { 
@@ -56,4 +56,4 @@ void xsupport::set_course(std::int32_t _Val)
 { 
 }
 
-}
+} /* namespace my */
