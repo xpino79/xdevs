@@ -41,7 +41,7 @@
 
 #include <string>
 
-namespace proj_devs
+namespace my
 {
 
 template <typename Container>
@@ -74,6 +74,6 @@ void stringtok (Container &container, std::string const &in, const char * const 
     }
 }
     
-} /* proj_devs */
+} /* my */
 
 #endif /* STRINGTOK_H_ */
