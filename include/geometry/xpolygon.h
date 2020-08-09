@@ -38,6 +38,8 @@ public:
     {
         // WKT(Well-Known Text) Geometry
         // POLYGON((1 1,2 1,2 2,1 2,1 1))
+        
+        /*
         auto _Pos = _Geometry.find("POLYGON");
         if ((_Pos != std::string::npos) && (_Pos == 0)) 
         {
@@ -57,6 +59,8 @@ public:
                 }
             }            
         }
+        */
+        
     }
     
     xcoordinate *get_coordinateN (std::size_t _Num)
