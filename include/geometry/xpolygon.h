@@ -1,6 +1,8 @@
 /**
  * Copyright 2020. xpino79@gmail.com All rights reserved.
  */
+#ifndef XPOLYGON_H_
+#define XPOLYGON_H_
 
 #include <memory>
 #include <mutex>
@@ -150,3 +152,5 @@ public:
 };
     
 } /* namespace proj_devs */
+
+#endif /* AAA_H_ */
