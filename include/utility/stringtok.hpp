@@ -41,6 +41,9 @@
 
 #include <string>
 
+namespace proj_devs
+{
+
 template <typename Container>
 void stringtok (Container &container, std::string const &in, const char * const delimiters = " \t\n")
 {
@@ -70,5 +73,7 @@ void stringtok (Container &container, std::string const &in, const char * const 
         i = j+1;
     }
 }
+    
+} /* proj_devs */
 
 #endif /* STRINGTOK_H_ */
