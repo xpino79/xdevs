@@ -15,14 +15,15 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
 {
     {// POLYGON || MULTIPOLYGON
         std::unique_ptr<my::xpolygon> _Puptr = std::make_unique<my::xpolygon>();
-        /*
+         
         _Puptr->push_back(0, 0);
         _Puptr->push_back(2, 0);
         _Puptr->push_back(2, 2);
         _Puptr->push_back(0, 2);
         _Puptr->push_back(0, 0);
-        */
+        /* 
         _Puptr->read_wkt("POLYGON((0 0,2 0,2 2,0 2,0 0))");
+        */
         std::cout << "POLYGON area: " << _Puptr->area() << std::endl;
         std::cout << "POLYGON length: " << _Puptr->length() << std::endl;
         std::cout << "POLYGON within: " << _Puptr->within(10, 10) << ", " << _Puptr->within(0, 0) << ", " << _Puptr->within(1, 1) << std::endl;
