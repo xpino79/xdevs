@@ -13,7 +13,7 @@
 #include "xcoordinate.h"
 #include "../utility/stringtok.hpp"
 
-namespace proj_devs
+namespace my
 {
 class xpolygon
 {
@@ -44,7 +44,15 @@ public:
         if ((_First != _Last) && (_First < _Last))
         {
             std::string _Tmp = _WKT.substr( _First, _Last-_First );
-            // >>>>>>>>>
+            
+            // >>>>>
+            std::vector<std::string> _Vec;
+            my::stringtok(_Vec, _Tmp, ",");
+            for (std::string &_Elem : _Vec)
+            {
+                
+            }
+            // <<<<<
             this->clear();
         }
     }
@@ -152,6 +160,6 @@ public:
  
 };
     
-} /* namespace proj_devs */
+} /* namespace my */
 
 #endif /* XPOLYGON_H_ */
