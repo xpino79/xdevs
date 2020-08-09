@@ -11,7 +11,7 @@
 
 #include "xobject.h"
 
-namespace proj_devs
+namespace my
 {
 class xmanager
 {
@@ -38,7 +38,7 @@ public:
 // api
 xmanager* get_xmanager_ptr();
         
-} /* namespace proj_devs */
+} /* namespace my */
 
 
 #endif /* XMANAGER_H_ */
