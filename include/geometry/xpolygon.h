@@ -11,6 +11,7 @@
 #include <cmath>
 
 #include "xcoordinate.h"
+#include "../utility/stringtok.hpp"
 
 namespace proj_devs
 {
