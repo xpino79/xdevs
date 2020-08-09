@@ -43,17 +43,20 @@ public:
         std::size_t _Last = _WKT.find_first_of(")");
         if ((_First != _Last) && (_First < _Last))
         {
-            std::string _Tmp = _WKT.substr( _First, _Last-_First );
+            this->clear();
             
             // >>>>>
+            std::string _Tmp = _WKT.substr( _First, _Last-_First );
             std::vector<std::string> _Vec;
             my::stringtok(_Vec, _Tmp, ",");
             for (std::string &_Elem : _Vec)
             {
-                
+                std::vector<std::string> _Pos;
+                my::stringtok(_Pos, _Elem, " ");
+                this->push_back( std::atoi(_Pos.at(0).c_str()), std::atoi(_Pos.at(1).c_str()) );
             }
             // <<<<<
-            this->clear();
+            
         }
     }
     
