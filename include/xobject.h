@@ -17,7 +17,7 @@ private:
     int32_t _Mykey = 0;
 public:
     xobject() = default;
-    virtual ~xobject() = default;
+    virtual ~xobject() { std::cout << "~xobject" << std::endl; }
     int32_t key() const;
     void set_key(int32_t _Key);
     
@@ -42,7 +42,7 @@ private:
     
 public:
     xground() = default;
-    virtual ~xground() = default;
+    virtual ~xground() { std::cout << "~xground" << std::endl; }
     
     virtual std::string name() const final;
     virtual void set_name(const std::string &_Val) final;
@@ -55,7 +55,7 @@ private:
     
 public:
     xmaneuver() = default;
-    virtual ~xmaneuver() = default;
+    virtual ~xmaneuver() { std::cout << "~xmaneuver" << std::endl; }
     
     virtual void refresh() final;
     virtual std::int32_t course() const final;
@@ -65,7 +65,7 @@ class xsupport : public xground
 {
 public:
     xsupport() = default;
-    virtual ~xsupport() = default;
+    virtual ~xsupport() { std::cout << "~xsupport" << std::endl; }
     
     virtual void refresh() final;
     
