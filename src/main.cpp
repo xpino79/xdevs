@@ -61,7 +61,7 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
             // MISRA_CPP_10_03_01 상속 계층을 따라 각 virtual function 정이는 하나씩만 존재해야 함
             // 하위(derived)클래스의 함수를 상위(base)클래스 pure virtual 로 만든다.
             my::xobject *_Ptr = _Elem.second.get();
-            _Ptr->refresh();
+            // _Ptr->refresh();
         }
     }
     { // MISRA_CPP_00_01_07 함수 반환 값 미사용 금지
