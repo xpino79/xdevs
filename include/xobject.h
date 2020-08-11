@@ -15,7 +15,7 @@ class xobject
 {
 private:
     int32_t _Mykey = 0;
-    my::xobject* _Myparent;
+    my::xobject* _Myparent = nullptr;
     
 public:
     xobject() = default;
