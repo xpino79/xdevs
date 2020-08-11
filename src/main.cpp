@@ -6,7 +6,7 @@
 #include <map>
 #include <list>
 #include <algorithm>
-#include <memory>
+ 
 
 // MISRA_CPP_03_09_02 기본 숫자 타입 대신 크기와 부호를 나타내는 typedef를 사용해야 함
 #include "../include/xmanager.h"
@@ -51,7 +51,7 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
         }
         */
         
-        std::shared_ptr<my::xobject> _Ptr
+        std::shared_ptr<my::xobject> _Ptr;
         std::weak_ptr<my::xobject> _Wptr;
      
         _Wptr = my::xmanager::instance().insert( std::make_shared<my::xmaneuver>() );
