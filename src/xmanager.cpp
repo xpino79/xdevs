@@ -27,12 +27,14 @@ int32_t xmanager::generate_unique_identifier()
     return ++_Myunique_identifier;
 }
     
-const std::map<int32_t, std::unique_ptr<xobject>>& xmanager::xobjects()
+// const std::map<int32_t, std::unique_ptr<xobject>>& xmanager::xobjects()
+const std::map<int32_t, std::shared_ptr<xobject>>& xmanager::xobjects()
 {
     return this->_Myxobjects;
 }
 
-xobject *xmanager::insert( std::unique_ptr<xobject> _Uptr)
+// xobject *xmanager::insert( std::unique_ptr<xobject> _Uptr)
+xobject *xmanager::insert( std::shared_ptr<xobject> _Uptr)
 {
     xobject *_Ptr = _Uptr.get();
     if (0==_Ptr->key())
