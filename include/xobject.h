@@ -26,7 +26,8 @@ public:
     int32_t key() const;
     void set_key(int32_t _Key);
     
-    my::xobject* parent() { return _Myparent; }
+    template <typename T>
+    T* parent() { return _Myparent; }
     void set_parent(my::xobject* _Parent) { _Myparent = _Parent; }
     
     // MISRA_CPP_10_03_01 상속 계층을 따라 각 virtual function 정이는 하나씩만 존재해야 함.
