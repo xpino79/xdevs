@@ -61,8 +61,9 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
                 _Ptr->refresh();
             }
         }
+        std::cout << ">>>>> erase start " << std::endl;
         my::xmanager::instance().erase( 1 );
-        std::cout << "erase >>>>>>" << std::endl;
+        std::cout << ">>>>> erase end " << std::endl;
         
     }
     { // MISRA_CPP_00_01_07 함수 반환 값 미사용 금지
