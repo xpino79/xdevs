@@ -35,7 +35,7 @@ public:
     const std::map<int32_t, std::shared_ptr<xobject>>& xobjects();
     
     // xobject *insert( std::unique_ptr<xobject> _Uptr);
-    xobject *insert( std::shared_ptr<xobject> _Uptr);
+    std::weak_ptr<xobject> insert( std::shared_ptr<xobject> _Uptr);
     
     void erase( std::int32_t _Key);
     
