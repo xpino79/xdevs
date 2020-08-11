@@ -26,11 +26,10 @@ void xground::set_name(const std::string &_Val)
 
 void xmaneuver::refresh() 
 { 
-    std::cout << "xmaneuver::refresh start " << std::endl;
-    std::cout << this->key() << std::endl;
-    std::cout << this->name() << std::endl;
-    std::cout << this->course() << std::endl;
-    std::cout << "xmaneuver::refresh end " << std::endl;
+    std::cout << ">>>>> xmaneuver::refresh " << std::endl;
+    std::cout << "key: " << this->key() << std::endl;
+    std::cout << "name: " << this->name() << std::endl;
+    std::cout << "course: " << this->course() << std::endl;
 }
 std::int32_t xmaneuver::course() const
 {
@@ -43,10 +42,15 @@ void xmaneuver::set_course(std::int32_t _Val)
     
 void xsupport::refresh() 
 { 
-    std::cout << "xsupport::refresh start " << std::endl;
-    std::cout << this->key() << std::endl;
-    std::cout << this->name() << std::endl;
-    std::cout << "xsupport::refresh end " << std::endl;
+    std::cout << ">>>>> xsupport::refresh " << std::endl;
+    std::cout << "key: " << this->key() << std::endl;
+    std::cout << "name: " << this->name() << std::endl;
+    std::shared_ptr<my::xobject> _Ptr = parent().lock();
+    if (nullptr != _Ptr)
+    {
+        std::cout << "parent key: " << _Ptr->key() << std::endl; 
+    }
+    
 }
 std::int32_t xsupport::course() const
 {
