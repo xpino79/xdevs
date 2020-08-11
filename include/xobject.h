@@ -15,11 +15,16 @@ class xobject
 {
 private:
     int32_t _Mykey = 0;
+    std::weak_ptr<xobject> _Myparent;
+    
 public:
     xobject() = default;
     virtual ~xobject() { std::cout << "~xobject" << std::endl; }
     int32_t key() const;
     void set_key(int32_t _Key);
+    
+    std::weak_ptr<xobject> parent() { return _Myparent; }
+    void set_parent(std::weak_ptr<xobject> _Parent) { _Myparent = _Parent; }
     
     // MISRA_CPP_10_03_01 상속 계층을 따라 각 virtual function 정이는 하나씩만 존재해야 함.
     // MISRA_CPP_10_03_03 재선언되는 base클래스의 함수가 pure virtual일 때만 pure virtual함수로 재선언 할 수 있음. 
