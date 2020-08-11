@@ -14,28 +14,7 @@
 
 std::int32_t main(std::int32_t argc, std::char_t *argv[])
 {
-    {// POLYGON || MULTIPOLYGON
-        std::unique_ptr<my::xpolygon> _Puptr = std::make_unique<my::xpolygon>();
-         
-        _Puptr->push_back(0, 0);
-        _Puptr->push_back(2, 0);
-        _Puptr->push_back(2, 2);
-        _Puptr->push_back(0, 2);
-        _Puptr->push_back(0, 0);
-        /* 
-        _Puptr->read_wkt("POLYGON((0 0,2 0,2 2,0 2,0 0))");
-        */
-        std::cout << "POLYGON area: " << _Puptr->area() << std::endl;
-        std::cout << "POLYGON length: " << _Puptr->length() << std::endl;
-        std::cout << "POLYGON within: " << _Puptr->within(10, 10) << ", " << _Puptr->within(0, 0) << ", " << _Puptr->within(1, 1) << std::endl;
-        
-        std::unique_ptr<my::xmulti_polygon> _MPuptr = std::make_unique<my::xmulti_polygon>();
-        _MPuptr->push_back( std::move(_Puptr) );
-        std::cout << "MULTIPOLYGON area: " << _MPuptr->area() << std::endl;
-        std::cout << "MULTIPOLYGON length: " << _MPuptr->length() << std::endl;
-        std::cout << "MULTIPOLYGON within: " << _MPuptr->within(10, 10) << ", " << _MPuptr->within(0, 0) << ", " << _MPuptr->within(1, 1) << std::endl;      
- 
-    }
+
     { // MISRA_CPP_18_04_01 동적 힙 메모리 할당은 사용하면 안됨 
         /*
         my::xobject *_Ptr = nullptr;
@@ -104,6 +83,29 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
                 // 해결방안 ?
           }
     }
-  
+
+     {// POLYGON || MULTIPOLYGON
+        /*
+        std::unique_ptr<my::xpolygon> _Puptr = std::make_unique<my::xpolygon>();
+         
+        _Puptr->push_back(0, 0);
+        _Puptr->push_back(2, 0);
+        _Puptr->push_back(2, 2);
+        _Puptr->push_back(0, 2);
+        _Puptr->push_back(0, 0);
+         // _Puptr->read_wkt("POLYGON((0 0,2 0,2 2,0 2,0 0))");
+        std::cout << "POLYGON area: " << _Puptr->area() << std::endl;
+        std::cout << "POLYGON length: " << _Puptr->length() << std::endl;
+        std::cout << "POLYGON within: " << _Puptr->within(10, 10) << ", " << _Puptr->within(0, 0) << ", " << _Puptr->within(1, 1) << std::endl;
+        
+        std::unique_ptr<my::xmulti_polygon> _MPuptr = std::make_unique<my::xmulti_polygon>();
+        _MPuptr->push_back( std::move(_Puptr) );
+        std::cout << "MULTIPOLYGON area: " << _MPuptr->area() << std::endl;
+        std::cout << "MULTIPOLYGON length: " << _MPuptr->length() << std::endl;
+        std::cout << "MULTIPOLYGON within: " << _MPuptr->within(10, 10) << ", " << _MPuptr->within(0, 0) << ", " << _MPuptr->within(1, 1) << std::endl;      
+        */
+         
+    }
+ 
     return 1;
 }
