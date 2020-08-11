@@ -50,7 +50,7 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
         }
         */
         
-        std::weak_ptr<A> _Ptr;
+        std::weak_ptr<my::xobject> _Ptr;
         _Ptr = my::xmanager::instance().insert( std::make_shared<my::xmaneuver>() );
         if (std::nullptr_t != _Ptr)
         {
