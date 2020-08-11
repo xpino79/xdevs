@@ -68,9 +68,10 @@ std::weak_ptr<xobject> xmanager::insert( std::shared_ptr<xobject> _Ptr)
 }
 void xmanager::erase( std::int32_t _Key)
 {
-    if (0 == this->_Myxobjects.erase(_Key))
+    if (0 != this->_Myxobjects.erase(_Key))
     {
-        // error
+        std::cout << ">>>>> xmanager::erase " << std::endl;
+        std::cout << " - key " << _Key << std::endl;
     }
 }
 
