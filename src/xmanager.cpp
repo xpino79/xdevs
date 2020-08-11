@@ -51,19 +51,19 @@ xobject *xmanager::insert( std::unique_ptr<xobject> _Uptr)
 }
 */
 
-std::weak_ptr<xobject> xmanager::insert( std::shared_ptr<xobject> _Uptr)
+std::weak_ptr<xobject> xmanager::insert( std::shared_ptr<xobject> _Ptr)
 {
-    std::weak_ptr<xobject> _Ptr = _Uptr;
+    std::weak_ptr<xobject> _Wptr = _Ptr;
     if (0==_Ptr->key())
     {
         _Ptr->set_key( generate_unique_identifier() );
         _Ptr->set_name( std::to_string(_Ptr->key()));
     }
-    auto _Pair = this->_Myxobjects.insert(std::make_pair(_Uptr->key(), std::move(_Uptr)));
+    auto _Pair = this->_Myxobjects.insert(std::make_pair(_Ptr->key(), std::move(_Ptr)));
     if (!_Pair.second) {
         // error
     }
-    return _Ptr;
+    return _Wptr;
 }
 void xmanager::erase( std::int32_t _Key)
 {
