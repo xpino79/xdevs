@@ -59,7 +59,7 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
             my::xobject *_Ptr = _Elem.second.get();
             _Ptr->refresh();
             */
-            std::cout << _Elem.second..use_count() << std::endl;
+            std::cout << _Elem.second.use_count() << std::endl;
         }
     }
     { // MISRA_CPP_00_01_07 함수 반환 값 미사용 금지
