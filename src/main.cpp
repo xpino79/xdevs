@@ -112,10 +112,8 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
         */
          
     }
- 
-    std::cout << std::endl;
+  
     std::cout << ">>>>> application quit " << std::endl;
-    std::cout << std::endl;
-    
+ 
     return 1;
 }
