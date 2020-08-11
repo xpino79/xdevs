@@ -30,22 +30,20 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
         }
         */
         
-        std::shared_ptr<my::xobject> _Ptr;
-
+        std::shared_ptr<my::xobject> _Pptr;
+ 
         // weak_ptr 를 shared_ptr 로 변환
-        _Ptr = (my::xmanager::instance().insert(std::make_shared<my::xmaneuver>())).lock();  
-        if (nullptr != _Ptr)
+        _Pptr = (my::xmanager::instance().insert(std::make_shared<my::xmaneuver>())).lock();  
+        if (nullptr != _Pptr)
         {
-            // something
+            std::shared_ptr<my::xobject> _Ptr = (my::xmanager::instance().insert(std::make_shared<my::xsupport>())).lock();  
+            if (nullptr != _Ptr)
+            {
+                // something
+                _Ptr->set_parent( _Pptr );
+            }
         }
-        // weak_ptr 를 shared_ptr 로 변환
-        _Ptr = (my::xmanager::instance().insert(std::make_shared<my::xsupport>())).lock();  
-        if (nullptr != _Ptr)
-        {
-            // something
-        }
-        _Ptr->set_parent( _Ptr );
-        
+  
     }
     { // MISRA_CPP_05_02_03 상위(base) 클래스를 하위(derived)클래스로 변환하는 것은 다형(polymorphic) 타입 간에 이루어져서는 안됨
         for (auto &_Elem : my::xmanager::instance().xobjects())
