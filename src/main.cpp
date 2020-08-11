@@ -14,7 +14,15 @@
 
 std::int32_t main(std::int32_t argc, std::char_t *argv[])
 {
-
+    { // 빈나 참조
+        std::shared_ptr<my::xobject> _Uptr = std::make_shared<my::xmaneuver>();
+        std::shared_ptr<my::xmaneuver> _Dptr = std::dynamic_pointer_cast<my::xmaneuver>(_Uptr);
+        if (nullptr == _Dptr)
+        {
+            // error
+        }
+    }
+    
     { // MISRA_CPP_18_04_01 동적 힙 메모리 할당은 사용하면 안됨 
         std::shared_ptr<my::xobject> _Pptr;
  
