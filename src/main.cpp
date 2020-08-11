@@ -10,7 +10,7 @@
 
 // MISRA_CPP_03_09_02 기본 숫자 타입 대신 크기와 부호를 나타내는 typedef를 사용해야 함
 #include "../include/xmanager.h"
-#include "../inclide/xpointer_cast.hpp"
+#include "../include/xpointer_cast.hpp"
 #include "../include/geometry/xmulti_polygon.h"
 
 std::int32_t main(std::int32_t argc, std::char_t *argv[])
