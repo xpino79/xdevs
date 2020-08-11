@@ -19,10 +19,10 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
         std::shared_ptr<my::xobject> _Pptr;
  
         // weak_ptr 를 shared_ptr 로 변환
-        _Pptr = (my::xmanager::instance().insert(std::make_shared<my::xmaneuver>())).lock();  
+        _Pptr = my::xmanager::instance().insert(std::make_shared<my::xmaneuver>());  
         if (nullptr != _Pptr)
         {
-            std::shared_ptr<my::xobject> _Ptr = (my::xmanager::instance().insert(std::make_shared<my::xsupport>())).lock();  
+            std::shared_ptr<my::xobject> _Ptr = my::xmanager::instance().insert(std::make_shared<my::xsupport>());  
             if (nullptr != _Ptr)
             {
                 // something
