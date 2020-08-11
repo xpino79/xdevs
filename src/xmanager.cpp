@@ -62,6 +62,7 @@ std::weak_ptr<xobject> xmanager::insert( std::shared_ptr<xobject> _Ptr)
     auto _Pair = this->_Myxobjects.insert(std::make_pair(_Ptr->key(), std::move(_Ptr)));
     if (!_Pair.second) {
         // error
+        _Ptr = nullptr;
     }
     return _Wptr;
 }
