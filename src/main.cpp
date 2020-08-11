@@ -14,6 +14,8 @@
 
 std::int32_t main(std::int32_t argc, std::char_t *argv[])
 {
+	/// 업데이트 테스트
+
     { // 빈나 참조
         std::shared_ptr<my::xobject> _Uptr = std::make_shared<my::xmaneuver>();
         std::shared_ptr<my::xmaneuver> _Dptr = std::dynamic_pointer_cast<my::xmaneuver>(_Uptr);
