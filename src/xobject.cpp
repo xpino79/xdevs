@@ -45,10 +45,10 @@ void xsupport::refresh()
     std::cout << ">>>>> xsupport::refresh " << std::endl;
     std::cout << " - key: " << this->key() << std::endl;
     std::cout << " - name: " << this->name() << std::endl;
-    std::shared_ptr<my::xobject> _Ptr = parent().lock();
-    if (nullptr != _Ptr)
+
+    if (nullptr != parent())
     {
-        std::cout << " - parent key: " << _Ptr->key() << std::endl; 
+        std::cout << " - parent key: " << parent()->key() << std::endl; 
     }
     
 }
