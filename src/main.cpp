@@ -34,7 +34,7 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
             if (nullptr != _Ptr)
             {
                 // something
-                _Ptr->set_parent( _Pptr );
+                _Ptr->set_parent( _Pptr.get() );
             }
         }
   
