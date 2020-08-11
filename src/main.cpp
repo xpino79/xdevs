@@ -62,11 +62,7 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
             }
             std::cout << "std::shared_ptr::#1 " << _Elem.second.use_count() << std::endl;
         }
-        for (auto &_Elem : my::xmanager::instance().xobjects())
-        { 
-            std::cout << "std::shared_ptr::#2 " << _Elem.second.use_count() << std::endl;
-        }
-     
+
     }
     { // MISRA_CPP_00_01_07 함수 반환 값 미사용 금지
           std::int32_t _Key = 1;
