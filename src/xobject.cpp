@@ -46,9 +46,9 @@ void xsupport::refresh()
     std::cout << " - key: " << this->key() << std::endl;
     std::cout << " - name: " << this->name() << std::endl;
 
-    if (nullptr != parent())
+    if (nullptr != parent<xground>())
     {
-        std::cout << " - parent key: " << parent()->key() << std::endl; 
+        std::cout << " - parent key: " << parent<xground>()->key() << std::endl; 
     }
     
 }
