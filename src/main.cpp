@@ -60,7 +60,7 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
             {
                 _Ptr->refresh();
             }
-
+            std::cout << "std::shared_ptr::use_count " << _Elem.second.use_count() << std::endl;
         }
     }
     { // MISRA_CPP_00_01_07 함수 반환 값 미사용 금지
