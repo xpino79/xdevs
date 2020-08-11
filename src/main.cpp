@@ -16,13 +16,13 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
 {
 
     { // MISRA_CPP_18_04_01 동적 힙 메모리 할당은 사용하면 안됨 
-        std::shared_ptr<my::xobject> _Pptr;
+        std::weak_ptr<my::xobject> _Pptr;
  
         // weak_ptr 를 shared_ptr 로 변환
-        _Pptr = my::xmanager::instance().insert(std::make_shared<my::xmaneuver>());  
+        _Pptr = my::xmanager::instance().insert(std::make_shared<my::xmaneuver>()).lock();  
         if (nullptr != _Pptr)
         {
-            std::shared_ptr<my::xobject> _Ptr = my::xmanager::instance().insert(std::make_shared<my::xsupport>());  
+            std::shared_ptr<my::xobject> _Ptr = my::xmanager::instance().insert(std::make_shared<my::xsupport>()).lock();  
             if (nullptr != _Ptr)
             {
                 // something
