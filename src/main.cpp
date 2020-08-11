@@ -39,7 +39,7 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
             // something
         }
         // weak_ptr 를 shared_ptr 로 변환
-        _Ptr = (my::xmanager::instance().insert(std::make_shared<my::xmaneuver>())).lock();  
+        _Ptr = (my::xmanager::instance().insert(std::make_shared<my::xsupport>())).lock();  
         if (nullptr != _Ptr)
         {
             // something
@@ -52,11 +52,10 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
         { 
             // down casting, cross casting 해결방안 ?
             // my::xground *_Ptr = std::dynamic_cast<my::xground *>(_Elem.second.get());
-            // _Ptr->refresh();
 
             // MISRA_CPP_10_03_01 상속 계층을 따라 각 virtual function 정이는 하나씩만 존재해야 함
             // 하위(derived)클래스의 함수를 상위(base)클래스 pure virtual 로 만든다.
-            std::shared_ptr<my::xground> _Ptr = std::dynamic_pointer_cast<my::xground>(_Elem.second.get()->parent().lock());
+            std::shared_ptr<my::xground> _Ptr = std::dynamic_pointer_cast<my::xground>(_Elem.second);
             if (nullptr != _Ptr)
             {
                 _Ptr->refresh();
