@@ -15,7 +15,7 @@ class xobject
 {
 private:
     int32_t _Mykey = 0;
-    std::weak_ptr<xobject> _Myparent = nullptr;
+    std::weak_ptr<xobject> _Myparent;
     
 public:
     xobject() = default;
