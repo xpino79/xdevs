@@ -31,9 +31,9 @@ const std::map<int32_t, std::shared_ptr<xobject>>& xmanager::xobjects()
     return this->_Myxobjects;
 }
  
-std::shared_ptr<xobject> xmanager::insert( std::shared_ptr<xobject> _Ptr)
+std::weak_ptr<xobject> xmanager::insert( std::shared_ptr<xobject> _Ptr)
 {
- 
+    std::weak_ptr<xobject> _Wptr = _Ptr;
     if (0==_Ptr->key())
     {
         _Ptr->set_key( generate_unique_identifier() );
@@ -44,7 +44,7 @@ std::shared_ptr<xobject> xmanager::insert( std::shared_ptr<xobject> _Ptr)
         // error
         _Ptr = nullptr;
     }
-    return _Ptr;
+    return _Wptr;
 }
 void xmanager::erase( std::int32_t _Key)
 {
