@@ -52,18 +52,15 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
         */
         
         std::shared_ptr<my::xobject> _Ptr;
-        std::weak_ptr<my::xobject> _Wptr;
-     
-        _Wptr = my::xmanager::instance().insert( std::make_shared<my::xmaneuver>() );
+
         // weak_ptr 를 shared_ptr 로 변환
-        _Ptr = _Wptr.lock();  
+        _Ptr = (my::xmanager::instance().insert(std::make_shared<my::xmaneuver>())).lock();  
         if (nullptr != _Ptr)
         {
             // something
         }
-        _Wptr = my::xmanager::instance().insert( std::make_shared<my::xsupport>() );
         // weak_ptr 를 shared_ptr 로 변환
-        _Ptr = _Wptr.lock();  
+        _Ptr = (my::xmanager::instance().insert(std::make_shared<my::xmaneuver>())).lock();  
         if (nullptr != _Ptr)
         {
             // something
