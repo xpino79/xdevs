@@ -36,18 +36,13 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
         { 
             // down casting, cross casting 해결방안 ?
             // my::xground *_Ptr = std::dynamic_cast<my::xground *>(_Elem.second.get());
-
-            // MISRA_CPP_10_03_01 상속 계층을 따라 각 virtual function 정이는 하나씩만 존재해야 함
-            // 하위(derived)클래스의 함수를 상위(base)클래스 pure virtual 로 만든다.
             std::shared_ptr<my::xground> _Ptr = std::dynamic_pointer_cast<my::xground>(_Elem.second);
             if (nullptr != _Ptr)
             {
                 _Ptr->refresh();
             }
         }
-
-        my::xmanager::instance().erase( 1 );
-        
+        my::xmanager::instance().erase( 1 );        
     }
     { // MISRA_CPP_00_01_07 함수 반환 값 미사용 금지
           std::int32_t _Key = 1;
