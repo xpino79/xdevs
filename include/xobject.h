@@ -5,8 +5,8 @@
 #ifndef XOBJECT_H_
 #define XOBJECT_H_
 
-
 #include <iostream>
+#include <memory>
 #include "xtypedefs.h"
 
 namespace my
