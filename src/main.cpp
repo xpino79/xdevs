@@ -21,7 +21,8 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
         if( nullptr == _Ptr)
         {
             // error 
-         }
+        }
+        _Ptr->refresh();
     }
     
     { // MISRA_CPP_18_04_01 동적 힙 메모리 할당은 사용하면 안됨 
