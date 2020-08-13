@@ -22,12 +22,7 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
         my::xobject *_Pptr = my::xmanager::instance().insert(std::make_unique<my::xmaneuver>());  
         if (nullptr != _Pptr)
         {
-            my::xobject *_Ptr = my::xmanager::instance().insert(std::make_unique<my::xsupport>());  
-            if (nullptr != _Ptr)
-            {
-                // something
-                _Ptr->set_parent( _Pptr );
-            }
+            // something
         }
   
     }
