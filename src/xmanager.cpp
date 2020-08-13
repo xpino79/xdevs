@@ -33,13 +33,13 @@ const std::map<int32_t, std::unique_ptr<xobject>>& xmanager::xobjects()
  
 xobject *xmanager::insert( std::unique_ptr<xobject> _Uptr)
 {
-    xobject *_Ptr = _UPtr.get();
-    if (0==_Ptr->key())
+    xobject *_Ptr = _Uptr.get();
+    if (0==_Uptr->key())
     {
         _Ptr->set_key( generate_unique_identifier() );
-        _Ptr->set_name( std::to_string(_Ptr->key()));
+        _Ptr->set_name( std::to_string(_Uptr->key()));
     }
-    auto _Pair = this->_Myxobjects.insert(std::make_pair(_Ptr->key(), std::move(_Ptr)));
+    auto _Pair = this->_Myxobjects.insert(std::make_pair(_Uptr->key(), std::move(_Uptr)));
     if (!_Pair.second) {
         // error
         _Ptr = nullptr;
