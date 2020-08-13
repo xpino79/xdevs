@@ -33,12 +33,17 @@ public:
     const std::map<int32_t, std::unique_ptr<xobject>>& xobjects();
     xobject *insert( std::unique_ptr<xobject> _Uptr);    
     void erase( std::int32_t _Key);
+    xobject *find( std::iint32_t _Key ) 
+    {
+        auto _Iter = _Myxobjects.find(_Key);
+        return _Iter.second.get(); 
+    }   
     
     void assign_priority_number(my::xobject *_Ptr)
     {
-        for (auto &_Elem : _Ptr->submodels())
+        for (int32_t _Key : _Ptr->submodels())
         { 
-            my::xobject *_Vptr = _Elem.second.get();
+            my::xobject *_Vptr = this->find(_Key);
             _Vptr->set_priority( generate_unique_identifier() );
             if ( !_Vptr->submodels().empty() )
             {
