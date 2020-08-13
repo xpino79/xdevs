@@ -32,7 +32,7 @@ public:
      
     const std::map<int32_t, std::unique_ptr<xobject>>& xobjects();
      
-    std::weak_ptr<xobject> insert( std::unique_ptr<xobject> _Uptr);
+    xobject *insert( std::unique_ptr<xobject> _Uptr);
     
     void erase( std::int32_t _Key);
     
