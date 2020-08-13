@@ -33,7 +33,7 @@ public:
     std::int32_t priority() const;
     void set_priority( std::int32_t _Priority ) { _Mypriority = _Priority; }
     
-    const std::list<std::int32_t>& submodels();
+    const std::list<std::int32_t>& submodels() { return _Mysubmodels;}
     void insert_submodel( std::int32_t _Key ) { _Mysubmodels.push_back(_Key); }
     
     // MISRA_CPP_10_03_01 상속 계층을 따라 각 virtual function 정이는 하나씩만 존재해야 함.
