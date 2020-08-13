@@ -18,7 +18,8 @@
 std::int32_t main(std::int32_t argc, std::char_t *argv[])
 {
     { // MISRA_CPP_07_05_04 함수의 직, 간접적 재귀호출은 사용 금지 
-        std::cout << "MISRA_CPP_07_05_04 : " << my::MISRA_CPP_07_05_04(100) << std::endl;
+        my::xobject *_Pptr = my::xmanager::instance().insert(std::make_unique<my::xmaneuver>());  
+        my::xmanager::instance().assign_priority_number(_Pptr);
     }
     
     { // MISRA_CPP_18_04_01 동적 힙 메모리 할당은 사용하면 안됨 
