@@ -33,7 +33,7 @@ public:
     const std::map<int32_t, std::unique_ptr<xobject>>& xobjects();
     xobject *insert( std::unique_ptr<xobject> _Uptr);    
     void erase( std::int32_t _Key);
-    xobject *find( std::iint32_t _Key ) 
+    xobject *find( std::int32_t _Key ) 
     {
         auto _Iter = _Myxobjects.find(_Key);
         return _Iter.second.get(); 
