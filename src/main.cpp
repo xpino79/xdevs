@@ -15,19 +15,13 @@
 
 std::int32_t main(std::int32_t argc, std::char_t *argv[])
 {
-    { // MISRA_CPP_07_05_04 함수의 직, 간접적 재귀호출은 사용 금지 
-        my::xobject *_Pptr = my::xmanager::instance().insert(std::make_unique<my::xmaneuver>());  
+    { 
+        // MISRA_CPP_18_04_01 동적 힙 메모리 할당은 사용하면 안됨
+        my::xobject *_Pptr = my::xmanager::instance().insert(std::make_unique<my::xmaneuver>()); 
+        // MISRA_CPP_07_05_04 함수의 직, 간접적 재귀호출은 사용 금지 
         my::xmanager::instance().assign_priority_number(_Pptr);
     }
-    
-    { // MISRA_CPP_18_04_01 동적 힙 메모리 할당은 사용하면 안됨 
-        my::xobject *_Pptr = my::xmanager::instance().insert(std::make_unique<my::xmaneuver>());  
-        if (nullptr != _Pptr)
-        {
-            // something
-        }
-  
-    }
+ 
     { // MISRA_CPP_05_02_03 상위(base) 클래스를 하위(derived)클래스로 변환하는 것은 다형(polymorphic) 타입 간에 이루어져서는 안됨
         for (auto &_Elem : my::xmanager::instance().xobjects())
         { 
@@ -39,8 +33,7 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
                 // 하위(derived)클래스의 함수를 상위(base)클래스 pure virtual 로 만든다.
                 _Ptr->refresh();
             }
-        }
-        my::xmanager::instance().erase( 1 );        
+        }       
     }
     { // MISRA_CPP_00_01_07 함수 반환 값 미사용 금지
           std::int32_t _Key = 1;
