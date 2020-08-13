@@ -31,10 +31,22 @@ public:
     static int32_t generate_unique_identifier();
      
     const std::map<int32_t, std::unique_ptr<xobject>>& xobjects();
-     
-    xobject *insert( std::unique_ptr<xobject> _Uptr);
-    
+    xobject *insert( std::unique_ptr<xobject> _Uptr);    
     void erase( std::int32_t _Key);
+    
+    void assign_priority_number(my::xobject *_Ptr)
+    {
+        for (auto &_Elem : _Ptr->submodels())
+        { 
+            my::xobject *_Vptr = _Elem.second.get();
+            _Vptr->set_priority( generate_unique_identifier() );
+            if ( !_Vptr->submodels().empty() )
+            {
+                assign_priority_number(_Vptr);
+            }
+        }
+    }
+    
     
 };  
 
