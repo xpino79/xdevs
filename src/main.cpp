@@ -15,7 +15,9 @@
 
 std::int32_t main(std::int32_t argc, std::char_t *argv[])
 {
- 
+    { // MISRA_CPP_07_05_04 함수의 직, 간접적 재귀호출은 사용 금지 
+    }
+    
     { // MISRA_CPP_18_04_01 동적 힙 메모리 할당은 사용하면 안됨 
 
         // weak_ptr lock() 함수로 shared_ptr 로 변환
