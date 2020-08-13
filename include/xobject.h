@@ -8,9 +8,6 @@
 #include <iostream>
 #include <memory>
 
-#include <cereal/archives/binary.hpp>
-#include <cereal/types/polymorphic.hpp>
-
 #include "xtypedefs.h"
 
 namespace my
@@ -25,20 +22,6 @@ public:
     virtual ~xobject() 
     { 
         std::cout << ">>>>> xobject::~xobject " << std::endl;
-    }
-    
-    template<class Archive>
-    void save(Archive & ar) const
-    {
-        std::cout << "saving xobject" << std::endl;
-        ar( _Mykey );
-    }
-    
-    template<class Archive>
-    void load(Archive & ar)
-    {
-        std::cout << "loading xobject" << std::endl;
-        ar( _Mykey );
     }
     
     int32_t key() const;
