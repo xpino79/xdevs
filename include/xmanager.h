@@ -39,6 +39,7 @@ public:
         return _Iter->second.get(); 
     }   
     
+    // MISRA_CPP_07_05_04 함수의 직, 간접적 재귀호출은 사용 금지
     void assign_priority_number(my::xobject *_Ptr)
     {
         for (int32_t _Key : _Ptr->submodels())
