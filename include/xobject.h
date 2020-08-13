@@ -48,7 +48,7 @@ public:
 class xground : public xobject
 {
 private:
-    std::string _Myname;
+    std::string _Myname = "NA";
     
 public:
     xground() = default;
