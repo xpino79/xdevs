@@ -13,8 +13,6 @@
 #include "../include/xpointer_cast.hpp"
 #include "../include/geometry/xmulti_polygon.h"
 
-#include "../include/misra/x07_05_04.h"
-
 std::int32_t main(std::int32_t argc, std::char_t *argv[])
 {
     { // MISRA_CPP_07_05_04 함수의 직, 간접적 재귀호출은 사용 금지 
