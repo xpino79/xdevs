@@ -16,6 +16,7 @@ class xobject
 {
 private:
     int32_t _Mykey = 0;
+    std::list<std::int32_t> _Mysubmodels; ///< 하위 모델 목록
     
 public:
     xobject() = default;
@@ -23,10 +24,13 @@ public:
     { 
         std::cout << ">>>>> xobject::~xobject " << std::endl;
     }
+
     
     int32_t key() const;
     void set_key(int32_t _Key);
- 
+    const std::list<std::int32_t>& submodels();
+    void insert_submodel(int32_t _Key) { _Mysubmodels.push_back(_Key); }
+    
     // MISRA_CPP_10_03_01 상속 계층을 따라 각 virtual function 정이는 하나씩만 존재해야 함.
     // MISRA_CPP_10_03_03 재선언되는 base클래스의 함수가 pure virtual일 때만 pure virtual함수로 재선언 할 수 있음. 
     virtual void refresh() = 0;
