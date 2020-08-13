@@ -19,10 +19,10 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
     { // MISRA_CPP_18_04_01 동적 힙 메모리 할당은 사용하면 안됨 
 
         // weak_ptr lock() 함수로 shared_ptr 로 변환
-        my::xobject *_Pptr = my::xmanager::instance().insert(std::make_unique<my::xmaneuver>()).lock();  
+        my::xobject *_Pptr = my::xmanager::instance().insert(std::make_unique<my::xmaneuver>());  
         if (nullptr != _Pptr)
         {
-            my::xobject *_Ptr = my::xmanager::instance().insert(std::make_unique<my::xsupport>()).lock();  
+            my::xobject *_Ptr = my::xmanager::instance().insert(std::make_unique<my::xsupport>());  
             if (nullptr != _Ptr)
             {
                 // something
