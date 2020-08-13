@@ -45,7 +45,7 @@ void xsupport::refresh()
     std::cout << ">>>>> xsupport::refresh " << std::endl;
     std::cout << " - key: " << this->key() << std::endl;
     std::cout << " - name: " << this->name() << std::endl;
-    std::cout << " - parent key: " << parent()->key() << std::endl; 
+    std::cout << " - course: " << this->course() << std::endl;
     
 }
 std::int32_t xsupport::course() const
