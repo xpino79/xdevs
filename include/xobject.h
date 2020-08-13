@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include <memory>
-
+#include <list>
 #include "xtypedefs.h"
 
 namespace my
