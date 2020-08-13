@@ -41,7 +41,7 @@ public:
     
     void assign_priority_number(my::xobject *_Ptr)
     {
-        for (int32_t _Key : _Ptr->submodels())
+        for (int32_t &_Key : _Ptr->submodels())
         { 
             my::xobject *_Vptr = this->find(_Key);
             _Vptr->set_priority( generate_unique_identifier() );
