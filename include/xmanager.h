@@ -36,7 +36,7 @@ public:
     xobject *find( std::int32_t _Key ) 
     {
         auto _Iter = _Myxobjects.find(_Key);
-        return _Iter.second.get(); 
+        return _Iter->second.get(); 
     }   
     
     void assign_priority_number(my::xobject *_Ptr)
