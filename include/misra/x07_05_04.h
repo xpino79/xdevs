@@ -18,3 +18,5 @@ std::int32_t MISRA_CPP_07_05_04(std::int32_t _Num)
 }
 
 }
+
+#endif /* x07_05_04_H_ */
