@@ -15,28 +15,18 @@
 
 std::int32_t main(std::int32_t argc, std::char_t *argv[])
 {
-    { // 빈나 참조
-        std::shared_ptr<my::xobject> _Uptr = std::make_shared<my::xmaneuver>();
-        my::xmaneuver *_Ptr = my::dynamic_pointer_cast<my::xmaneuver>(_Uptr.get());
-        if( nullptr == _Ptr)
-        {
-            // error 
-        }
-        _Ptr->refresh();
-    }
-    
-    { // MISRA_CPP_18_04_01 동적 힙 메모리 할당은 사용하면 안됨 
-        std::shared_ptr<my::xobject> _Pptr;
  
+    { // MISRA_CPP_18_04_01 동적 힙 메모리 할당은 사용하면 안됨 
+
         // weak_ptr lock() 함수로 shared_ptr 로 변환
-        _Pptr = my::xmanager::instance().insert(std::make_shared<my::xmaneuver>()).lock();  
+        my::xobject *_Pptr = my::xmanager::instance().insert(std::make_unique<my::xmaneuver>()).lock();  
         if (nullptr != _Pptr)
         {
-            std::shared_ptr<my::xobject> _Ptr = my::xmanager::instance().insert(std::make_shared<my::xsupport>()).lock();  
+            my::xobject *_Ptr = my::xmanager::instance().insert(std::make_unique<my::xsupport>()).lock();  
             if (nullptr != _Ptr)
             {
                 // something
-                _Ptr->set_parent( _Pptr.get() );
+                _Ptr->set_parent( _Pptr );
             }
         }
   
@@ -45,8 +35,7 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
         for (auto &_Elem : my::xmanager::instance().xobjects())
         { 
             // down casting, cross casting 해결방안 ?
-            // my::xground *_Ptr = std::dynamic_cast<my::xground *>(_Elem.second.get());
-            std::shared_ptr<my::xground> _Ptr = std::dynamic_pointer_cast<my::xground>(_Elem.second);
+            my::xground *_Ptr = my::dynamic_pointer_cast<my::xground>(_Elem.second.get());
             if (nullptr != _Ptr)
             {
                 // MISRA_CPP_10_03_01 상속 계층을 따라 각 virtual function 정이는 하나씩만 존재해야 함
