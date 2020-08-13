@@ -13,9 +13,12 @@
 #include "../include/xpointer_cast.hpp"
 #include "../include/geometry/xmulti_polygon.h"
 
+#include "../include/misra/x07_05_04.h
+
 std::int32_t main(std::int32_t argc, std::char_t *argv[])
 {
     { // MISRA_CPP_07_05_04 함수의 직, 간접적 재귀호출은 사용 금지 
+        std::cout << "MISRA_CPP_07_05_04 : " << MISRA_CPP_07_05_04(100) << std::endl;
     }
     
     { // MISRA_CPP_18_04_01 동적 힙 메모리 할당은 사용하면 안됨 
