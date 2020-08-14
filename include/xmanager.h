@@ -40,7 +40,7 @@ public:
     }   
     
     // MISRA_CPP_07_05_04 함수의 직, 간접적 재귀호출은 사용 금지
-    // - 재귀 호출(recursive call)이란 함수 내부에서 함수가 자기 자신을 또다시 호출하는 행위를 의미합니다.
+    // >> 재귀 호출(recursive call)이란 함수 내부에서 함수가 자기 자신을 또다시 호출하는 행위를 의미합니다.
     void assign_priority_number(my::xobject *_Ptr)
     {
         for (int32_t _Key : _Ptr->submodels())
