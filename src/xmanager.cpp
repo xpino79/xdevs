@@ -64,6 +64,7 @@ void assign_priority( std::int32_t _Key)
     if ( !_Ptr->submodels().empty() )
     {
         // xmanager::instance().assign_priority_number( _Ptr );
+        // >> 재귀 호출(recursive call)이란 함수 내부에서 함수가 자기 자신을 또다시 호출하는 행위를 의미합니다.
         std::for_each( _Ptr->submodels().begin(), _Ptr->submodels().end(), my::assign_priority );
     }
 }
