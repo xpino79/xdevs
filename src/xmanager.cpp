@@ -59,11 +59,12 @@ void xmanager::erase( std::int32_t _Key)
 
 void assign_priority( std::int32_t _Key)
 {
-    my::xobject *_Vptr = xmanager::instance().find(_Key);
-    _Vptr->set_priority( xmanager::instance().generate_unique_identifier() );
-    if ( !_Vptr->submodels().empty() )
+    my::xobject *_Ptr = xmanager::instance().find(_Key);
+    _Ptr->set_priority( xmanager::instance().generate_unique_identifier() );
+    if ( !_Ptr->submodels().empty() )
     {
-        xmanager::instance().assign_priority_number(_Vptr);
+        // xmanager::instance().assign_priority_number( _Ptr );
+        std::for_each( _Ptr->submodels().begin(), _Ptr->submodels().end(), my::assign_priority );
     }
 }
   
