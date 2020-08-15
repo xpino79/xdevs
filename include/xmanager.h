@@ -39,7 +39,7 @@ public:
         return ( _Iter != _Myxobjects.end() ) ? _Iter->second.get() : nullptr;
     }   
     
-    void assign_priority( std::int32 _Key)
+    void assign_priority( std::int32_t _Key)
     {
         my::xobject *_Vptr = this->find(_Key);
         _Vptr->set_priority( generate_unique_identifier() );
