@@ -58,7 +58,8 @@ public:
             }
         }
         */
-        
+            
+        _Ptr->set_priority( generate_unique_identifier() );
         //std::for_each( _Ptr->submodels().begin(), _Ptr->submodels().end(), my::assign_priority );
         std::for_each( _Ptr->submodels().begin(), _Ptr->submodels().end(), [](std::int32_t const& _Elem) {
                 my::assign_priority(_Elem);
