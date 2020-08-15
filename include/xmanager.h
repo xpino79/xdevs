@@ -15,7 +15,7 @@
 namespace my
 {
         
-extern void assign_priority( std::int32_t _Key);
+void assign_priority( std::int32_t _Key);
 
 class xmanager
 {
