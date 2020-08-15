@@ -14,7 +14,7 @@
 namespace my
 {
         
-void __assign_priority( std::int32_t _Key);
+void assign_priority( std::int32_t _Key);
 
 class xmanager
 {
@@ -58,7 +58,7 @@ public:
         }
         */
         
-        std::for_each( _Ptr->submodels().begin(), _Ptr->submodels().end(), __assign_priority );        
+        std::for_each( _Ptr->submodels().begin(), _Ptr->submodels().end(), my::assign_priority );        
     }        
 
         
