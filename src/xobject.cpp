@@ -10,11 +10,21 @@ int32_t xobject::key() const
 { 
     return this->_Mykey;
 }
+int32_t xobject::priority() const 
+{ 
+    return this->_Mypriority;
+}
+    
 void xobject::set_key(int32_t _Key) 
 { 
     this->_Mykey = _Key;
+}    
+void xobject::set_priority(int32_t _Priority) 
+{ 
+    this->_Mypriority = _Priority;
 }
 
+    
 std::string xground::name() const 
 { 
     return this->_Myname; 
