@@ -31,7 +31,7 @@ public:
     void set_key( std::int32_t _Key );
     
     std::int32_t priority() const;
-    void set_priority( std::int32_t _Priority ) { _Mypriority = _Priority; }
+    void set_priority( std::int32_t _Priority );
     
     const std::list<std::int32_t>& submodels() { return _Mysubmodels;}
     void insert_submodel( std::int32_t _Key ) { _Mysubmodels.push_back(_Key); }
