@@ -55,5 +55,16 @@ void xmanager::erase( std::int32_t _Key)
         // error
     }
 }
- 
+
+
+void assign_priority( std::int32_t _Key)
+{
+    my::xobject *_Vptr = xmanager::instance().find(_Key);
+    _Vptr->set_priority( xmanager::instance().generate_unique_identifier() );
+    if ( !_Vptr->submodels().empty() )
+    {
+        xmanager::instance().assign_priority_number(_Vptr);
+    }
+}
+  
 } /* namespace proj_devs */
