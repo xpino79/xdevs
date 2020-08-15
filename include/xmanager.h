@@ -8,6 +8,7 @@
 #include <memory>
 #include <mutex>
 #include <map>
+#include <algorithm>
 
 #include "xobject.h"
 
