@@ -13,6 +13,9 @@
 
 namespace my
 {
+        
+void __assign_priority( std::int32_t _Key);
+
 class xmanager
 {
 private:
@@ -38,17 +41,7 @@ public:
         auto _Iter = _Myxobjects.find(_Key);
         return ( _Iter != _Myxobjects.end() ) ? _Iter->second.get() : nullptr;
     }   
-    
-    void assign_priority( std::int32_t _Key)
-    {
-        my::xobject *_Vptr = this->find(_Key);
-        _Vptr->set_priority( generate_unique_identifier() );
-        if ( !_Vptr->submodels().empty() )
-        {
-            assign_priority_number(_Vptr);
-        }
-    }
-    
+
     // MISRA_CPP_07_05_04 함수의 직, 간접적 재귀호출은 사용 금지
     // >> 재귀 호출(recursive call)이란 함수 내부에서 함수가 자기 자신을 또다시 호출하는 행위를 의미합니다.
     void assign_priority_number(my::xobject *_Ptr)
@@ -65,7 +58,7 @@ public:
         }
         */
         
-        std::for_each( _Ptr->submodels().begin(), _Ptr->submodels().end(), this->assign_priority );        
+        std::for_each( _Ptr->submodels().begin(), _Ptr->submodels().end(), __assign_priority );        
     }        
 
         
