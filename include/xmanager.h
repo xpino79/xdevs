@@ -47,6 +47,7 @@ public:
     // >> 재귀 호출(recursive call)이란 함수 내부에서 함수가 자기 자신을 또다시 호출하는 행위를 의미합니다.
     void assign_priority_number(my::xobject *_Ptr)
     {
+        _Ptr->set_priority( generate_unique_identifier() );
         /*
         for (int32_t _Elem : _Ptr->submodels())
         { 
@@ -59,7 +60,7 @@ public:
         }
         */
             
-        _Ptr->set_priority( generate_unique_identifier() );
+
         //std::for_each( _Ptr->submodels().begin(), _Ptr->submodels().end(), my::assign_priority );
         std::for_each( _Ptr->submodels().begin(), _Ptr->submodels().end(), [](std::int32_t const& _Elem) {
                 my::assign_priority(_Elem);
