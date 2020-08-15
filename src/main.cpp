@@ -17,7 +17,14 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
 {
     { 
         // MISRA_CPP_18_04_01 동적 힙 메모리 할당은 사용하면 안됨
-        my::xobject *_Pptr = my::xmanager::instance().insert(std::make_unique<my::xmaneuver>()); 
+        my::xobject *_Pptr = my::xmanager::instance().insert(std::make_unique<my::xmaneuver>());
+        
+        for (int i=0; i<10; ++i)
+        {
+            my::xobject *_Ptr = my::xmanager::instance().insert(std::make_unique<my::xmaneuver>());
+            _Pptr->insert_submodel( _Ptr->key() );
+        }
+        
         // MISRA_CPP_07_05_04 함수의 직, 간접적 재귀호출은 사용 금지 
         my::xmanager::instance().assign_priority_number(_Pptr);
     }
