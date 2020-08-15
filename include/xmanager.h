@@ -48,9 +48,9 @@ public:
     void assign_priority_number(my::xobject *_Ptr)
     {
         /*
-        for (int32_t _Key : _Ptr->submodels())
+        for (int32_t _Elem : _Ptr->submodels())
         { 
-            my::xobject *_Vptr = this->find(_Key);
+            my::xobject *_Vptr = this->find(_Elem);
             _Vptr->set_priority( generate_unique_identifier() );
             if ( !_Vptr->submodels().empty() )
             {
@@ -59,7 +59,10 @@ public:
         }
         */
         
-        std::for_each( _Ptr->submodels().begin(), _Ptr->submodels().end(), my::assign_priority );
+        //std::for_each( _Ptr->submodels().begin(), _Ptr->submodels().end(), my::assign_priority );
+        std::for_each( _Ptr->submodels().begin(), _Ptr->submodels().end(), [](std::int32_t const& _Elem) {
+                my::assign_priority(_Elem);
+        });
             
     }        
 
