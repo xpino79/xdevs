@@ -48,6 +48,7 @@ public:
     void assign_priority_number(my::xobject *_Ptr)
     {
         _Ptr->set_priority( generate_unique_identifier() );
+            
         /*
         for (int32_t _Elem : _Ptr->submodels())
         { 
@@ -59,7 +60,6 @@ public:
             }
         }
         */
-            
 
         //std::for_each( _Ptr->submodels().begin(), _Ptr->submodels().end(), my::assign_priority );
         std::for_each( _Ptr->submodels().begin(), _Ptr->submodels().end(), [](std::int32_t const& _Elem) {
