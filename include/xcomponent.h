@@ -1,5 +1,5 @@
-#ifndef COMPONENT_H_
-#define COMPONENT_H_
+#ifndef XCOMPONENT_H_
+#define XCOMPONENT_H_
 
 namespace my {
 
@@ -18,4 +18,4 @@ public:
 
 } // namespace my
 
-#endif /* COMPONENT_H_ */
+#endif /* XCOMPONENT_H_ */
