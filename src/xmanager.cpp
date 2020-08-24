@@ -9,7 +9,19 @@ namespace my
 std::unique_ptr<xmanager> xmanager::_Myinstance;
 std::once_flag xmanager::_Myonce_flag;
 int32_t xmanager::_Myunique_identifier;
-    
+
+void _Myassign_priority( std::int32_t _Key)
+{
+    my::xobject *_Ptr = xmanager::instance().find(_Key);
+    _Ptr->set_priority( xmanager::instance().generate_unique_identifier() );
+    if ( !_Ptr->submodels().empty() )
+    {
+        // xmanager::instance().assign_priority_number( _Ptr );
+        // >> 재귀 호출(recursive call)이란 함수 내부에서 함수가 자기 자신을 또다시 호출하는 행위를 의미합니다.
+        std::for_each( _Ptr->submodels().begin(), _Ptr->submodels().end(), my::_Myassign_priority );
+    }
+}
+  
 xmanager::xmanager()
 {
 }
@@ -57,16 +69,4 @@ void xmanager::erase( std::int32_t _Key)
 }
 
 
-void assign_priority( std::int32_t _Key)
-{
-    my::xobject *_Ptr = xmanager::instance().find(_Key);
-    _Ptr->set_priority( xmanager::instance().generate_unique_identifier() );
-    if ( !_Ptr->submodels().empty() )
-    {
-        // xmanager::instance().assign_priority_number( _Ptr );
-        // >> 재귀 호출(recursive call)이란 함수 내부에서 함수가 자기 자신을 또다시 호출하는 행위를 의미합니다.
-        std::for_each( _Ptr->submodels().begin(), _Ptr->submodels().end(), my::assign_priority );
-    }
-}
-  
 } /* namespace proj_devs */
