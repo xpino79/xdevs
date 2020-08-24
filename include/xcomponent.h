@@ -15,6 +15,19 @@ public:
     }
 };
 
+class xcomponent
+{
+private:
+ 
+public:
+    xcomponent()
+    {
+    }
+    ~xcomponent()
+    {
+    }
+    
+};
 
 } // namespace my
 
