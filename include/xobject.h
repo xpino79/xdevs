@@ -12,6 +12,7 @@
 
 namespace my
 {
+ 
 class xobject
 {
 private:
@@ -100,5 +101,5 @@ public:
     
 } /* my */
 
-#endif /* AAA_H_ */
+#endif /* XOBJECT_H_ */
 
