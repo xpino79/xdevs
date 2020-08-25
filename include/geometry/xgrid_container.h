@@ -19,7 +19,7 @@ public:
     ~xtopography() {}
 };
 
-// >>>> _Mytopography1d_t 의 형식으로 변경.
+// >>>>> _Mytopography1d_t 의 형식으로 변경.
 typedef std::vector<std::unique_ptr<xtopography>> xtopography1d;
 typedef std::vector<xtopography1d> xtopography2d;
 // <<<<<
@@ -49,7 +49,7 @@ public:
     void set_y(std::int32_t _Y) { _Myy = _Y; }
 };
 
-// >>>> _Mygrid1d_t 의 형식으로 변경.
+// >>>>> _Mygrid1d_t 의 형식으로 변경.
 typedef std::vector<std::unique_ptr<xgrid>> xgrid1d;
 typedef std::vector<xgrid1d> xgrid2d;
 // <<<<<
@@ -109,7 +109,7 @@ public:
                     (_Idx_y >= 0) && (_Idx_y < _Mymaximum_rows))
                 {
                     
-                    // >>>> 문장이 어려움 , topography() 반환값이 const 일 경우 아래문장이 구동하는지?
+                    // >>>>> 문장이 어려움 , topography() 반환값이 const 일 경우 아래문장이 구동하는지?
                     _Mygrid[_Idx_x][_Idx_y]->topography() = xtopography2d(20);
                     for (auto &_Row : _Mygrid[_Idx_x][_Idx_y]->topography())
                     {
@@ -130,6 +130,7 @@ public:
     {
         xcoordinate _Pos(_Pos_x, _Pos_y);
 
+        // >>>>> && 연산자는 ( ) 비교
         if(*(_Myleft_bottom.get()) <= _Pos && _Pos <= *(_Myright_top.get()))
         {
             _Pos -= *(_Myleft_bottom.get());
@@ -152,6 +153,7 @@ public:
         std::tie(_Idx_x, _Idx_y) = to_index(_Pos_x, _Pos_y);
 
         xgrid *_Ptr = nullptr;
+        // >>>>> && 연산자는 ( ) 비교
         if(0 <= _Idx_x && 0 <= _Idx_y)
         {
             _Ptr = _Mygrid[_Idx_x][_Idx_y].get();
