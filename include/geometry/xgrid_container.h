@@ -2,8 +2,8 @@
  * Copyright 2020. xpino79@gmail.com All rights reserved.
  */
 
-#ifndef XGRID_H_
-#define XGRID_H_
+#ifndef XGRID_CONTAINER_H_
+#define XGRID_CONTAINER_H_
 
 #include "../xcoordinate.h"
 
@@ -92,4 +92,4 @@ public:
 
 } /* namespace my */
 
-#endif /* XGRID_H_ */
+#endif /* XGRID_CONTAINER_H_ */
