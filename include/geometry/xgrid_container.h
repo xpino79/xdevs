@@ -7,7 +7,7 @@
 
 #include <memory>
 #include <mutex>
-#include "../xcoordinate.h"
+#include "xcoordinate.h"
 
 namespace my {
 
