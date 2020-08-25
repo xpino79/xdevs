@@ -7,6 +7,7 @@ std::once_flag xgrid_manager::_Myonce_flag;
 
 xgrid_manager::xgrid_manager()
 {
+    _Mygrid_container = std::make_unique<xgrid_container>();
 }
 
 xgrid_manager& xgrid_manager::instance()
