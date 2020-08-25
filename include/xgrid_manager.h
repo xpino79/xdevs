@@ -14,7 +14,7 @@ private:
     xgrid_manager(const xgrid_manager &) = delete; 
     xgrid_manager &operator=(const xgrid_manager &) = delete; 
     
-    static std::unique_ptr<xmanager> _Myinstance;
+    static std::unique_ptr<xgrid_manager> _Myinstance;
     static std::once_flag _Myonce_flag;
     
     std::unique_ptr<xgrid_container> *_Mygrid_container;
