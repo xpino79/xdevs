@@ -17,20 +17,20 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
 {
     { 
         // MISRA_CPP_18_04_01 동적 힙 메모리 할당은 사용하면 안됨
-        my::xobject *_Pptr = my::xmanager::instance().insert(std::make_unique<my::xmaneuver>());
+        my::xobject *_Pptr = my::xobject_manager::instance().insert(std::make_unique<my::xmaneuver>());
         
         for (int i=0; i<10; ++i)
         {
-            my::xobject *_Ptr = my::xmanager::instance().insert(std::make_unique<my::xmaneuver>());
+            my::xobject *_Ptr = my::xobject_manager::instance().insert(std::make_unique<my::xmaneuver>());
             _Pptr->insert_submodel( _Ptr->key() );
         }
         
         // MISRA_CPP_07_05_04 함수의 직, 간접적 재귀호출은 사용 금지 
-        my::xmanager::instance().assign_priority_number(_Pptr);
+        my::xobject_manager::instance().assign_priority_number(_Pptr);
     }
  
     { // MISRA_CPP_05_02_03 상위(base) 클래스를 하위(derived)클래스로 변환하는 것은 다형(polymorphic) 타입 간에 이루어져서는 안됨
-        for (auto &_Elem : my::xmanager::instance().xobjects())
+        for (auto &_Elem : my::xobject_manager::instance().xobjects())
         { 
             // down casting, cross casting 해결방안 ?
             my::xground *_Ptr = my::dynamic_pointer_cast<my::xground>(_Elem.second.get());
