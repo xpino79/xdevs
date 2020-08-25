@@ -40,27 +40,25 @@ public:
     {
         return (_Myx <= _Right.x() && _Myy <= _Right.y());
     }
-    xcoordinate &operator-(xcoordinate &_Right)
+    xcoordinate operator-(xcoordinate &_Right)
     {
-        xcoordinate _Left;
-        _Left.set_x(_Myx - _Right.x());
-        _Left.set_y(_Myy - _Right.y());
+        std::int32_t _X = _Myx - _Right.x();
+        std::int32_t _Y = _Myy - _Right.y();
         
-        return _Left;
+        return xcoordinate(_X, _Y);
     }
-    xcoordinate &operator-=(xcoordinate &_Right)
+    xcoordinate operator-=(xcoordinate &_Right)
     {
         return operator-(_Right);
     }
-    xcoordinate &operator/(std::int32_t &_Right)
+    xcoordinate operator/(std::int32_t &_Right)
     {
-        xcoordinate _Left;
-        _Left.set_x(_Myx / _Right);
-        _Left.set_y(_Myy / _Right);
+        std::int32_t _X = _Myx / _Right;
+        std::int32_t _Y = _Myy / _Right;
         
-        return _Left;
+        return xcoordinate(_X, _Y);
     }
-    xcoordinate &operator/=(std::int32_t &_Right)
+    xcoordinate operator/=(std::int32_t &_Right)
     {
         return operator/(_Right);
     }
