@@ -28,6 +28,10 @@ public:
     
     std::int32_t x() { return this->_Myx; }
     std::int32_t y() { return this->_Myy; }
+    
+    void set_x(std::int32_t _X) { this->_Myx = _X; }
+    void set_y(std::int32_t _Y) { this->_Myy = _Y; }
+        
 };
 
 } /* namespace my */
