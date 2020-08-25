@@ -69,4 +69,4 @@ void xobject_manager::erase( std::int32_t _Key)
 }
 
 
-} /* namespace proj_devs */
+} /* namespace my */
