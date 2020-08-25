@@ -42,9 +42,11 @@ public:
     }
     xcoordinate &operator-(xcoordinate &_Right)
     {
-        _Myx = _Myx - _Right.x();
-        _Myy = _Myy - _Right.y();
-        return *this;
+        xcoordinate _Left;
+        _Left.set_x(_Myx - _Right.x());
+        _Left.set_y(_Myy - _Right.y());
+        
+        return _Left;
     }
     xcoordinate &operator-=(xcoordinate &_Right)
     {
@@ -52,9 +54,11 @@ public:
     }
     xcoordinate &operator/(std::int32_t &_Right)
     {
-        _Myx = _Myx / _Right;
-        _Myy = _Myy / _Right;
-        return *this;
+        xcoordinate _Left;
+        _Left.set_x(_Myx / _Right);
+        _Left.set_y(_Myy / _Right);
+        
+        return _Left;
     }
     xcoordinate &operator/=(std::int32_t &_Right)
     {
