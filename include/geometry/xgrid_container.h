@@ -34,7 +34,7 @@ public:
     }
     ~xgrid()
     {
-        for (std::int32_t _Num : 20)
+        for (std::int32_t _Num = 0; _Num<20; _Num++)
         {
             delete[] _Mytopography[_Num];
             _Mytopography[_Num] = nullptr;
@@ -73,8 +73,8 @@ public:
     }
     
     ~xgrid_container()
-    {       
-        for (std::int32_t _Num : _Mymaximum_cols)
+    { 
+        for (std::int32_t _Num = 0; _Num<_Mymaximum_cols; _Num++)
         {
             delete[] _Mygrid[_Num];
         }
@@ -88,18 +88,18 @@ public:
     )
     {
         _Myinterval_xy = _Interval_xy;
-        _Myleft_bottom.set_x(_Left_bottom_x);
-        _Myleft_bottom.set_y(_Left_bottom_y);
-        _Myright_top.set_x(_Right_top_x);
-        _Myright_top.set_y(_Right_top_y);
+        _Myleft_bottom->set_x(_Left_bottom_x);
+        _Myleft_bottom->set_y(_Left_bottom_y);
+        _Myright_top->set_x(_Right_top_x);
+        _Myright_top->set_y(_Right_top_y);
         _Mymaximum_cols = ((_Right_top_x - _Left_bottom_x) / _Interval_xy) + 1;
         _Mymaximum_rows = ((_Right_top_y - _Left_bottom_y) / _Interval_xy) + 1;
         
         _Mygrid = new xgrid*[_Mymaximum_cols];
-        for (std::int32_t _Idx_x : _Mymaximum_cols)
+        for (std::int32_t _Idx_x = 0; _Idx_x<_Mymaximum_cols; _Idx_x++)
         {
             _Mygrid[_Idx_x] = new xgrid[_Mymaximum_rows];
-            for (std::int32_t _Idx_y : _Mymaximum_rows)
+            for (std::int32_t _Idx_y = 0; _Idx_y<_Mymaximum_rows; _Idx_y++)
             {
                 _Mygrid[_Idx_x][_Idx_y].set_x(_Idx_x);
                 _Mygrid[_Idx_x][_Idx_y].set_y(_Idx_y);
@@ -108,7 +108,7 @@ public:
                     (_Idx_y >= 0) && (_Idx_y < _Mymaximum_rows))
                 {
                     _Mygrid[_Idx_x][_Idx_y]._Mytopography = new xtopography*[20];
-                    for (std::int32_t _Num : 20)
+                    for (std::int32_t _Num = 0; _Num<20; _Num++)
                     {
                         _Mygrid[_Idx_x][_Idx_y]._Mytopography[_Num] = new xtopography[20];
                     }
