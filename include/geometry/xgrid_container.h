@@ -7,6 +7,7 @@
 
 #include <memory>
 #include <mutex>
+#include <vector>
 #include "xcoordinate.h"
 
 namespace my {
@@ -18,44 +19,42 @@ public:
     ~xtopography() {}
 };
 
+typedef std::vector<std::unique_ptr<xtopography>> xtopography1d;
+typedef std::vector<xtopography1d> xtopography2d;
 class xgrid
 {
 private:
     std::int32_t _Myx; 
     std::int32_t _Myy; 
-    xtopography **_Mytopography; 
+    xtopography2d _Mytopography;
  
 public:
     xgrid()
     {
         _Myx = -1; 
-        _Myy = -1; 
-        _Mytopography = nullptr; 
+        _Myy = -1;
     }
     ~xgrid()
     {
-        for (std::int32_t _Num = 0; _Num<20; _Num++)
-        {
-            delete[] _Mytopography[_Num];
-            _Mytopography[_Num] = nullptr;
-        }
-        delete[] _Mytopography;
-        _Mytopography = nullptr;
+
     }
 
     std::int32_t x() { return _Myx; }
     std::int32_t y() { return _Myy; }
+    xtopography2d &topography() { return _Mytopography; }
     void set_x(std::int32_t _X) { _Myx = _X; }
     void set_y(std::int32_t _Y) { _Myy = _Y; }
 };
 
+typedef std::vector<std::unique_ptr<xgrid>> xgrid1d;
+typedef std::vector<xgrid1d> xgrid2d;
 class xgrid_container
 {
 private:
     std::unique_ptr<xcoordinate> _Myleft_bottom; 
     std::unique_ptr<xcoordinate> _Myright_top; 
 
-    xgrid **_Mygrid; 
+    xgrid2d _Mygrid; 
     std::int32_t _Myinterval_xy; 
     std::int32_t _Mymaximum_cols; 
     std::int32_t _Mymaximum_rows; 
@@ -65,20 +64,16 @@ public:
     {
         _Myleft_bottom = std::make_unique<xcoordinate>();
         _Myright_top = std::make_unique<xcoordinate>();
-        _Mygrid = nullptr;
         
         _Myinterval_xy = 0;
         _Mymaximum_cols = 0;
         _Mymaximum_rows = 0;
+
+        initialize( 10000, 726029, 1464252, 1383896, 2559450 );
     }
     
     ~xgrid_container()
-    { 
-        for (std::int32_t _Num = 0; _Num<_Mymaximum_cols; _Num++)
-        {
-            delete[] _Mygrid[_Num];
-        }
-        delete[] _Mygrid;
+    {
     }
     
     void initialize(
@@ -95,29 +90,29 @@ public:
         _Mymaximum_cols = ((_Right_top_x - _Left_bottom_x) / _Interval_xy) + 1;
         _Mymaximum_rows = ((_Right_top_y - _Left_bottom_y) / _Interval_xy) + 1;
         
-        _Mygrid = new xgrid*[_Mymaximum_cols];
+        _Mygrid = xgrid2d(_Mymaximum_cols);
         for (std::int32_t _Idx_x = 0; _Idx_x<_Mymaximum_cols; _Idx_x++)
         {
-            _Mygrid[_Idx_x] = new xgrid[_Mymaximum_rows];
+            _Mygrid[_Idx_x] = xgrid1d(_Mymaximum_rows);
             for (std::int32_t _Idx_y = 0; _Idx_y<_Mymaximum_rows; _Idx_y++)
             {
-                _Mygrid[_Idx_x][_Idx_y].set_x(_Idx_x);
-                _Mygrid[_Idx_x][_Idx_y].set_y(_Idx_y);
- 
+                _Mygrid[_Idx_x][_Idx_y] = std::make_unique<xgrid>();
+                _Mygrid[_Idx_x][_Idx_y]->set_x(_Idx_x);
+                _Mygrid[_Idx_x][_Idx_y]->set_y(_Idx_y);
+
                 if ((_Idx_x >= 0) && (_Idx_x < _Mymaximum_rows) &&
                     (_Idx_y >= 0) && (_Idx_y < _Mymaximum_rows))
                 {
-                    _Mygrid[_Idx_x][_Idx_y]._Mytopography = new xtopography*[20];
-                    for (std::int32_t _Num = 0; _Num<20; _Num++)
+                    _Mygrid[_Idx_x][_Idx_y]->topography() = xtopography2d(20);
+                    for (auto &_Row : _Mygrid[_Idx_x][_Idx_y]->topography())
                     {
-                        _Mygrid[_Idx_x][_Idx_y]._Mytopography[_Num] = new xtopography[20];
+                        _Row = xtopography1d(20);
+                        for (auto &_Topography : _Row)
+                        {
+                            _Topography = std::make_unique<xtopography>();
+                        }
                     }
                 }
-                else
-                {
-                    _Mygrid[_Idx_x][_Idx_y]._Mytopography = nullptr;
-                }
-
             } // for
         }  // for       
     } 

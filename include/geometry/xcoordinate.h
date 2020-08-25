@@ -17,6 +17,10 @@ private:
     std::int32_t _Myy;
   
 public:
+    xcoordinate()
+    : _Myx(0), _Myy(0)
+    {
+    }
     xcoordinate(std::int32_t _X, std::int32_t _Y)
     : _Myx(_X), _Myy(_Y)
     {
