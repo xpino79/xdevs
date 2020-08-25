@@ -19,8 +19,11 @@ public:
     ~xtopography() {}
 };
 
+// >>>> _Mytopography1d_t 의 형식으로 변경.
 typedef std::vector<std::unique_ptr<xtopography>> xtopography1d;
 typedef std::vector<xtopography1d> xtopography2d;
+// <<<<<
+    
 class xgrid
 {
 private:
@@ -46,8 +49,10 @@ public:
     void set_y(std::int32_t _Y) { _Myy = _Y; }
 };
 
+// >>>> _Mygrid1d_t 의 형식으로 변경.
 typedef std::vector<std::unique_ptr<xgrid>> xgrid1d;
 typedef std::vector<xgrid1d> xgrid2d;
+// <<<<<
 class xgrid_container
 {
 private:
@@ -103,6 +108,8 @@ public:
                 if ((_Idx_x >= 0) && (_Idx_x < _Mymaximum_rows) &&
                     (_Idx_y >= 0) && (_Idx_y < _Mymaximum_rows))
                 {
+                    
+                    // >>>> 문장이 어려움
                     _Mygrid[_Idx_x][_Idx_y]->topography() = xtopography2d(20);
                     for (auto &_Row : _Mygrid[_Idx_x][_Idx_y]->topography())
                     {
@@ -112,6 +119,8 @@ public:
                             _Topography = std::make_unique<xtopography>();
                         }
                     }
+                    // <<<<< 문장이 어려움
+                    
                 }
             } // for
         }  // for       
@@ -142,13 +151,13 @@ public:
 
         std::tie(_Idx_x, _Idx_y) = to_index(_Pos_x, _Pos_y);
 
-        xgrid *_Grid = nullptr;
+        xgrid *_Ptr = nullptr;
         if(0 <= _Idx_x && 0 <= _Idx_y)
         {
-            _Grid = _Mygrid[_Idx_x][_Idx_y].get();
+            _Ptr = _Mygrid[_Idx_x][_Idx_y].get();
         }
 
-        return _Grid;
+        return _Ptr;
     }
 };
 
