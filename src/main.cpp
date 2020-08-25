@@ -9,7 +9,7 @@
 
 
 // MISRA_CPP_03_09_02 기본 숫자 타입 대신 크기와 부호를 나타내는 typedef를 사용해야 함
-#include "../include/xmanager.h"
+#include "../include/xobject_manager.h"
 #include "../include/utility/xpointer_cast.hpp"
 #include "../include/geometry/xmulti_polygon.h"
 
