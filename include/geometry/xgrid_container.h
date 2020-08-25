@@ -63,8 +63,8 @@ private:
 public:
     xgrid_container()
     {
-        _Myleft_bottom = nullptr;
-        _Myright_top = nullptr;
+        _Myleft_bottom = std::make_unique<xcoordinate>();
+        _Myright_top = std::make_unique<xcoordinate>();
         _Mygrid = nullptr;
         
         _Myinterval_xy = 0;
