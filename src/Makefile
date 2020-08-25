@@ -20,7 +20,8 @@ OFILES = $(CFILES:.cpp=.o)
 CFILES = \
 main.cpp \
 xobject.cpp \
-xmanager.cpp
+xobject_manager.cpp \
+xgrid_manager.cpp
 $(END)
 
 .cpp.o:
