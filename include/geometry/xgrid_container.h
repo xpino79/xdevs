@@ -109,7 +109,7 @@ public:
                     (_Idx_y >= 0) && (_Idx_y < _Mymaximum_rows))
                 {
                     
-                    // >>>> 문장이 어려움
+                    // >>>> 문장이 어려움 , topography() 반환값이 const 일 경우 아래문장이 구동하는지?
                     _Mygrid[_Idx_x][_Idx_y]->topography() = xtopography2d(20);
                     for (auto &_Row : _Mygrid[_Idx_x][_Idx_y]->topography())
                     {
