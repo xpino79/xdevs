@@ -5,6 +5,8 @@
 #ifndef XGRID_CONTAINER_H_
 #define XGRID_CONTAINER_H_
 
+#include <memory>
+#include <mutex>
 #include "../xcoordinate.h"
 
 namespace my {
