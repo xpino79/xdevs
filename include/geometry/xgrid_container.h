@@ -115,8 +115,41 @@ public:
                 }
             } // for
         }  // for       
-    } 
-    
+    }
+
+    std::tuple<std::int32_t, std::int32_t> to_index(std::int32_t _Pos_x, std::int32_t _Pos_y)
+    {
+        xcoordinate _Pos(_Pos_x, _Pos_y);
+
+        if(*(_Myleft_bottom.get()) <= _Pos && _Pos <= *(_Myright_top.get()))
+        {
+            _Pos -= *(_Myleft_bottom.get());
+            _Pos /= _Myinterval_xy;
+        }
+        else
+        {
+            _Pos.set_x(-1);
+            _Pos.set_y(-1);
+        }
+
+        return std::tuple<std::int32_t, std::int32_t>(_Pos.x(), _Pos.y());
+    }
+
+    xgrid *find_grid(std::int32_t _Pos_x, std::int32_t _Pos_y)
+    {
+        std::int32_t _Idx_x;
+        std::int32_t _Idx_y;
+
+        std::tie(_Idx_x, _Idx_y) = to_index(_Pos_x, _Pos_y);
+
+        xgrid *_Grid = nullptr;
+        if(0 <= _Idx_x && 0 <= _Idx_y)
+        {
+            _Grid = _Mygrid[_Idx_x][_Idx_y].get();
+        }
+
+        return _Grid;
+    }
 };
 
 } /* namespace my */

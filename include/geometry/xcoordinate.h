@@ -35,7 +35,31 @@ public:
     
     void set_x(std::int32_t _X) { this->_Myx = _X; }
     void set_y(std::int32_t _Y) { this->_Myy = _Y; }
-        
+    
+    bool operator<=(xcoordinate &_Right)
+    {
+        return (_Myx <= _Right.x() && _Myy <= _Right.y());
+    }
+    xcoordinate &operator-(xcoordinate &_Right)
+    {
+        _Myx = _Myx - _Right.x();
+        _Myy = _Myy - _Right.y();
+        return *this;
+    }
+    xcoordinate &operator-=(xcoordinate &_Right)
+    {
+        return operator-(_Right);
+    }
+    xcoordinate &operator/(std::int32_t &_Right)
+    {
+        _Myx = _Myx / _Right;
+        _Myy = _Myy / _Right;
+        return *this;
+    }
+    xcoordinate &operator/=(std::int32_t &_Right)
+    {
+        return operator/(_Right);
+    }
 };
 
 } /* namespace my */

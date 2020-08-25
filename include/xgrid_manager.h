@@ -19,6 +19,13 @@ private:
         std::int32_t _Left_bottom_y = 0; 
         std::int32_t _Right_top_x = 0;
         std::int32_t _Right_top_y = 0;
+
+        // 기존 값으로 초기화 테스트
+        _Interval_xy = 10000;
+        _Left_bottom_x = 726029;
+        _Left_bottom_y = 1464252;
+        _Right_top_x = 1383896;
+        _Right_top_y = 2559450;
             
         _Mygrid_container->initialize(
             _Interval_xy, 
@@ -41,7 +48,7 @@ public:
     {
         xgrid *_Ptr = nullptr;
         // 구현 <위치X, 위치Y> 
-        // _Ptr = _Mygrid_container->find_grid(_Pos_x, _Pos_y);
+        _Ptr = _Mygrid_container->find_grid(_Pos_x, _Pos_y);
         return _Ptr;
     }
     std::list<xgrid *> within_grid(std::int32_t _Pos_x, std::int32_t _Pos_y, std::int32_t _Range = 0)
