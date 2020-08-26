@@ -48,10 +48,10 @@ public:
     void set_topography(std::int32_t _Width, std::int32_t _Height)
     {
         _Mytopography.resize(_Width);
-        for (auto &_Col : _Mytopography)
+        for (auto &_Elem  : _Mytopography)
         {
-            _Col.resize(_Height);
-            for (auto &_Topography : _Col)
+            _Elem .resize(_Height);
+            for (auto &_Topography : _Elem )
             {
                 _Topography = std::make_unique<xtopography>();
             }
