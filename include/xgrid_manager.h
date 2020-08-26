@@ -46,16 +46,13 @@ public:
           
     xgrid *find_grid(std::int32_t _Pos_x, std::int32_t _Pos_y)
     {
-        xgrid *_Ptr = nullptr;
-        // 구현 <위치X, 위치Y> 
-        _Ptr = _Mygrid_container->find_grid(_Pos_x, _Pos_y);
-        return _Ptr;
+        // 구현 <위치X, 위치Y>
+        return _Mygrid_container->find_grid(_Pos_x, _Pos_y);
     }
     std::list<xgrid *> within_grid(std::int32_t _Pos_x, std::int32_t _Pos_y, std::int32_t _Range = 0)
     {
-        std::list<xgrid *> _Val;
         // 구현
-        return _Val;
+        return _Mygrid_container->within_grid(_Pos_x, _Pos_y, _Range);
     }
     void push_ground_data(std::int32_t _Handle, std::int32_t _Pos_x, std::int32_t _Pos_y)
     {

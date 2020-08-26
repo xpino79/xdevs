@@ -40,6 +40,7 @@ public:
     {
         return (_Myx <= _Right.x() && _Myy <= _Right.y());
     }
+
     xcoordinate operator-(xcoordinate &_Right)
     {
         std::int32_t _X = _Myx - _Right.x();
@@ -47,10 +48,32 @@ public:
         
         return xcoordinate(_X, _Y);
     }
-    xcoordinate operator-=(xcoordinate &_Right)
+    xcoordinate operator-(std::int32_t &_Right)
     {
-        return operator-(_Right);
+        std::int32_t _X = _Myx - _Right;
+        std::int32_t _Y = _Myy - _Right;
+        
+        return xcoordinate(_X, _Y);
     }
+    void operator-=(xcoordinate &_Right)
+    {
+        _Myx -= _Right.x();
+        _Myy -= _Right.y();
+    }
+
+    xcoordinate operator+(std::int32_t &_Right)
+    {
+        std::int32_t _X = _Myx + _Right;
+        std::int32_t _Y = _Myy + _Right;
+        
+        return xcoordinate(_X, _Y);
+    }
+    void operator+=(std::int32_t &_Right)
+    {
+        _Myx += _Right;
+        _Myy += _Right;
+    }
+
     xcoordinate operator/(std::int32_t &_Right)
     {
         std::int32_t _X = _Myx / _Right;
@@ -58,9 +81,10 @@ public:
         
         return xcoordinate(_X, _Y);
     }
-    xcoordinate operator/=(std::int32_t &_Right)
+    void operator/=(std::int32_t &_Right)
     {
-        return operator/(_Right);
+        _Myx /= _Right;
+        _Myy /= _Right;
     }
 };
 

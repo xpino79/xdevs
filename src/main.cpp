@@ -10,11 +10,30 @@
 
 // MISRA_CPP_03_09_02 기본 숫자 타입 대신 크기와 부호를 나타내는 typedef를 사용해야 함
 #include "../include/xobject_manager.h"
+#include "../include/xgrid_manager.h"
 #include "../include/utility/xpointer_cast.hpp"
 #include "../include/geometry/xmulti_polygon.h"
 
 std::int32_t main(std::int32_t argc, std::char_t *argv[])
 {
+    // if(false)
+    {
+        // within_grid 테스트
+        std::int32_t _Interval_xy = 10000;
+        std::int32_t _Left_bottom_x = 726029;
+        std::int32_t _Left_bottom_y = 1464252;
+        std::int32_t _Right_top_x = 1383896;
+        std::int32_t _Right_top_y = 2559450;
+        
+        std::ignore = _Interval_xy;
+        std::ignore = _Left_bottom_x;
+        std::ignore = _Left_bottom_y;
+        std::ignore = _Right_top_x;
+        std::ignore = _Right_top_y;
+
+        my::xgrid_manager::instance().within_grid(_Left_bottom_x + 10000, _Left_bottom_y, 10000);
+        return 1;
+    }
     { 
         // MISRA_CPP_18_04_01 동적 힙 메모리 할당은 사용하면 안됨
         my::xobject *_Pptr = my::xobject_manager::instance().insert(std::make_unique<my::xmaneuver>());
