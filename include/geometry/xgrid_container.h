@@ -18,16 +18,13 @@ public:
     xtopography() {}
     ~xtopography() {}
 };
-
-typedef std::vector<std::unique_ptr<xtopography>> _Mytopography1d_t;
-typedef std::vector<_Mytopography1d_t> _Mytopography2d_t;
     
 class xgrid
 {
 private:
     std::int32_t _Myx; 
     std::int32_t _Myy; 
-    _Mytopography2d_t _Mytopography;
+    std::vector<std::vector<std::unique_ptr<xtopography>>> _Mytopography;
  
 public:
     xgrid()
@@ -42,16 +39,16 @@ public:
 
     std::int32_t x() { return _Myx; }
     std::int32_t y() { return _Myy; }
-    _Mytopography2d_t &topography() { return _Mytopography; }
+    std::vector<std::vector<std::unique_ptr<xtopography>>> &topography() { return _Mytopography; }
     void set_x(std::int32_t _X) { _Myx = _X; }
     void set_y(std::int32_t _Y) { _Myy = _Y; }
     void set_topography(std::int32_t _Width, std::int32_t _Height)
     {
         _Mytopography.resize(_Width);
-        for (auto &_Elem  : _Mytopography)
+        for (auto& _Elem : _Mytopography)
         {
-            _Elem .resize(_Height);
-            for (auto &_Topography : _Elem )
+            _Elem.resize(_Height);
+            for (auto& _Topography : _Elem)
             {
                 _Topography = std::make_unique<xtopography>();
             }
@@ -59,16 +56,13 @@ public:
     }
 };
 
-typedef std::vector<std::unique_ptr<xgrid>> _Mygrid1d_t;
-typedef std::vector<_Mygrid1d_t> _Mygrid2d_t;
-
 class xgrid_container
 {
 private:
     std::unique_ptr<xcoordinate> _Myleft_bottom; 
     std::unique_ptr<xcoordinate> _Myright_top; 
 
-    _Mygrid2d_t _Mygrid; 
+    std::vector<std::vector<std::unique_ptr<xgrid>>> _Mygrid; 
     std::int32_t _Myinterval_xy; 
     std::int32_t _Mymaximum_cols; 
     std::int32_t _Mymaximum_rows; 
@@ -102,10 +96,11 @@ public:
         _Mymaximum_cols = ((_Right_top_x - _Left_bottom_x) / _Interval_xy) + 1;
         _Mymaximum_rows = ((_Right_top_y - _Left_bottom_y) / _Interval_xy) + 1;
         
-        _Mygrid = _Mygrid2d_t(_Mymaximum_cols);
+        _Mygrid.clear();
+        _Mygrid.resize(_Mymaximum_cols);
         for (std::int32_t _Idx_x = 0; _Idx_x<_Mymaximum_cols; ++_Idx_x)
         {
-            _Mygrid[_Idx_x] = _Mygrid1d_t(_Mymaximum_rows);
+            _Mygrid[_Idx_x].resize(_Mymaximum_rows);
             for (std::int32_t _Idx_y = 0; _Idx_y<_Mymaximum_rows; ++_Idx_y)
             {
                 _Mygrid[_Idx_x][_Idx_y] = std::make_unique<xgrid>();
