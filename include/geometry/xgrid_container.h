@@ -47,10 +47,10 @@ public:
     void set_y(std::int32_t _Y) { _Myy = _Y; }
     void set_topography(std::int32_t _Width, std::int32_t _Height)
     {
-        _Mytopography = _Mytopography2d_t(_Width);
+        _Mytopography.resize(_Width);
         for (auto &_Col : _Mytopography)
         {
-            _Col = _Mytopography1d_t(_Height);
+            _Col.resize(_Height);
             for (auto &_Topography : _Col)
             {
                 _Topography = std::make_unique<xtopography>();
