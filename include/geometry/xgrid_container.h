@@ -111,14 +111,27 @@ public:
                     
                     // >>>>> 문장이 어려움 , topography() 반환값이 const 일 경우 아래문장이 구동하는지?
                     _Mygrid[_Idx_x][_Idx_y]->topography() = xtopography2d(20);
-                    for (auto &_Row : _Mygrid[_Idx_x][_Idx_y]->topography())
+                    for (auto &_Elem : _Mygrid[_Idx_x][_Idx_y]->topography())
                     {
-                        _Row = xtopography1d(20);
-                        for (auto &_Topography : _Row)
+                        _Elem = xtopography1d(20);
+                        for (auto &_Topography : _Elem)
                         {
                             _Topography = std::make_unique<xtopography>();
                         }
                     }
+                    
+                    /* vector 의 공간만 재 할당한다면 resize() 함수로 가능 하지 않는지.
+                    _Mygrid[_Idx_x][_Idx_y]->topography().resize(20);
+                    for (auto &_Elem : _Mygrid[_Idx_x][_Idx_y]->topography())
+                    {
+                        _Elem.resize(20);
+                        for (auto &_Topography : _Elem)
+                        {
+                            _Topography = std::make_unique<xtopography>();
+                        }
+                    }
+                    */
+                    
                     // <<<<< 문장이 어려움
                     
                 }
