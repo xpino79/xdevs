@@ -19,17 +19,15 @@ public:
     ~xtopography() {}
 };
 
-// >>>>> _Mytopography1d_t 의 형식으로 변경.
-typedef std::vector<std::unique_ptr<xtopography>> xtopography1d;
-typedef std::vector<xtopography1d> xtopography2d;
-// <<<<<
+typedef std::vector<std::unique_ptr<xtopography>> _Mytopography1d_t;
+typedef std::vector<_Mytopography1d_t> _Mytopography2d_t;
     
 class xgrid
 {
 private:
     std::int32_t _Myx; 
     std::int32_t _Myy; 
-    xtopography2d _Mytopography;
+    _Mytopography2d_t _Mytopography;
  
 public:
     xgrid()
@@ -44,22 +42,33 @@ public:
 
     std::int32_t x() { return _Myx; }
     std::int32_t y() { return _Myy; }
-    xtopography2d &topography() { return _Mytopography; }
+    _Mytopography2d_t &topography() { return _Mytopography; }
     void set_x(std::int32_t _X) { _Myx = _X; }
     void set_y(std::int32_t _Y) { _Myy = _Y; }
+    void set_topography(std::int32_t _Width, std::int32_t _Height)
+    {
+        _Mytopography = _Mytopography2d_t(_Width);
+        for (auto &_Col : _Mytopography)
+        {
+            _Col = _Mytopography1d_t(_Height);
+            for (auto &_Topography : _Col)
+            {
+                _Topography = std::make_unique<xtopography>();
+            }
+        }
+    }
 };
 
-// >>>>> _Mygrid1d_t 의 형식으로 변경.
-typedef std::vector<std::unique_ptr<xgrid>> xgrid1d;
-typedef std::vector<xgrid1d> xgrid2d;
-// <<<<<
+typedef std::vector<std::unique_ptr<xgrid>> _Mygrid1d_t;
+typedef std::vector<_Mygrid1d_t> _Mygrid2d_t;
+
 class xgrid_container
 {
 private:
     std::unique_ptr<xcoordinate> _Myleft_bottom; 
     std::unique_ptr<xcoordinate> _Myright_top; 
 
-    xgrid2d _Mygrid; 
+    _Mygrid2d_t _Mygrid; 
     std::int32_t _Myinterval_xy; 
     std::int32_t _Mymaximum_cols; 
     std::int32_t _Mymaximum_rows; 
@@ -73,8 +82,6 @@ public:
         _Myinterval_xy = 0;
         _Mymaximum_cols = 0;
         _Mymaximum_rows = 0;
-
-        initialize( 10000, 726029, 1464252, 1383896, 2559450 );
     }
     
     ~xgrid_container()
@@ -95,43 +102,30 @@ public:
         _Mymaximum_cols = ((_Right_top_x - _Left_bottom_x) / _Interval_xy) + 1;
         _Mymaximum_rows = ((_Right_top_y - _Left_bottom_y) / _Interval_xy) + 1;
         
-        _Mygrid = xgrid2d(_Mymaximum_cols);
-        for (std::int32_t _Idx_x = 0; _Idx_x<_Mymaximum_cols; _Idx_x++)
+        _Mygrid = _Mygrid2d_t(_Mymaximum_cols);
+        for (std::int32_t _Idx_x = 0; _Idx_x<_Mymaximum_cols; ++_Idx_x)
         {
-            _Mygrid[_Idx_x] = xgrid1d(_Mymaximum_rows);
-            for (std::int32_t _Idx_y = 0; _Idx_y<_Mymaximum_rows; _Idx_y++)
+            _Mygrid[_Idx_x] = _Mygrid1d_t(_Mymaximum_rows);
+            for (std::int32_t _Idx_y = 0; _Idx_y<_Mymaximum_rows; ++_Idx_y)
             {
                 _Mygrid[_Idx_x][_Idx_y] = std::make_unique<xgrid>();
                 _Mygrid[_Idx_x][_Idx_y]->set_x(_Idx_x);
                 _Mygrid[_Idx_x][_Idx_y]->set_y(_Idx_y);
 
-                if ((_Idx_x >= 0) && (_Idx_x < _Mymaximum_rows) &&
-                    (_Idx_y >= 0) && (_Idx_y < _Mymaximum_rows))
+                if ((0 <= _Idx_x) && (_Idx_x < _Mymaximum_rows) &&
+                    (0 <= _Idx_y) && (_Idx_y < _Mymaximum_rows))
                 {
-                    
-                    // >>>>> 문장이 어려움 , topography() 반환값이 const 일 경우 아래문장이 구동하는지?
-                    _Mygrid[_Idx_x][_Idx_y]->topography() = xtopography2d(20);
-                    for (auto &_Row : _Mygrid[_Idx_x][_Idx_y]->topography())
-                    {
-                        _Row = xtopography1d(20);
-                        for (auto &_Topography : _Row)
-                        {
-                            _Topography = std::make_unique<xtopography>();
-                        }
-                    }
-                    // <<<<< 문장이 어려움
-                    
+                    _Mygrid[_Idx_x][_Idx_y]->set_topography(20, 20);
                 }
             } // for
-        }  // for       
+        }  // for
     }
 
     std::tuple<std::int32_t, std::int32_t> to_index(std::int32_t _Pos_x, std::int32_t _Pos_y)
     {
         xcoordinate _Pos(_Pos_x, _Pos_y);
 
-        // >>>>> && 연산자는 ( ) 비교
-        if(*(_Myleft_bottom.get()) <= _Pos && _Pos <= *(_Myright_top.get()))
+        if((*(_Myleft_bottom.get()) <= _Pos) && (_Pos <= *(_Myright_top.get())))
         {
             _Pos -= *(_Myleft_bottom.get());
             _Pos /= _Myinterval_xy;
@@ -153,8 +147,7 @@ public:
         std::tie(_Idx_x, _Idx_y) = to_index(_Pos_x, _Pos_y);
 
         xgrid *_Ptr = nullptr;
-        // >>>>> && 연산자는 ( ) 비교
-        if(0 <= _Idx_x && 0 <= _Idx_y)
+        if((0 <= _Idx_x) && (0 <= _Idx_y))
         {
             _Ptr = _Mygrid[_Idx_x][_Idx_y].get();
         }
