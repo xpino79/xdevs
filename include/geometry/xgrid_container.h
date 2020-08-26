@@ -198,7 +198,7 @@ public:
                 std::tie(_Start_idx_x, _Start_idx_y) = to_index(_Start.x(), _Start.y());
                 std::tie(_End_idx_x, _End_idx_y) = to_index(_End.x(), _End.y());
 
-                std::cout << "max_idx: " << _Mymaximum_cols << ", " << _Mymaximum_rows << std::endl;
+                std::cout << "max_idx: " << _Mymaximum_cols - 1 << ", " << _Mymaximum_rows - 1 << std::endl;
                 std::cout << "start_idx: " << _Start_idx_x << ", " << _Start_idx_y << std::endl;
                 std::cout << "end_idx: " << _End_idx_x << ", " << _End_idx_y << std::endl;
 
