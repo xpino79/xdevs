@@ -38,9 +38,9 @@ public:
 
     }
 
-    std::float64_t length(std::int32_t _X, std::int32_t _Y)
+    std::float64_t length(std::int32_t _Idx_x, std::int32_t _Idx_y)
     {
-        return std::sqrt(std::pow(_X - _Myx, 2) + std::pow(_Y - _Myy, 2));
+        return std::sqrt(std::pow(_Idx_x - _Myx, 2) + std::pow(_Idx_y - _Myy, 2));
     }
 
     std::int32_t x() { return _Myx; }
@@ -172,29 +172,14 @@ public:
                 xcoordinate _Start = xcoordinate(_Pos_x, _Pos_y) - _Range;
                 xcoordinate _End = xcoordinate(_Pos_x, _Pos_y) + _Range;
 
-                if(_Start.x() < _Myleft_bottom->x())
-                {
-                    _Start.set_x(_Myleft_bottom->x());
-                }
-                if(_Start.y() < _Myleft_bottom->y())
-                {
-                    _Start.set_y(_Myleft_bottom->y());
-                }
-
-                if(_Myright_top->x() < _End.x())
-                {
-                    _End.set_x(_Myright_top->x());
-                }
-                if(_Myright_top->y() < _End.y())
-                {
-                    _End.set_y(_Myright_top->y());
-                }
+                _Start.correction(*(_Myleft_bottom.get()), *(_Myright_top.get()));
+                _End.correction(*(_Myleft_bottom.get()), *(_Myright_top.get()));
 
                 std::int32_t _Start_idx_x;
                 std::int32_t _Start_idx_y;
                 std::int32_t _End_idx_x;
                 std::int32_t _End_idx_y;
-
+                
                 std::tie(_Start_idx_x, _Start_idx_y) = to_index(_Start.x(), _Start.y());
                 std::tie(_End_idx_x, _End_idx_y) = to_index(_End.x(), _End.y());
 
