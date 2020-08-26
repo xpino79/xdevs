@@ -207,7 +207,7 @@ public:
                 {
                     std::cerr << "xgrid_container::to_index underflow (" << _Start.x() << ", " << _Start.y() << "), (" << _End.x() << ", " << _End.y() << ")" << std::endl;
                 }
-                else if((_Mymaximum_cols <= _Start_idx_x) || (_Mymaximum_rows <= _Start_idx_x) ||
+                else if((_Mymaximum_cols <= _Start_idx_x) || (_Mymaximum_rows <= _Start_idx_y) ||
                         (_Mymaximum_cols <= _End_idx_x) || (_Mymaximum_rows <= _End_idx_y))
                 {
                     std::cerr << "xgrid_container::to_index overflow (" << _Start.x() << ", " << _Start.y() << "), (" << _End.x() << ", " << _End.y() << ")" << std::endl;
