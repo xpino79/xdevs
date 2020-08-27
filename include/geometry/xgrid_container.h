@@ -160,7 +160,7 @@ public:
         std::list<xgrid *> _Val;
         
         xgrid *_Off = find_grid( _Pos_x,  _Pos_y);
-        std::cout << "#1 " << _Off.x() << ", " << _Off.y() << std::endl;
+        std::cout << "#1 " << _Off->x() << ", " << _Off->y() << std::endl;
         
         if ( nullptr != _Off )
         {
