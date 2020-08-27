@@ -56,16 +56,17 @@ public:
  
     xcoordinate& operator*=(const std::int32_t& _Off) { _Myy *= _Off; _Myy *= _Off; return *this; }
     xcoordinate& operator/=(const std::int32_t& _Off) { _Myy /= _Off; _Myy /= _Off; return *this; }
-  
+    
+    friend xcoordinate operator+(const xcoordinate& _Left, const xcoordinate& _Right) { return xcoordinate(_Left) += _Right; }
+    friend xcoordinate operator-(const xcoordinate& _Left, const xcoordinate& _Right) { return xcoordinate(_Left) -= _Right; }
+    friend xcoordinate operator*(const xcoordinate& _Left, const xcoordinate& _Right) { return xcoordinate(_Left) *= _Right; }
+    friend xcoordinate operator/(const xcoordinate& _Left, const xcoordinate& _Right) { return xcoordinate(_Left) /= _Right; }
+    friend xcoordinate operator*(const std::int32_t& _Left, const xcoordinate& _Right) { return xcoordinate(_Right) *= _Left; }
+    friend xcoordinate operator*(const xcoordinate& _Left, const std::int32_t& _Right) { return xcoordinate(_Left) *= _Right; }
+   
 };
 
-xcoordinate operator+(const xcoordinate& _Left, const xcoordinate& _Right) { return xcoordinate(_Left) += _Right; }
-xcoordinate operator-(const xcoordinate& _Left, const xcoordinate& _Right) { return xcoordinate(_Left) -= _Right; }
-xcoordinate operator*(const xcoordinate& _Left, const xcoordinate& _Right) { return xcoordinate(_Left) *= _Right; }
-xcoordinate operator/(const xcoordinate& _Left, const xcoordinate& _Right) { return xcoordinate(_Left) /= _Right; }
-xcoordinate operator*(const std::int32_t& _Left, const xcoordinate& _Right) { return xcoordinate(_Right) *= _Left; }
-xcoordinate operator*(const xcoordinate& _Left, const std::int32_t& _Right) { return xcoordinate(_Left) *= _Right; }
- 
+
 } /* namespace my */
 
 
