@@ -12,6 +12,7 @@ LIBS = \
     -lm \
     -lstdc++ \
     -lpthread \
+    -fopenmp \
 
 CC = g++
 CFLAGS = -Wall -g -O0 ${INC_PATH}
