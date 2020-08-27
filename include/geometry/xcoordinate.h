@@ -41,7 +41,8 @@ public:
     xcoordinate& operator-=(const xcoordinate& _Off) { _Myx -= _Off.x(); _Myy -= _Off.y(); return *this; }
     xcoordinate& operator*=(const xcoordinate& _Off) { _Myx *= _Off.x(); _Myy *= _Off.y(); return *this; }
     xcoordinate& operator/=(const xcoordinate& _Off) { _Myx /= _Off.x(); _Myy /= _Off.y(); return *this; }
- 
+    xcoordinate& operator/=(std::int32_t &_Off) { _Myx / _Off; _Myy / _Off; return *this; }
+    
     friend bool operator==(const xcoordinate& _Left, const xcoordinate& _Right) { return std::tie(_Left._Myy, _Left._Myy) == std::tie(_Right._Myy, _Right._Myy); }
     friend bool operator!=(const xcoordinate& _Left, const xcoordinate& _Right) { return !(_Left == _Right); }
  
