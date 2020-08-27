@@ -126,11 +126,15 @@ public:
     std::tuple<std::int32_t, std::int32_t> to_grid_index(std::int32_t _Pos_x, std::int32_t _Pos_y)
     {
         xcoordinate _Pos(_Pos_x, _Pos_y);
-
+        std::cout << "#1 " << _Pos.x() << ", " << _Pos.y() << std::endl;
         if((*(_Myleft_bottom.get()) <= _Pos) && (_Pos <= *(_Myright_top.get())))
         {
             _Pos -= *(_Myleft_bottom.get());
+            std::cout << "#2 * " << _Myleft_bottom->x() << ", " << _Myleft_bottom->y() << std::endl;
+            std::cout << "#2 =  " << _Pos.x() << ", " << _Pos.y() << std::endl;
             _Pos /= _Myinterval_xy;
+            std::cout << "#3 / " << _Myinterval_xy << std::endl;
+            std::cout << "#3 = " << _Pos.x() << ", " << _Pos.y() << std::endl;
         }
         else
         {
