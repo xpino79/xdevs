@@ -130,7 +130,7 @@ public:
         if((*(_Myleft_bottom.get()) <= _Pos) && (_Pos <= *(_Myright_top.get())))
         {
             _Pos -= *(_Myleft_bottom.get());
-            std::cout << "#2 * " << _Myleft_bottom->x() << ", " << _Myleft_bottom->y() << std::endl;
+            std::cout << "#2 - " << _Myleft_bottom->x() << ", " << _Myleft_bottom->y() << std::endl;
             std::cout << "#2 =  " << _Pos.x() << ", " << _Pos.y() << std::endl;
             _Pos /= _Myinterval_xy;
             std::cout << "#3 / " << _Myinterval_xy << std::endl;
