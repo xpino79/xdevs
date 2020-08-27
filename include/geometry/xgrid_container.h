@@ -102,9 +102,10 @@ public:
         _Mygrid.clear();
         _Mygrid.resize(_Mymaximum_cols);
  
-// >>>>> 병력 처리 속도 테스트
-omp_set_num_threads(4);
-#pragma omp parallel for
+        // >>>>> 병력 처리 속도 테스트
+        #pragma omp parallel num_threads(4)
+        {
+        #pragma omp for
         for (std::int32_t _Idx_x = 0; _Idx_x < _Mymaximum_cols; ++_Idx_x)
         {
             std::cout << "#병렬처리 " << _Idx_x << std::endl;
@@ -122,7 +123,8 @@ omp_set_num_threads(4);
                 }
             } // for
         }  // for
- 
+        }
+        
     }
 
     std::tuple<std::int32_t, std::int32_t> to_grid_index(std::int32_t _Pos_x, std::int32_t _Pos_y)
