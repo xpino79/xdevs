@@ -9,6 +9,8 @@
 #include <mutex>
 #include <vector>
 #include <cmath>
+#include <omp.h> // 병렬 
+
 #include "xcoordinate.h"
 
 namespace my {
