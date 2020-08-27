@@ -26,6 +26,12 @@ private:
         _Left_bottom_y = 1464252;
         _Right_top_x = 1383896;
         _Right_top_y = 2559450;
+        
+        _Interval_xy = 2;
+        _Left_bottom_x = -10;
+        _Left_bottom_y = -10;
+        _Right_top_x = 10;
+        _Right_top_y = 10;
             
         _Mygrid_container->initialize(
             _Interval_xy, 

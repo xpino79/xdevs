@@ -35,27 +35,6 @@ public:
     
     void set_x(std::int32_t _X) { this->_Myx = _X; }
     void set_y(std::int32_t _Y) { this->_Myy = _Y; }
-
-    void correction(xcoordinate &_Left_bottom, xcoordinate &_Right_top)
-    {
-        if(_Myx < _Left_bottom.x())
-        {
-            _Myx = _Left_bottom.x();
-        }
-        if(_Myy < _Left_bottom.y())
-        {
-            _Myy = _Left_bottom.y();
-        }
-
-        if(_Right_top.x() < _Myx)
-        {
-            _Myx = _Right_top.x();
-        }
-        if(_Right_top.y() < _Myy)
-        {
-            _Myy = _Right_top.y();
-        }
-    }
     
     bool operator<=(xcoordinate &_Right)
     {
@@ -69,30 +48,10 @@ public:
         
         return xcoordinate(_X, _Y);
     }
-    xcoordinate operator-(std::int32_t &_Right)
-    {
-        std::int32_t _X = _Myx - _Right;
-        std::int32_t _Y = _Myy - _Right;
-        
-        return xcoordinate(_X, _Y);
-    }
     void operator-=(xcoordinate &_Right)
     {
         _Myx -= _Right.x();
         _Myy -= _Right.y();
-    }
-
-    xcoordinate operator+(std::int32_t &_Right)
-    {
-        std::int32_t _X = _Myx + _Right;
-        std::int32_t _Y = _Myy + _Right;
-        
-        return xcoordinate(_X, _Y);
-    }
-    void operator+=(std::int32_t &_Right)
-    {
-        _Myx += _Right;
-        _Myy += _Right;
     }
 
     xcoordinate operator/(std::int32_t &_Right)
