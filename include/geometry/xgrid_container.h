@@ -37,14 +37,7 @@ public:
     {
 
     }
-
-    /*
-    std::float64_t length(std::int32_t _Idx_x, std::int32_t _Idx_y)
-    {
-        return std::sqrt(std::pow(_Idx_x - _Myx, 2) + std::pow(_Idx_y - _Myy, 2));
-    }
-    */
-
+ 
     std::int32_t x() { return _Myx; }
     std::int32_t y() { return _Myy; }
     std::vector<std::vector<std::unique_ptr<xtopography>>> &topography() { return _Mytopography; }
