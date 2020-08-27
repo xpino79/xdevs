@@ -124,6 +124,7 @@ public:
         }  // for
     }
 
+    // >>>>> to_grid_index 작명 변경 요청. 모호한 함수명칭임.
     std::tuple<std::int32_t, std::int32_t> to_index(std::int32_t _Pos_x, std::int32_t _Pos_y)
     {
         xcoordinate _Pos(_Pos_x, _Pos_y);
@@ -172,7 +173,7 @@ public:
             }
             else
             {
-                // >>>>> 유지보수 힘든 코드 시작
+
                 xcoordinate _Start = xcoordinate(_Pos_x, _Pos_y) - _Range;
                 xcoordinate _End = xcoordinate(_Pos_x, _Pos_y) + _Range;
 
@@ -193,6 +194,7 @@ public:
                 std::cout << "start_idx: " << _Start_idx_x << ", " << _Start_idx_y << std::endl;
                 std::cout << "end_idx: " << _End_idx_x << ", " << _End_idx_y << std::endl;
 
+                // >>>>> 유지보수 힘든 코드 시작 , 단순한 코드로.
                 if((0 > _Start_idx_x) || (0 > _Start_idx_y) ||
                    (0 > _End_idx_x) || ( 0 > _End_idx_y))
                 {
@@ -228,10 +230,9 @@ public:
                         }
                     }
                 }
-                
+                // <<<<< 유지보수 힘든 코드 끝
             }
             
-            // <<<<< 유지보수 힘든 코드 끝
         }
         return _Val;
     }
