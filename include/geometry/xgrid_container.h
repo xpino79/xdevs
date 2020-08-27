@@ -176,8 +176,8 @@ public:
                 std::int32_t _End_x = std::min(_Off->x()+_Interval, _Mymaximum_rows-1);
                 std::int32_t _End_y = std::min(_Off->y()+_Interval, _Mymaximum_cols-1);
                 
-                std::cout << "#2 " << _Begin_x << ", " << _Begin_y << std::endl;
-                std::cout << "#2 " << _End_x << ", " << _End_y << std::endl;
+                std::cout << "#2 " << _Begin_y << ", " << _End_y << std::endl;
+                std::cout << "#2 " << _Begin_x << ", " << _End_x << std::endl;
                 
                 for (auto _Idx_y = _Begin_y; _Idx_y <= _End_y; ++_Idx_y)
                 {
