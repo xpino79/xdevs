@@ -171,19 +171,14 @@ public:
             }
             else
             {
-                std::int32_t _Begin_x = _Off->x() - _Interval;
-                std::int32_t _Begin_y = _Off->y() - _Interval;
-                std::int32_t _End_x = _Off->x() + _Interval;
-                std::int32_t _End_y = _Off->y() + _Interval;
-
+                std::int32_t _Begin_x = std::max(_Off->x()-_Interval, 0);
+                std::int32_t _Begin_y = std::max(_Off->y()-_Interval, 0);
+                std::int32_t _End_x = std::min(_Off->x()+_Interval, _Mymaximum_rows-1);
+                std::int32_t _End_y = std::min(_Off->y()+_Interval, _Mymaximum_cols-1);
+                
                 std::cout << "#2 " << _Begin_x << ", " << _Begin_y << std::endl;
                 std::cout << "#2 " << _End_x << ", " << _End_y << std::endl;
                 
-                _Begin_x = std::max(_Begin_x, 0);
-                _Begin_y = std::max(_Begin_y, 0);
-                _End_x = std::min(_End_x, _Mymaximum_rows - 1);
-                _End_y = std::min(_End_y, _Mymaximum_cols - 1);
-
                 for (auto _Idx_y = _Begin_y; _Idx_y <= _End_y; ++_Idx_y)
                 {
                     for (auto _Idx_x = _Begin_x; _Idx_x <= _End_x; ++_Idx_x)
