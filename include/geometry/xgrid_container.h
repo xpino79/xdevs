@@ -103,23 +103,26 @@ public:
         _Mygrid.clear();
         _Mygrid.resize(_Mymaximum_cols);
         
-        #pragma omp parallel for
-        for (std::int32_t _Idx_x = 0; _Idx_x < _Mymaximum_cols; ++_Idx_x)
+        #pragma omp parallel
         {
-            _Mygrid[_Idx_x].resize(_Mymaximum_rows);
-            for (std::int32_t _Idx_y = 0; _Idx_y < _Mymaximum_rows; ++_Idx_y)
+            #pragma omp for
+            for (std::int32_t _Idx_x = 0; _Idx_x < _Mymaximum_cols; ++_Idx_x)
             {
-                _Mygrid[_Idx_x][_Idx_y] = std::make_unique<xgrid>();
-                _Mygrid[_Idx_x][_Idx_y]->set_x(_Idx_x);
-                _Mygrid[_Idx_x][_Idx_y]->set_y(_Idx_y);
-
-                if ((0 <= _Idx_x) && (_Idx_x < _Mymaximum_rows) &&
-                    (0 <= _Idx_y) && (_Idx_y < _Mymaximum_rows))
+                _Mygrid[_Idx_x].resize(_Mymaximum_rows);
+                for (std::int32_t _Idx_y = 0; _Idx_y < _Mymaximum_rows; ++_Idx_y)
                 {
-                    _Mygrid[_Idx_x][_Idx_y]->set_topography(20, 20);
-                }
-            } // for
-        }  // for
+                    _Mygrid[_Idx_x][_Idx_y] = std::make_unique<xgrid>();
+                    _Mygrid[_Idx_x][_Idx_y]->set_x(_Idx_x);
+                    _Mygrid[_Idx_x][_Idx_y]->set_y(_Idx_y);
+
+                    if ((0 <= _Idx_x) && (_Idx_x < _Mymaximum_rows) &&
+                        (0 <= _Idx_y) && (_Idx_y < _Mymaximum_rows))
+                    {
+                        _Mygrid[_Idx_x][_Idx_y]->set_topography(20, 20);
+                    }
+                } // for
+            }  // for
+        } // omp
     }
 
     std::tuple<std::int32_t, std::int32_t> to_grid_index(std::int32_t _Pos_x, std::int32_t _Pos_y)
