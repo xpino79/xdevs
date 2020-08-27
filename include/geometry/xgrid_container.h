@@ -126,22 +126,16 @@ public:
     std::tuple<std::int32_t, std::int32_t> to_grid_index(std::int32_t _Pos_x, std::int32_t _Pos_y)
     {
         xcoordinate _Pos(_Pos_x, _Pos_y);
-        std::cout << "#1 " << _Pos.x() << ", " << _Pos.y() << std::endl;
         if((*(_Myleft_bottom.get()) <= _Pos) && (_Pos <= *(_Myright_top.get())))
         {
             _Pos -= *(_Myleft_bottom.get());
-            std::cout << "#2 - " << _Myleft_bottom->x() << ", " << _Myleft_bottom->y() << std::endl;
-            std::cout << "#2 =  " << _Pos.x() << ", " << _Pos.y() << std::endl;
             _Pos /= _Myinterval_xy;
-            std::cout << "#3 / " << _Myinterval_xy << std::endl;
-            std::cout << "#3 = " << _Pos.x() << ", " << _Pos.y() << std::endl;
         }
         else
         {
             _Pos.set_x(-1);
             _Pos.set_y(-1);
         }
-
         return std::tuple<std::int32_t, std::int32_t>(_Pos.x(), _Pos.y());
     }
 
@@ -165,34 +159,40 @@ public:
     {
         std::list<xgrid *> _Val;
         
-        xgrid *_Center_Ptr = find_grid( _Pos_x,  _Pos_y);
-        if ( nullptr != _Center_Ptr )
+        xgrid *_Off = find_grid( _Pos_x,  _Pos_y);
+        std::cout << "#1 " << _Off.x() << ", " << _Off.y() << std::endl;
+        
+        if ( nullptr != _Off )
         {
-            std::int32_t _Idx_interval = _Range / _Myinterval_xy;
-            if(0 == _Idx_interval)
+            std::int32_t _Interval = _Range / _Myinterval_xy;
+            if(0 == _Interval)
             {
-                _Val.push_back(_Center_Ptr);
+                _Val.push_back(_Off);
             }
             else
             {
-                std::int32_t _Start_idx_x = _Center_Ptr->x() - _Idx_interval;
-                std::int32_t _Start_idx_y = _Center_Ptr->y() - _Idx_interval;
-                std::int32_t _End_idx_x = _Center_Ptr->x() + _Idx_interval;
-                std::int32_t _End_idx_y = _Center_Ptr->y() + _Idx_interval;
+                std::int32_t _Begin_x = _Off->x() - _Interval;
+                std::int32_t _Begin_y = _Off->y() - _Interval;
+                std::int32_t _End_x = _Off->x() + _Interval;
+                std::int32_t _End_y = _Off->y() + _Interval;
 
-                _Start_idx_x = std::max(_Start_idx_x, 0);
-                _Start_idx_y = std::max(_Start_idx_y, 0);
-                _End_idx_x = std::min(_End_idx_x, _Mymaximum_rows - 1);
-                _End_idx_y = std::min(_End_idx_y, _Mymaximum_cols - 1);
+                std::cout << "#2 " << _Begin_x << ", " << _Begin_y << std::endl;
+                std::cout << "#2 " << _End_x << ", " << _End_y << std::endl;
+                
+                _Begin_x = std::max(_Begin_x, 0);
+                _Begin_y = std::max(_Begin_y, 0);
+                _End_x = std::min(_End_x, _Mymaximum_rows - 1);
+                _End_y = std::min(_End_y, _Mymaximum_cols - 1);
 
-                for (int y = _Start_idx_y; y <= _End_idx_y; ++y)
+                for (auto _Idx_y = _Begin_y; _Idx_y <= _End_y; ++_Idx_y)
                 {
-                    for (int x = _Start_idx_x; x <= _End_idx_x; ++x)
+                    for (auto _Idx_x = _Begin_x; _Idx_x <= _End_x; ++_Idx_x)
                     {
-                        xgrid *ptr = _Mygrid[x][y].get();
-                        if(nullptr != ptr)
+                        std::cout << "#3 " << _Idx_x << ", " << _Idx_y << std::endl;
+                        xgrid *_Ptr = _Mygrid[_Idx_x][_Idx_y].get();
+                        if(nullptr != _Ptr)
                         {
-                            _Val.push_back( ptr );
+                            _Val.push_back( _Ptr );
                         }
                     }
                 }
