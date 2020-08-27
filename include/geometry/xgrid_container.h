@@ -122,8 +122,8 @@ public:
                     _Mygrid[_Idx_x][_Idx_y]->set_topography(20, 20);
                 }
             } // for
-        }  // for
-        }
+        } // for
+        } // #pragma omp parallel
         
     }
 
