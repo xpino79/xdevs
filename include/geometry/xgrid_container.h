@@ -102,6 +102,8 @@ public:
         
         _Mygrid.clear();
         _Mygrid.resize(_Mymaximum_cols);
+        
+        #pragma omp parallel for
         for (std::int32_t _Idx_x = 0; _Idx_x < _Mymaximum_cols; ++_Idx_x)
         {
             _Mygrid[_Idx_x].resize(_Mymaximum_rows);
