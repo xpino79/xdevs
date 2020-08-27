@@ -37,7 +37,6 @@ public:
     }
     ~xgrid()
     {
-
     }
  
     std::int32_t x() { return _Myx; }
