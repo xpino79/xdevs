@@ -13,7 +13,7 @@ namespace my
 {
 class xcoordinate
 {
-private:
+public:
     std::int32_t _Myx;
     std::int32_t _Myy;
   
