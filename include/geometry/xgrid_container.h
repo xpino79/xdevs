@@ -172,9 +172,12 @@ public:
             }
             else
             {
+                // >>>>> 유지보수 힘든 코드 시작
                 xcoordinate _Start = xcoordinate(_Pos_x, _Pos_y) - _Range;
                 xcoordinate _End = xcoordinate(_Pos_x, _Pos_y) + _Range;
 
+                // >>>>> xcoordinate 클래스에 correction 함수는 일회성 함수. xcoordinate 클래스에 있을 필요성 판단
+                // >>>>> xcoordinate 클래스를 사용하지 않고 구현.
                 _Start.correction(*(_Myleft_bottom.get()), *(_Myright_top.get()));
                 _End.correction(*(_Myleft_bottom.get()), *(_Myright_top.get()));
 
@@ -227,6 +230,8 @@ public:
                 }
                 
             }
+            
+            // <<<<< 유지보수 힘든 코드 끝
         }
         return _Val;
     }
