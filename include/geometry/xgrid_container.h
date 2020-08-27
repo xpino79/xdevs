@@ -99,6 +99,8 @@ public:
         _Myleft_bottom->set_y(_Left_bottom_y);
         _Myright_top->set_x(_Right_top_x);
         _Myright_top->set_y(_Right_top_y);
+        
+        // >>>>> EPSG:3857 좌표계에서 적도 포함한 사각형일경우 아래 계산 공식이 적용여부.
         _Mymaximum_cols = ((_Right_top_x - _Left_bottom_x) / _Interval_xy) + 1;
         _Mymaximum_rows = ((_Right_top_y - _Left_bottom_y) / _Interval_xy) + 1;
         
@@ -126,6 +128,7 @@ public:
     {
         xcoordinate _Pos(_Pos_x, _Pos_y);
 
+        // >>>>> EPSG:3857 좌표계에서 적도 포함한 사각형일경우 아래 계산 공식이 적용여부.
         if((*(_Myleft_bottom.get()) <= _Pos) && (_Pos <= *(_Myright_top.get())))
         {
             _Pos -= *(_Myleft_bottom.get());
