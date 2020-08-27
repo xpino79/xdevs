@@ -55,8 +55,8 @@ public:
     friend bool operator> (const xcoordinate& _Left, const xcoordinate& _Right) { return   _Right < _Left ; }
     friend bool operator<=(const xcoordinate& _Left, const xcoordinate& _Right) { return !(_Right < _Left); }
  
-    xcoordinate& operator*=(const std::int& _Off) { _Myy *= _Off; _Myy *= _Off; return *this; }
-    xcoordinate& operator/=(const std::int& _Off) { _Myy /= _Off; _Myy /= _Off; return *this; }
+    xcoordinate& operator*=(const std::int32_t& _Off) { _Myy *= _Off; _Myy *= _Off; return *this; }
+    xcoordinate& operator/=(const std::int32_t& _Off) { _Myy /= _Off; _Myy /= _Off; return *this; }
   
 };
 
