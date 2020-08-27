@@ -103,6 +103,7 @@ public:
         _Mygrid.clear();
         _Mygrid.resize(_Mymaximum_cols);
  
+        // >>>>> 병력 처리 속도 테스트 
         #pragma omp parallel for
         for (std::int32_t _Idx_x = 0; _Idx_x < _Mymaximum_cols; ++_Idx_x)
         {
