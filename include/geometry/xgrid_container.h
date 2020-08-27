@@ -107,6 +107,7 @@ public:
         #pragma omp parallel for
         for (std::int32_t _Idx_x = 0; _Idx_x < _Mymaximum_cols; ++_Idx_x)
         {
+            std::cout << "#병렬처리 " << _Idx_x << std::endl;
             _Mygrid[_Idx_x].resize(_Mymaximum_rows);
             for (std::int32_t _Idx_y = 0; _Idx_y < _Mymaximum_rows; ++_Idx_y)
             {
@@ -161,8 +162,6 @@ public:
         std::list<xgrid *> _Val;
         
         xgrid *_Off = find_grid( _Pos_x,  _Pos_y);
-        std::cout << "#1 " << _Off->x() << ", " << _Off->y() << std::endl;
-        
         if ( nullptr != _Off )
         {
             std::int32_t _Interval = _Range / _Myinterval_xy;
@@ -176,15 +175,11 @@ public:
                 std::int32_t _Begin_y = std::max(_Off->y()-_Interval, 0);
                 std::int32_t _End_x = std::min(_Off->x()+_Interval, _Mymaximum_rows-1);
                 std::int32_t _End_y = std::min(_Off->y()+_Interval, _Mymaximum_cols-1);
-                
-                std::cout << "#2 " << _Begin_y << ", " << _End_y << std::endl;
-                std::cout << "#2 " << _Begin_x << ", " << _End_x << std::endl;
-                
+ 
                 for (auto _Idx_y = _Begin_y; _Idx_y <= _End_y; ++_Idx_y)
                 {
                     for (auto _Idx_x = _Begin_x; _Idx_x <= _End_x; ++_Idx_x)
                     {
-                        std::cout << "#3 " << _Idx_x << ", " << _Idx_y << std::endl;
                         xgrid *_Ptr = _Mygrid[_Idx_x][_Idx_y].get();
                         if(nullptr != _Ptr)
                         {
