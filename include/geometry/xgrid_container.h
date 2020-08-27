@@ -147,7 +147,7 @@ public:
         std::int32_t _Idx_y;
 
         std::tie(_Idx_x, _Idx_y) = to_grid_index(_Pos_x, _Pos_y);
-        std::cout << _Idx_x << ", " << _Idx_y << std::endl;
+    
         xgrid *_Ptr = nullptr;
         if((0 <= _Idx_x) && (0 <= _Idx_y))
         {
@@ -201,8 +201,6 @@ public:
                         xgrid *ptr = _Mygrid[x][y].get();
                         if(nullptr != ptr)
                         {
-                            // 테스트 출력
-                            std::cout << x << ", " << y << std::endl;
                             _Val.push_back( ptr );
                         }
                     }
