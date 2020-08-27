@@ -176,23 +176,10 @@ public:
                 std::int32_t _End_idx_x = _Center_Ptr->x() + _Idx_interval;
                 std::int32_t _End_idx_y = _Center_Ptr->y() + _Idx_interval;
 
-                if(_Start_idx_x < 0)
-                {
-                    _Start_idx_x = 0;
-                }
-                if(_Start_idx_y < 0)
-                {
-                    _Start_idx_y = 0;
-                }
-
-                if(_Mymaximum_rows <= _End_idx_x)
-                {
-                    _End_idx_x = _Mymaximum_rows - 1;
-                }
-                if(_Mymaximum_cols <= _End_idx_y)
-                {
-                    _End_idx_y = _Mymaximum_cols - 1;
-                }
+                _Start_idx_x = std::max(_Start_idx_x, 0);
+                _Start_idx_y = std::max(_Start_idx_y, 0);
+                _End_idx_x = std::min(_End_idx_x, _Mymaximum_rows - 1);
+                _End_idx_y = std::min(_End_idx_y, _Mymaximum_cols - 1);
 
                 for (int y = _Start_idx_y; y <= _End_idx_y; ++y)
                 {
