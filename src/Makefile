@@ -12,10 +12,9 @@ LIBS = \
     -lm \
     -lstdc++ \
     -lpthread \
-    -fopenmp \
 
 CC = g++
-CFLAGS = -Wall -g -O0 ${INC_PATH}
+CFLAGS = -fopenmp -Wall -g -O0 ${INC_PATH}
 OFILES = $(CFILES:.cpp=.o)
 
 CFILES = \
