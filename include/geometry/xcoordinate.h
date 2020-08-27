@@ -13,7 +13,7 @@ namespace my
 {
 class xcoordinate
 {
-public:
+private:
     std::int32_t _Myx;
     std::int32_t _Myy;
   
@@ -37,10 +37,10 @@ public:
     void set_x(std::int32_t _Pos_x) { this->_Myx = _Pos_x; }
     void set_y(std::int32_t _Pos_y) { this->_Myy = _Pos_y; }
  
-    xcoordinate& operator+=(const xcoordinate& _Off) { _Myx += _Off._Myx; _Myy += _Off._Myy; return *this; }
-    xcoordinate& operator-=(const xcoordinate& _Off) { _Myx -= _Off._Myx; _Myy -= _Off._Myy; return *this; }
-    xcoordinate& operator*=(const xcoordinate& _Off) { _Myx *= _Off._Myx; _Myy *= _Off._Myy; return *this; }
-    xcoordinate& operator/=(const xcoordinate& _Off) { _Myx /= _Off._Myx; _Myy /= _Off._Myy; return *this; }
+    xcoordinate& operator+=(const xcoordinate& _Off) { _Myx += _Off.x(); _Myy += _Off.y(); return *this; }
+    xcoordinate& operator-=(const xcoordinate& _Off) { _Myx -= _Off.x(); _Myy -= _Off.y(); return *this; }
+    xcoordinate& operator*=(const xcoordinate& _Off) { _Myx *= _Off.x(); _Myy *= _Off.y(); return *this; }
+    xcoordinate& operator/=(const xcoordinate& _Off) { _Myx /= _Off.x(); _Myy /= _Off.y(); return *this; }
  
     friend bool operator==(const xcoordinate& _Left, const xcoordinate& _Right) { return std::tie(_Left._Myy, _Left._Myy) == std::tie(_Right._Myy, _Right._Myy); }
     friend bool operator!=(const xcoordinate& _Left, const xcoordinate& _Right) { return !(_Left == _Right); }
