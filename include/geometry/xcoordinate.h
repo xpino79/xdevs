@@ -45,8 +45,7 @@ public:
     xcoordinate& operator-=(const xcoordinate& _Off) { _Myx -= _Off._Myx; _Myy -= _Off._Myy; return *this; }
     xcoordinate& operator*=(const xcoordinate& _Off) { _Myx *= _Off._Myx; _Myy *= _Off._Myy; return *this; }
     xcoordinate& operator/=(const xcoordinate& _Off) { _Myx /= _Off._Myx; _Myy /= _Off._Myy; return *this; }
-    xcoordinate& operator/=(std::int32_t &_Off) { _Myx /= _Off; _Myy /= _Off; return *this; }
-        
+ 
     friend bool operator==(const xcoordinate& _Left, const xcoordinate& _Right) { return std::tie(_Left._Myy, _Left._Myy) == std::tie(_Right._Myy, _Right._Myy); }
     friend bool operator!=(const xcoordinate& _Left, const xcoordinate& _Right) { return !(_Left == _Right); }
  
@@ -60,6 +59,14 @@ public:
   
 };
 
+xcoordinate operator+(const xcoordinate& _Left, const xcoordinate& _Right) { return xcoordinate(_Left) += _Right; }
+xcoordinate operator-(const xcoordinate& _Left, const xcoordinate& _Right) { return xcoordinate(_Left) -= _Right; }
+xcoordinate operator*(const xcoordinate& _Left, const xcoordinate& _Right) { return xcoordinate(_Left) *= _Right; }
+xcoordinate operator/(const xcoordinate& _Left, const xcoordinate& _Right) { return xcoordinate(_Left) /= _Right; }
+xcoordinate operator*(const std::int32_t& _Left, const xcoordinate& _Right) { return xcoordinate(_Right) *= _Left; }
+xcoordinate operator*(const xcoordinate>& _Left, const std::int32_t& _Right) { return xcoordinate(_Left) *= _Right; }
+xcoordinate operator*(const xcoordinate& _Left, const std::int32_t& _Right) { return xcoordinate(_Left) *= _Right; }
+    
 } /* namespace my */
 
 
