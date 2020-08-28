@@ -11,7 +11,7 @@ void _My_map_parallel()
     std::int32_t _Priority = 100000;
     my::xobject *_Ptr = nullptr;
 
-    for (aoto &_Elem : my::xobject_manager::instance().xobjects())
+    for (auto &_Elem : my::xobject_manager::instance().xobjects())
     {
         my::xobject *_Tmp = _Elem.second.get();
         if (_Priority > _Tmp->priority() )
@@ -25,7 +25,7 @@ void _My_map_parallel()
     // >>>>> 방안1: 병렬 처리
     #pragma omp parallel
     {
-        for (aoto &_Elem : my::xobject_manager::instance().xobjects())
+        for (auto &_Elem : my::xobject_manager::instance().xobjects())
         {
             #pragma single nowait
             {
