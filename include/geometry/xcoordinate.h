@@ -32,7 +32,7 @@ public:
     }
     ~xcoordinate() 
     {
-        std::cout << "~xcoordinate" << std::endl;
+        // std::cout << "~xcoordinate" << std::endl;
     }
     
     std::int32_t x() { return this->_Myx; }
