@@ -27,7 +27,7 @@ void _My_map_parallel()
     
     // >>>>> 방안1: 병렬 처리
     std::int32_t _Size = my::xobject_manager::instance().xobjects().size();
-    #pragma omp parallel for
+    #pragma omp parallel for schedule(static)
     for (std::int32_t _Num=0; _Num<_Size; _Num++)
     {
         auto _Iter =  my::xobject_manager::instance().xobjects().begin();
@@ -56,7 +56,7 @@ void _My_vector_parallel( my::xobject *_Ptr )
 
     // >>>>> 방안1: 병렬 처리
     std::int32_t _Size = _Ptr->submodels().size();
-    #pragma omp parallel for
+    #pragma omp parallel for schedule(static)
     for (std::int32_t _Num=0; _Num<_Size; _Num++)
     {
         auto _Iter =  _Ptr->submodels().begin();
