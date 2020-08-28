@@ -55,9 +55,11 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
         // MISRA_CPP_07_05_04 함수의 직, 간접적 재귀호출은 사용 금지 
         my::xobject_manager::instance().assign_priority_number(_Pptr);
 
-        // std::map 병렬처리 테스트
+        // >>>>> std::map, std::vector 병렬처리 테스트
         // _My_map_parallel();
+        // _My_vector_parallel( _Pptr );
         
+        return 1;
     }
  
     { // MISRA_CPP_05_02_03 상위(base) 클래스를 하위(derived)클래스로 변환하는 것은 다형(polymorphic) 타입 간에 이루어져서는 안됨
