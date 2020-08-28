@@ -23,23 +23,7 @@ void _My_map_parallel()
     std::cout << "#1 " << _Ptr->key() << " "<< _Priority << std::endl;  
 
     // >>>>> 방안1: 병렬 처리
-    #pragma omp parallel
-    {
-        for (auto &_Elem : my::xobject_manager::instance().xobjects())
-        {
-            #pragma single nowait
-            {
-                my::xobject *_Tmp = _Elem.second.get();
-                if (_Priority > _Tmp->priority() )
-                {
-                    _Ptr = _Tmp;
-                    _Priority = _Tmp->priority();
-                }                
-            }
-        }
-        std::cout << "#2 " << _Ptr->key() << " "<< _Priority << std::endl;        
-    }
-    
+
 }
 
 void _My_vector_parallel()
