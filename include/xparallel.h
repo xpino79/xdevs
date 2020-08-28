@@ -33,7 +33,7 @@ void _My_map_parallel()
         auto _Iter =  my::xobject_manager::instance().xobjects().begin();
         std::advance( _Iter, _Num);
         
-        #pragma omp critical(name)
+        #pragma omp critical
         {
             my::xobject *_Tmp = _Iter->second.get();
             if (_Priority > _Tmp->priority() )
