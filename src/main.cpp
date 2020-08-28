@@ -53,12 +53,12 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
         
         // MISRA_CPP_07_05_04 함수의 직, 간접적 재귀호출은 사용 금지 
         my::xobject_manager::instance().assign_priority_number(_Pptr);
-        
+                
+        // >>>>> 병렬 처리 속도 테스트 
+        /*
         std::int32_t _Priority = 100000;
         my::xobject *_Vptr = nullptr;
         
-        // >>>>> 병렬 처리 속도 테스트 
-        /*
         #pragma omp parallel for
         for (auto _Iter = _Pptr->submodels().begin(); _Iter != _Pptr->submodels().end(); ++_Iter )
         {
