@@ -23,6 +23,22 @@ void _My_map_parallel()
     std::cout << "#1 " << _Ptr->key() << " "<< _Priority << std::endl;  
 
     // >>>>> 방안1: 병렬 처리
+    std::int32_t _Size = my::xobject_manager::instance().xobjects().size();
+    #pragma omp parallel for
+    for (std::int32_t _Num=0; _Num<_Size; _Num++)
+    {
+        auto _Iter =  my::xobject_manager::instance().xobjects().begin();
+        std::advance( _Iter, _Num);
+
+        my::xobject *_Tmp = _Iter->second.get();
+        if (_Priority > _Tmp->priority() )
+        {
+            _Ptr = _Tmp;
+            _Priority = _Tmp->priority();
+        }
+
+    }
+    std::cout << "#2 " << _Ptr->key() << " "<< _Priority << std::endl;
 
 }
 
