@@ -5,6 +5,7 @@
 #include <string>
 #include <map>
 #include <list>
+#include <vector>
 #include <algorithm>
 #include <omp.h> // 병렬 
 
