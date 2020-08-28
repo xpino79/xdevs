@@ -14,10 +14,11 @@
 #include "../include/xgrid_manager.h"
 #include "../include/utility/xpointer_cast.hpp"
 #include "../include/geometry/xmulti_polygon.h"
+#include "../include/xparallel.h"
 
 std::int32_t main(std::int32_t argc, std::char_t *argv[])
 {
-    // if(false)
+ 
     {
         // within_grid 테스트
         std::int32_t _Interval_xy = 10000;
@@ -39,7 +40,7 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
 
         my::xgrid_manager::instance().erase_ground_data(3, _Left_bottom_x, _Left_bottom_y);
         my::xgrid_manager::instance().push_ground_data(2, _Left_bottom_x, _Left_bottom_y);
-        return 1;
+        // return 1;
     }
     { 
         // MISRA_CPP_18_04_01 동적 힙 메모리 할당은 사용하면 안됨
@@ -54,23 +55,9 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
         // MISRA_CPP_07_05_04 함수의 직, 간접적 재귀호출은 사용 금지 
         my::xobject_manager::instance().assign_priority_number(_Pptr);
 
-        std::vector<std::int32_t>::const_iterator _Iter;
-        std::int32_t _Priority = 100000;
-        my::xobject *_Vptr = nullptr;
+        // std::map 병렬처리 테스트
+        _My_map_parallel();
         
-        // >>>>> 병렬 처리 방법 ?
-        // #pragma omp parallel for
-        for (_Iter = _Pptr->submodels().begin(); _Iter != _Pptr->submodels().end(); ++_Iter )
-        {
-            my::xobject *_Tmp = my::xobject_manager::instance().find(*_Iter);
-            if (nullptr == _Tmp) { std::cout << "#0 " << std::endl; continue; }
-            if (_Priority > _Tmp->priority() )
-            {
-                _Vptr = _Tmp;
-                _Priority = _Tmp->priority();
-            }
-        }
-        std::cout << "#1 " << _Vptr->key() << " "<< _Priority << std::endl;
     }
  
     { // MISRA_CPP_05_02_03 상위(base) 클래스를 하위(derived)클래스로 변환하는 것은 다형(polymorphic) 타입 간에 이루어져서는 안됨
