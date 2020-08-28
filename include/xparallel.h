@@ -32,14 +32,16 @@ void _My_map_parallel()
     {
         auto _Iter =  my::xobject_manager::instance().xobjects().begin();
         std::advance( _Iter, _Num);
-
-        my::xobject *_Tmp = _Iter->second.get();
-        if (_Priority > _Tmp->priority() )
+        
+        #pragma omp critical(name)
         {
-            _Ptr = _Tmp;
-            _Priority = _Tmp->priority();
+            my::xobject *_Tmp = _Iter->second.get();
+            if (_Priority > _Tmp->priority() )
+            {
+                _Ptr = _Tmp;
+                _Priority = _Tmp->priority();
+            }
         }
-
     }
     std::cout << "#2 " << _Ptr->key() << " "<< _Priority << std::endl;
 
