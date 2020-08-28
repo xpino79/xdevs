@@ -6,6 +6,8 @@
 #include <omp.h> // 병렬
 #include "xobject_manager.h"
 
+// https://www.samsungsds.com/global/ko/news/story/1203227_2919.html
+
 void _My_map_parallel()
 {
     std::int32_t _Priority = 100000;
