@@ -8,6 +8,7 @@
 #include <memory>
 #include <mutex>
 #include <vector>
+#include <set>
 #include <cmath>
 #include <omp.h> // 병렬 
 
@@ -28,6 +29,7 @@ private:
     std::int32_t _Myx; 
     std::int32_t _Myy; 
     std::vector<std::vector<std::unique_ptr<xtopography>>> _Mytopography;
+    std::map<std::int32_t, std::set<std::int32_t>> _Mydata;
  
 public:
     xgrid()
@@ -56,6 +58,20 @@ public:
             }
         }
     }
+
+    void push_data(std::int32_t _Type, std::int32_t _Handle)
+    {
+        std::set<std::int32_t> _Handles{_Handle};
+
+        std::map<std::int32_t, std::set<std::int32_t>>::iterator _It;
+        bool _Continue = false;
+
+        std::tie(_It, _Continue) = _Mydata.insert(std::make_pair(_Type, _Handles));
+        if(!(_Continue))
+        {
+            _It->second.insert(_Handle);
+        }
+    }
 };
 
 class xgrid_container
@@ -64,7 +80,7 @@ private:
     std::unique_ptr<xcoordinate> _Myleft_bottom; 
     std::unique_ptr<xcoordinate> _Myright_top; 
 
-    std::vector<std::vector<std::unique_ptr<xgrid>>> _Mygrid; 
+    std::vector<std::vector<std::unique_ptr<xgrid>>> _Mygrid;
     std::int32_t _Myinterval_xy; 
     std::int32_t _Mymaximum_x; 
     std::int32_t _Mymaximum_y; 
@@ -190,6 +206,15 @@ public:
             
         }
         return _Val;
+    }
+
+    void push_grid_data(std::int32_t _Type, std::int32_t _Handle, std::int32_t _Pos_x, std::int32_t _Pos_y)
+    {
+        xgrid *_Ptr = find_grid(_Pos_x, _Pos_y);
+        if(nullptr != _Ptr)
+        {
+            _Ptr->push_data(_Type, _Handle);
+        }
     }
 };
 
