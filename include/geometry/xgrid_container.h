@@ -66,8 +66,8 @@ private:
 
     std::vector<std::vector<std::unique_ptr<xgrid>>> _Mygrid; 
     std::int32_t _Myinterval_xy; 
-    std::int32_t _Mymaximum_cols; 
-    std::int32_t _Mymaximum_rows; 
+    std::int32_t _Mymaximum_x; 
+    std::int32_t _Mymaximum_y; 
     
 public:
     xgrid_container()
@@ -76,8 +76,8 @@ public:
         _Myright_top = std::make_unique<xcoordinate>();
         
         _Myinterval_xy = 0;
-        _Mymaximum_cols = 0;
-        _Mymaximum_rows = 0;
+        _Mymaximum_x = 0;
+        _Mymaximum_y = 0;
     }
     
     ~xgrid_container()
@@ -96,26 +96,26 @@ public:
         _Myright_top->set_x(_Right_top_x);
         _Myright_top->set_y(_Right_top_y);
         
-        _Mymaximum_cols = ((_Right_top_x - _Left_bottom_x) / _Interval_xy) + 1;
-        _Mymaximum_rows = ((_Right_top_y - _Left_bottom_y) / _Interval_xy) + 1;
+        _Mymaximum_x = ((_Right_top_x - _Left_bottom_x) / _Interval_xy) + 1;
+        _Mymaximum_y = ((_Right_top_y - _Left_bottom_y) / _Interval_xy) + 1;
         
         _Mygrid.clear();
-        _Mygrid.resize(_Mymaximum_cols);
+        _Mygrid.resize(_Mymaximum_x);
  
         // >>>>> 병력 처리 속도 테스트
         #pragma omp parallel for num_threads(4)
-        for (std::int32_t _Idx_x = 0; _Idx_x < _Mymaximum_cols; ++_Idx_x)
+        for (std::int32_t _Idx_x = 0; _Idx_x < _Mymaximum_x; ++_Idx_x)
         {
             std::cout << "#병렬처리 " << _Idx_x << std::endl;
-            _Mygrid[_Idx_x].resize(_Mymaximum_rows);
-            for (std::int32_t _Idx_y = 0; _Idx_y < _Mymaximum_rows; ++_Idx_y)
+            _Mygrid[_Idx_x].resize(_Mymaximum_y);
+            for (std::int32_t _Idx_y = 0; _Idx_y < _Mymaximum_y; ++_Idx_y)
             {
                 _Mygrid[_Idx_x][_Idx_y] = std::make_unique<xgrid>();
                 _Mygrid[_Idx_x][_Idx_y]->set_x(_Idx_x);
                 _Mygrid[_Idx_x][_Idx_y]->set_y(_Idx_y);
 
-                if ((0 <= _Idx_x) && (_Idx_x < _Mymaximum_rows) &&
-                    (0 <= _Idx_y) && (_Idx_y < _Mymaximum_rows))
+                if ((0 <= _Idx_x) && (_Idx_x < _Mymaximum_x) &&
+                    (0 <= _Idx_y) && (_Idx_y < _Mymaximum_y))
                 {
                     _Mygrid[_Idx_x][_Idx_y]->set_topography(20, 20);
                 }
@@ -172,8 +172,8 @@ public:
             {
                 std::int32_t _Begin_x = std::max(_Off->x()-_Interval, 0);
                 std::int32_t _Begin_y = std::max(_Off->y()-_Interval, 0);
-                std::int32_t _End_x = std::min(_Off->x()+_Interval, _Mymaximum_rows-1);
-                std::int32_t _End_y = std::min(_Off->y()+_Interval, _Mymaximum_cols-1);
+                std::int32_t _End_x = std::min(_Off->x()+_Interval, _Mymaximum_x-1);
+                std::int32_t _End_y = std::min(_Off->y()+_Interval, _Mymaximum_y-1);
  
                 for (auto _Idx_y = _Begin_y; _Idx_y <= _End_y; ++_Idx_y)
                 {
