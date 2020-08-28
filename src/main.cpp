@@ -32,6 +32,12 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
         std::ignore = _Right_top_y;
 
         my::xgrid_manager::instance().within_grid(_Left_bottom_x + 10000, _Left_bottom_y, 10000);
+
+        my::xgrid_manager::instance().push_ground_data(1, _Left_bottom_x, _Left_bottom_y);
+        my::xgrid_manager::instance().push_ground_data(2, _Left_bottom_x, _Left_bottom_y);
+
+        my::xgrid_manager::instance().erase_ground_data(3, _Left_bottom_x, _Left_bottom_y);
+        my::xgrid_manager::instance().push_ground_data(2, _Left_bottom_x, _Left_bottom_y);
         return 1;
     }
     { 

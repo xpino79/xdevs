@@ -8,6 +8,7 @@
 #include <memory>
 #include <mutex>
 #include <vector>
+#include <map>
 #include <set>
 #include <cmath>
 #include <omp.h> // 병렬 
@@ -64,12 +65,29 @@ public:
         std::set<std::int32_t> _Handles{_Handle};
 
         std::map<std::int32_t, std::set<std::int32_t>>::iterator _It;
-        bool _Continue = false;
+        bool _Success;
 
-        std::tie(_It, _Continue) = _Mydata.insert(std::make_pair(_Type, _Handles));
-        if(!(_Continue))
+        std::tie(_It, _Success) = _Mydata.insert(std::make_pair(_Type, _Handles));
+        if(!(_Success))
         {
-            _It->second.insert(_Handle);
+            std::tie(std::ignore, _Success) = _It->second.insert(_Handle);
+            if(!(_Success))
+            {
+                /* insert 실패 */
+            }
+        }
+    }
+    
+    void erase_data(std::int32_t _Type, std::int32_t _Handle)
+    {
+        auto _It = _Mydata.find(_Type);
+        if(_It != _Mydata.end())
+        {
+            auto _Erase_size = _It->second.erase(_Handle);
+            if(0 == _Erase_size)
+            {
+                /* 삭제 실패 */
+            } 
         }
     }
 };
@@ -208,12 +226,21 @@ public:
         return _Val;
     }
 
-    void push_grid_data(std::int32_t _Type, std::int32_t _Handle, std::int32_t _Pos_x, std::int32_t _Pos_y)
+    void push_griddata(std::int32_t _Type, std::int32_t _Handle, std::int32_t _Pos_x, std::int32_t _Pos_y)
     {
         xgrid *_Ptr = find_grid(_Pos_x, _Pos_y);
         if(nullptr != _Ptr)
         {
             _Ptr->push_data(_Type, _Handle);
+        }
+    }
+    
+    void erase_griddata(std::int32_t _Type, std::int32_t _Handle, std::int32_t _Pos_x, std::int32_t _Pos_y)
+    {
+        xgrid *_Ptr = find_grid(_Pos_x, _Pos_y);
+        if(nullptr != _Ptr)
+        {
+            _Ptr->erase_data(_Type, _Handle);
         }
     }
 };

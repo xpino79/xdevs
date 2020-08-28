@@ -57,7 +57,7 @@ public:
     void push_ground_data(std::int32_t _Handle, std::int32_t _Pos_x, std::int32_t _Pos_y)
     {
         // 방안1. 구현 <객체구분자, 객체식별자, 위치X, 위치Y>
-        // _Mygrid_container->push_griddata(1, _Handle, _Pos_x, _Pos_y);
+        _Mygrid_container->push_griddata(1, _Handle, _Pos_x, _Pos_y);
         
         // 방안2. 구현 <객체구분자, 객체식별자>
         // xgrid *_Ptr = _Mygrid_container->find_grid(_Pos_x, _Pos_y);
@@ -66,7 +66,7 @@ public:
     void erase_ground_data(std::int32_t _Handle, std::int32_t _Pos_x, std::int32_t _Pos_y)
     {
         // 방안1. 구현 <객체구분자, 객체식별자, 위치X, 위치Y>
-        // _Mygrid_container->erase_griddata(1, _Handle, _Pos_x, _Pos_y);
+        _Mygrid_container->erase_griddata(1, _Handle, _Pos_x, _Pos_y);
         
         // 방안2. 구현 <객체구분자, 객체식별자>
         // xgrid *_Ptr = _Mygrid_container->find_grid(_Pos_x, _Pos_y);
