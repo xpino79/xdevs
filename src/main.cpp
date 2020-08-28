@@ -57,6 +57,7 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
         my::xobject *_Vptr = nullptr;
         
         // >>>>> 병렬 처리 속도 테스트 
+        /*
         #pragma omp parallel for
         for (auto _Iter = _Pptr->submodels().begin(); _Iter != _Pptr->submodels().end(); ++_Iter )
         {
@@ -67,7 +68,8 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
                 _Priority = _Tmp->priority();
             }
         }
-        std::cout << "#1 "<< _Vptr->key() << ", " << _Priority << std::endl;        
+        std::cout << "#1 "<< _Vptr->key() << ", " << _Priority << std::endl;
+        */
     }
  
     { // MISRA_CPP_05_02_03 상위(base) 클래스를 하위(derived)클래스로 변환하는 것은 다형(polymorphic) 타입 간에 이루어져서는 안됨
