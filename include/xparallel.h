@@ -7,6 +7,7 @@
 #include "xobject_manager.h"
 
 // https://www.samsungsds.com/global/ko/news/story/1203227_2919.html
+// OpenMP 병렬 프로그래밍 : 멀티 코어를 위한 C, C++ 멀티스레딩의 표준
 
 void _My_map_parallel()
 {
