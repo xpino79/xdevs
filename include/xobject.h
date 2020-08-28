@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include <memory>
-#include <list>
+#include <vector>
 #include "xtypedefs.h"
 
 namespace my
@@ -18,7 +18,7 @@ class xobject
 private:
     int32_t _Mykey = 0;
     int32_t _Mypriority = 0;
-    std::list<std::int32_t> _Mysubmodels; ///< 하위 모델 목록
+    std::vector<std::int32_t> _Mysubmodels; ///< 하위 모델 목록
     
 public:
     xobject() = default;
@@ -34,7 +34,7 @@ public:
     std::int32_t priority() const;
     void set_priority( std::int32_t _Priority );
     
-    const std::list<std::int32_t>& submodels() { return _Mysubmodels;}
+    const std::vector<std::int32_t>& submodels() { return _Mysubmodels;}
     void insert_submodel( std::int32_t _Key ) { _Mysubmodels.push_back(_Key); }
     
     // MISRA_CPP_10_03_01 상속 계층을 따라 각 virtual function 정이는 하나씩만 존재해야 함.
