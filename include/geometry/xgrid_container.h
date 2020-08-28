@@ -137,7 +137,7 @@ public:
         _Mygrid.resize(_Mymaximum_x);
  
         // >>>>> 병력 처리 속도 테스트 , https://pages.tacc.utexas.edu/~eijkhout/pcse/html/omp-loop.html
-        #pragma omp parallel for
+        #pragma omp parallel for schedule(static)
         for (std::int32_t _Idx_x = 0; _Idx_x < _Mymaximum_x; ++_Idx_x)
         {
             // std::cout << "#병렬처리 " << _Idx_x << std::endl;
@@ -209,6 +209,8 @@ public:
                 std::int32_t _End_x = std::min(_Off->x()+_Interval, _Mymaximum_x-1);
                 std::int32_t _End_y = std::min(_Off->y()+_Interval, _Mymaximum_y-1);
  
+                // >>>>> 병렬 테스트
+                #pragma omp parallel for schedule(static) collapse(2)
                 for (auto _Idx_y = _Begin_y; _Idx_y <= _End_y; ++_Idx_y)
                 {
                     for (auto _Idx_x = _Begin_x; _Idx_x <= _End_x; ++_Idx_x)
