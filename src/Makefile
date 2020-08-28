@@ -32,4 +32,3 @@ $(MY_BUILD_PATH)/$(MY_TARGET): $(OFILES)
 
 clean:
 	rm -f *.o
-
