@@ -22,6 +22,9 @@ void _My_map_parallel()
     }
     std::cout << "#1 " << _Ptr->key() << " "<< _Priority << std::endl;  
 
+    _Priority = 100000;
+    _Ptr = nullptr;
+    
     // >>>>> 방안1: 병렬 처리
     std::int32_t _Size = my::xobject_manager::instance().xobjects().size();
     #pragma omp parallel for
