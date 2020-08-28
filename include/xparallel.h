@@ -42,10 +42,27 @@ void _My_map_parallel()
 
 }
 
-void _My_vector_parallel()
+
+void _My_vector_parallel( my::xobject *_Ptr )
 {
-  
+
+    for (auto &_Elem : _Ptr->submodels())
+    {
+        std::cout << "#3 " << _Elem << std::endl;
+    }
+
+    // >>>>> 방안1: 병렬 처리
+    std::int32_t _Size = _Ptr->submodels().size();
+    #pragma omp parallel for
+    for (std::int32_t _Num=0; _Num<_Size; _Num++)
+    {
+        auto _Iter =  _Ptr->submodels().begin();
+        std::advance( _Iter, _Num);
+        std::cout << "#4 " << *_Iter << std::endl;
+    }
+
 }
+
   
 
 
