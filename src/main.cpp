@@ -6,7 +6,7 @@
 #include <map>
 #include <list>
 #include <algorithm>
-
+#include <omp.h> // 병렬 
 
 // MISRA_CPP_03_09_02 기본 숫자 타입 대신 크기와 부호를 나타내는 typedef를 사용해야 함
 #include "../include/xobject_manager.h"
@@ -38,13 +38,13 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
 
         my::xgrid_manager::instance().erase_ground_data(3, _Left_bottom_x, _Left_bottom_y);
         my::xgrid_manager::instance().push_ground_data(2, _Left_bottom_x, _Left_bottom_y);
-        return 1;
+        // return 1;
     }
     { 
         // MISRA_CPP_18_04_01 동적 힙 메모리 할당은 사용하면 안됨
         my::xobject *_Pptr = my::xobject_manager::instance().insert(std::make_unique<my::xmaneuver>());
         
-        for (int i=0; i<10; ++i)
+        for (int i=0; i<100000; ++i)
         {
             my::xobject *_Ptr = my::xobject_manager::instance().insert(std::make_unique<my::xmaneuver>());
             _Pptr->insert_submodel( _Ptr->key() );
@@ -52,6 +52,22 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
         
         // MISRA_CPP_07_05_04 함수의 직, 간접적 재귀호출은 사용 금지 
         my::xobject_manager::instance().assign_priority_number(_Pptr);
+        
+        std::int32_t _Priority = 100000;
+        my::xobject *_Vptr = nullptr;
+        
+        // >>>>> 병렬 처리 속도 테스트 
+        #pragma omp parallel for
+        for (auto _Iter = _Pptr->submodels().begin(); _Iter != _Pptr->submodels().end(); ++_Iter )
+        {
+            my::xobject *_Tmp = my::xobject_manager::instance().find(*_Iter);
+            if (_Priority > _Tmp->priority() )
+            {
+                _Vptr = _Tmp;
+                _Priority = _Tmp->priority();
+            }
+        }
+        std::cout << "#1 "<< _Vptr->key() << ", " _Priority << std::endl;        
     }
  
     { // MISRA_CPP_05_02_03 상위(base) 클래스를 하위(derived)클래스로 변환하는 것은 다형(polymorphic) 타입 간에 이루어져서는 안됨
