@@ -24,7 +24,7 @@ public:
     xobject() = default;
     virtual ~xobject() 
     { 
-        std::cout << ">>>>> xobject::~xobject " << std::endl;
+        // std::cout << ">>>>> xobject::~xobject " << std::endl;
     }
 
     
@@ -60,7 +60,7 @@ public:
     xground() = default;
     virtual ~xground() 
     { 
-        std::cout << ">>>>> xground::~xground " << std::endl;
+        // std::cout << ">>>>> xground::~xground " << std::endl;
     }
     
     virtual std::string name() const final;
@@ -76,7 +76,7 @@ public:
     xmaneuver() = default;
     virtual ~xmaneuver() 
     { 
-        std::cout << ">>>>> xmaneuver::~xmaneuver " << std::endl;
+        // std::cout << ">>>>> xmaneuver::~xmaneuver " << std::endl;
     }
     
     virtual void refresh() final;
@@ -89,7 +89,7 @@ public:
     xsupport() = default;
     virtual ~xsupport() 
     { 
-        std::cout << ">>>>> xsupport::~xsupport " << std::endl;
+        // std::cout << ">>>>> xsupport::~xsupport " << std::endl;
     }
     
     virtual void refresh() final;
