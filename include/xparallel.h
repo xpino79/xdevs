@@ -56,9 +56,29 @@ void _My_map_parallel()
             }
         }
     }
-    std::cout << "#2 " << _Priority << std::endl;
+    std::cout << "#1-1 " << _Priority << std::endl;
     _Tend = omp_get_wtime() - _Tbegin;
-    printf( "#2 %d threads took %fs\n", omp_get_max_threads(), _Tend );
+    printf( "#1-1 %d threads took %fs\n", omp_get_max_threads(), _Tend );
+    
+    // >>>>> 방안2: 병렬 처리
+    _Tbegin = omp_get_wtime();
+    auto _Iter =  my::xobject_manager::instance().xobjects().begin();
+    for (std::int32_t _Num=0; _Num<_Size; _Num++)
+    {
+        my::xobject *_Tmp = _Iter->second.get();
+        #pragma omp critical
+        {
+            if (_Priority > _Tmp->priority() )
+            {
+                _Ptr = _Tmp;
+                _Priority = _Tmp->priority();
+            }
+            ++_Iter;
+        }
+    }
+    std::cout << "#1-2 " << _Priority << std::endl;
+    _Tend = omp_get_wtime() - _Tbegin;
+    printf( "#1-2 %d threads took %fs\n", omp_get_max_threads(), _Tend );
     
 }
 
@@ -71,10 +91,10 @@ void _My_vector_parallel( my::xobject *_Ptr )
     _Tbegin = omp_get_wtime();
     for (auto &_Elem : _Ptr->submodels())
     {
-        std::cout << "#3 " << _Elem << std::endl;
+        std::cout << "#2 " << _Elem << std::endl;
     }
     _Tend = omp_get_wtime() - _Tbegin;
-    printf( "#3 %d threads took %fs\n", 1, _Tend );
+    printf( "#2 %d threads took %fs\n", 1, _Tend );
     
     // >>>>> 방안1: 병렬 처리
     _Tbegin = omp_get_wtime();
@@ -86,10 +106,10 @@ void _My_vector_parallel( my::xobject *_Ptr )
         std::advance( _Iter, _Num);
         
         #pragma omp atomic
-        std::cout << "#4 " << *_Iter << std::endl;
+        std::cout << "#2-1 " << *_Iter << std::endl;
     }
     _Tend = omp_get_wtime() - _Tbegin;
-    printf( "#4 %d threads took %fs\n", omp_get_max_threads(), _Tend );
+    printf( "#2-1 %d threads took %fs\n", omp_get_max_threads(), _Tend );
     
 }
 
