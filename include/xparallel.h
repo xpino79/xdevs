@@ -6,6 +6,7 @@
 #include <omp.h> // 병렬
 #include "xobject_manager.h"
 
+// https://github.com/jeonggunlee/Parallel_Programming_2018_Fall
 // https://www.ibm.com/support/knowledgecenter/en/SSXVZZ_16.1.1/com.ibm.xlcpp1611.lelinux.doc/compiler_ref/prag_omp_dis_psimd.html
 // https://github.com/TApplencourt/OvO/blob/master/test_src/cpp/hierarchical_parallelism
 // https://www.samsungsds.com/global/ko/news/story/1203227_2919.html
