@@ -30,7 +30,8 @@ void _My_map_parallel()
         }
     }
     std::cout << "#1 " << _Ptr->key() << " "<< _Priority << std::endl;  
-    _End = omp_get_wtime() - tbegin;
+    
+    _End = omp_get_wtime() - _Begin;
     printf( " %d threads took %fs\n", omp_get_max_threads(), _End );
 
     _Begin = 0.0;
@@ -58,7 +59,8 @@ void _My_map_parallel()
         }
     }
     std::cout << "#2 " << _Ptr->key() << " "<< _Priority << std::endl;
-    _End = omp_get_wtime() - tbegin;
+    
+    _End = omp_get_wtime() - _Begin;
     printf( " %d threads took %fs\n", omp_get_max_threads(), _End );
     
 }
