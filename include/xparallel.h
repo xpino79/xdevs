@@ -6,6 +6,7 @@
 #include <omp.h> // 병렬
 #include "xobject_manager.h"
 
+// https://github.com/TApplencourt/OvO/blob/master/test_src/cpp/hierarchical_parallelism
 // https://www.samsungsds.com/global/ko/news/story/1203227_2919.html
 // OpenMP 병렬 프로그래밍 : 멀티 코어를 위한 C, C++ 멀티스레딩의 표준
 
