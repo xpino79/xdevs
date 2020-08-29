@@ -83,6 +83,8 @@ void _My_vector_parallel( my::xobject *_Ptr )
     {
         auto _Iter =  _Ptr->submodels().begin();
         std::advance( _Iter, _Num);
+        
+        #pragma omp atomic
         std::cout << "#4 " << *_Iter << std::endl;
     }
     _Tend = omp_get_wtime() - _Tbegin;
