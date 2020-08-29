@@ -13,9 +13,13 @@
 
 void _My_map_parallel()
 {
+    double _Begin = 0.0;
+    double _End = 0.0;
+    
     std::int32_t _Priority = 100000;
     my::xobject *_Ptr = nullptr;
 
+    _Begin = omp_get_wtime();
     for (auto &_Elem : my::xobject_manager::instance().xobjects())
     {
         my::xobject *_Tmp = _Elem.second.get();
@@ -26,10 +30,15 @@ void _My_map_parallel()
         }
     }
     std::cout << "#1 " << _Ptr->key() << " "<< _Priority << std::endl;  
+    _End = omp_get_wtime() - tbegin;
+    printf( " %d threads took %fs\n", omp_get_max_threads(), _End );
 
+    _Begin = 0.0;
+    _End = 0.0;
     _Priority = 100000;
     _Ptr = nullptr;
     
+    _Begin = omp_get_wtime();
     // >>>>> 방안1: 병렬 처리
     std::int32_t _Size = my::xobject_manager::instance().xobjects().size();
     #pragma omp parallel for schedule(auto)
@@ -49,7 +58,9 @@ void _My_map_parallel()
         }
     }
     std::cout << "#2 " << _Ptr->key() << " "<< _Priority << std::endl;
-
+    _End = omp_get_wtime() - tbegin;
+    printf( " %d threads took %fs\n", omp_get_max_threads(), _End );
+    
 }
 
 
