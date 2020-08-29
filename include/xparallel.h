@@ -13,13 +13,13 @@
 
 void _My_map_parallel()
 {
-    double _Begin = 0.0;
-    double _End = 0.0;
+    double _Tbegin = 0.0;
+    double _Tend = 0.0;
     
     std::int32_t _Priority = 100000;
     my::xobject *_Ptr = nullptr;
 
-    _Begin = omp_get_wtime();
+    _Tbegin = omp_get_wtime();
     for (auto &_Elem : my::xobject_manager::instance().xobjects())
     {
         my::xobject *_Tmp = _Elem.second.get();
@@ -30,14 +30,14 @@ void _My_map_parallel()
         }
     }
     std::cout << "#1 " << _Priority << std::endl;
-    _End = omp_get_wtime() - _Begin;
-    printf( "#1 %d threads took %fs\n", 1, _End );
+    _Tend = omp_get_wtime() - _Tbegin;
+    printf( "#1 %d threads took %fs\n", 1, _Tend );
  
     _Priority = 100000;
     _Ptr = nullptr;
     
     // >>>>> 방안1: 병렬 처리
-    _Begin = omp_get_wtime();
+    _Tbegin = omp_get_wtime();
     std::int32_t _Size = my::xobject_manager::instance().xobjects().size();
     #pragma omp parallel for schedule(dynamic)
     for (std::int32_t _Num=0; _Num<_Size; _Num++)
@@ -56,27 +56,27 @@ void _My_map_parallel()
         }
     }
     std::cout << "#2 " << _Priority << std::endl;
-    _End = omp_get_wtime() - _Begin;
-    printf( "#2 %d threads took %fs\n", omp_get_max_threads(), _End );
+    _Tend = omp_get_wtime() - _Tbegin;
+    printf( "#2 %d threads took %fs\n", omp_get_max_threads(), _Tend );
     
 }
 
 
 void _My_vector_parallel( my::xobject *_Ptr )
 {
-    double _Begin = 0.0;
-    double _End = 0.0;
+    double _Tbegin = 0.0;
+    double _Tend = 0.0;
     
-    _Begin = omp_get_wtime();
+    _Tbegin = omp_get_wtime();
     for (auto &_Elem : _Ptr->submodels())
     {
         std::cout << "#3 " << _Elem << std::endl;
     }
-    _End = omp_get_wtime() - _Begin;
-    printf( "#3 %d threads took %fs\n", 1, _End );
+    _Tend = omp_get_wtime() - _Tbegin;
+    printf( "#3 %d threads took %fs\n", 1, _Tend );
     
     // >>>>> 방안1: 병렬 처리
-    _Begin = omp_get_wtime();
+    _Tbegin = omp_get_wtime();
     std::int32_t _Size = _Ptr->submodels().size();
     #pragma omp parallel for schedule(dynamic)
     for (std::int32_t _Num=0; _Num<_Size; _Num++)
@@ -85,8 +85,8 @@ void _My_vector_parallel( my::xobject *_Ptr )
         std::advance( _Iter, _Num);
         std::cout << "#4 " << *_Iter << std::endl;
     }
-    _End = omp_get_wtime() - _Begin;
-    printf( "#4 %d threads took %fs\n", omp_get_max_threads(), _End );
+    _Tend = omp_get_wtime() - _Tbegin;
+    printf( "#4 %d threads took %fs\n", omp_get_max_threads(), _Tend );
     
 }
 
