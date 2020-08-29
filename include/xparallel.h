@@ -29,20 +29,17 @@ void _My_map_parallel()
             _Priority = _Tmp->priority();
         }
     }
-    std::cout << "#1 " << _Ptr->key() << " "<< _Priority << std::endl;  
-    
+    std::cout << "#1 " << _Priority << std::endl;
     _End = omp_get_wtime() - _Begin;
-    printf( " %d threads took %fs\n", omp_get_max_threads(), _End );
-
-    _Begin = 0.0;
-    _End = 0.0;
+    printf( "#1 %d threads took %fs\n", 1, _End );
+ 
     _Priority = 100000;
     _Ptr = nullptr;
     
-    _Begin = omp_get_wtime();
     // >>>>> 방안1: 병렬 처리
+    _Begin = omp_get_wtime();
     std::int32_t _Size = my::xobject_manager::instance().xobjects().size();
-    #pragma omp parallel for schedule(auto)
+    #pragma omp parallel for schedule(dynamic)
     for (std::int32_t _Num=0; _Num<_Size; _Num++)
     {
         auto _Iter =  my::xobject_manager::instance().xobjects().begin();
@@ -58,35 +55,39 @@ void _My_map_parallel()
             }
         }
     }
-    std::cout << "#2 " << _Ptr->key() << " "<< _Priority << std::endl;
-    
+    std::cout << "#2 " << _Priority << std::endl;
     _End = omp_get_wtime() - _Begin;
-    printf( " %d threads took %fs\n", omp_get_max_threads(), _End );
+    printf( "#2 %d threads took %fs\n", omp_get_max_threads(), _End );
     
 }
 
 
 void _My_vector_parallel( my::xobject *_Ptr )
 {
-
+    double _Begin = 0.0;
+    double _End = 0.0;
+    
+    _Begin = omp_get_wtime();
     for (auto &_Elem : _Ptr->submodels())
     {
         std::cout << "#3 " << _Elem << std::endl;
     }
-
+    _End = omp_get_wtime() - _Begin;
+    printf( "#3 %d threads took %fs\n", 1, _End );
+    
     // >>>>> 방안1: 병렬 처리
+    _Begin = omp_get_wtime();
     std::int32_t _Size = _Ptr->submodels().size();
-    #pragma omp parallel for schedule(auto)
+    #pragma omp parallel for schedule(dynamic)
     for (std::int32_t _Num=0; _Num<_Size; _Num++)
     {
         auto _Iter =  _Ptr->submodels().begin();
         std::advance( _Iter, _Num);
         std::cout << "#4 " << *_Iter << std::endl;
     }
-
+    _End = omp_get_wtime() - _Begin;
+    printf( "#4 %d threads took %fs\n", omp_get_max_threads(), _End );
+    
 }
-
-  
-
 
 #endif /* XPARALLEL_H_ */
