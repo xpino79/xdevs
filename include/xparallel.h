@@ -60,28 +60,7 @@ void _My_map_parallel()
     std::cout << "#1-1 " << _Priority << std::endl;
     _Tend = omp_get_wtime() - _Tbegin;
     printf( "#1-1 %d threads took %fs\n", omp_get_max_threads(), _Tend );
-    
-    // >>>>> 방안2: 병렬 처리
-    _Tbegin = omp_get_wtime();
-    auto _Iter =  my::xobject_manager::instance().xobjects().begin();
-    #pragma omp parallel for schedule(dynamic)
-    for (std::int32_t _Num=0; _Num<_Size; _Num++)
-    {
-        my::xobject *_Tmp = _Iter->second.get();
-        #pragma omp critical
-        {
-            if (_Priority > _Tmp->priority() )
-            {
-                _Ptr = _Tmp;
-                _Priority = _Tmp->priority();
-            }
-            ++_Iter;
-        }
-    }
-    std::cout << "#1-2 " << _Priority << std::endl;
-    _Tend = omp_get_wtime() - _Tbegin;
-    printf( "#1-2 %d threads took %fs\n", omp_get_max_threads(), _Tend );
-    
+ 
 }
 
 
