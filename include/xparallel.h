@@ -112,6 +112,19 @@ void _My_vector_parallel( my::xobject *_Ptr )
     }
     _Tend = omp_get_wtime() - _Tbegin;
     printf( "#2-1 %d threads took %fs\n", omp_get_max_threads(), _Tend );
+
+    // >>>>> 방안2: 병렬 처리
+    _Tbegin = omp_get_wtime();
+    #pragma omp parallel for schedule(dynamic)
+    for (auto _Iter = _Ptr->submodels().begin(); _Iter < _Ptr->submodels().end(); _Iter++)
+    {
+        #pragma omp critical
+        {
+        std::cout << "#2-1 " << *_Iter << std::endl;
+        }
+    }
+    _Tend = omp_get_wtime() - _Tbegin;
+    printf( "#2-1 %d threads took %fs\n", omp_get_max_threads(), _Tend );
     
 }
 
