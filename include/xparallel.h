@@ -63,6 +63,7 @@ void _My_map_parallel()
     // >>>>> 방안2: 병렬 처리
     _Tbegin = omp_get_wtime();
     auto _Iter =  my::xobject_manager::instance().xobjects().begin();
+    #pragma omp parallel for schedule(dynamic)
     for (std::int32_t _Num=0; _Num<_Size; _Num++)
     {
         my::xobject *_Tmp = _Iter->second.get();
