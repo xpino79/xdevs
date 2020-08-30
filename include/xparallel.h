@@ -88,41 +88,44 @@ void _My_vector_parallel( my::xobject *_Ptr )
     double _Tbegin = 0.0;
     double _Tend = 0.0;
     
+    std::int32_t _Sum = 0;
+    
     _Tbegin = omp_get_wtime();
     for (auto &_Elem : _Ptr->submodels())
     {
-        std::cout << "#2 " << _Elem << std::endl;
+        _Sum += _Elem;
     }
+    std::cout << "#2 " << _Sum << std::endl;
     _Tend = omp_get_wtime() - _Tbegin;
     printf( "#2 %d threads took %fs\n", 1, _Tend );
+    
+    _Sum = 0;
     
     // >>>>> 방안1: 병렬 처리
     _Tbegin = omp_get_wtime();
     std::int32_t _Size = _Ptr->submodels().size();
-    #pragma omp parallel for schedule(dynamic)
+    #pragma omp parallel for schedule(dynamic) reduction(+:_Sum)
     for (std::int32_t _Num=0; _Num<_Size; _Num++)
     {
         auto _Iter =  _Ptr->submodels().begin();
         std::advance( _Iter, _Num);
-        
-        #pragma omp critical
-        {
-        std::cout << "#2-1 " << *_Iter << std::endl;
-        }
+      
+        _Sum += *_Iter;
     }
+    std::cout << "#2 " << _Sum << std::endl;
     _Tend = omp_get_wtime() - _Tbegin;
     printf( "#2-1 %d threads took %fs\n", omp_get_max_threads(), _Tend );
 
+    _Sum = 0;
+    
     // >>>>> 방안2: 병렬 처리
     _Tbegin = omp_get_wtime();
-    #pragma omp parallel for schedule(dynamic)
+    #pragma omp parallel for schedule(dynamic) reduction(+:_Sum)
     for (auto _Iter = _Ptr->submodels().begin(); _Iter < _Ptr->submodels().end(); _Iter++)
     {
-        #pragma omp critical
-        {
-        std::cout << "#2-1 " << *_Iter << std::endl;
-        }
+        _Sum += *_Iter;
     }
+    std::cout << "#2 " << _Sum << std::endl;
     _Tend = omp_get_wtime() - _Tbegin;
     printf( "#2-1 %d threads took %fs\n", omp_get_max_threads(), _Tend );
     
