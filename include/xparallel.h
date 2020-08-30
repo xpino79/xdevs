@@ -38,14 +38,14 @@ void _My_map_parallel()
     _Priority = 100000;
     _Ptr = nullptr;
     
-    // >>>>> 방안1: 병렬 처리
+    // >>>>> 방안1: 병렬 처리 <싱클코어 보다 느린 속도>
     _Tbegin = omp_get_wtime();
     std::int32_t _Size = my::xobject_manager::instance().xobjects().size();
     #pragma omp parallel for schedule(dynamic)
     for (std::int32_t _Num=0; _Num<_Size; _Num++)
     {
         auto _Iter =  my::xobject_manager::instance().xobjects().begin();
-        std::advance( _Iter, _Num);
+        std::advance( _Iter, _Num); // 엄청느리다.
         
         my::xobject *_Tmp = _Iter->second.get();
         #pragma omp critical
