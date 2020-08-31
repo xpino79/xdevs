@@ -19,7 +19,6 @@ void _My_map_parallel()
     double _Tend = 0.0;
     
     std::int32_t _Priority = 100000;
-    my::xobject *_Ptr = nullptr;
 
     _Tbegin = omp_get_wtime();
     for (auto &_Elem : my::xobject_manager::instance().xobjects())
@@ -27,7 +26,6 @@ void _My_map_parallel()
         my::xobject *_Tmp = _Elem.second.get();
         if (_Priority > _Tmp->priority() )
         {
-            _Ptr = _Tmp;
             _Priority = _Tmp->priority();
         }
     }
@@ -36,7 +34,6 @@ void _My_map_parallel()
     printf( "#1 %d threads took %fs\n", 1, _Tend );
  
     _Priority = 100000;
-    _Ptr = nullptr;
     
     // >>>>> 방안1: 병렬 처리 <싱클코어 보다 느린 속도>
     _Tbegin = omp_get_wtime();
@@ -52,7 +49,6 @@ void _My_map_parallel()
         {
             if (_Priority > _Tmp->priority() )
             {
-                _Ptr = _Tmp;
                 _Priority = _Tmp->priority();
             }
         }
@@ -62,7 +58,6 @@ void _My_map_parallel()
     printf( "#1-1 %d threads took %fs\n", omp_get_max_threads(), _Tend );
  
     _Priority = 100000;
-    _Ptr = nullptr;
     
     // >>>>> 방안2: 병렬 처리 
     _Tbegin = omp_get_wtime();
@@ -72,7 +67,7 @@ void _My_map_parallel()
         my::xobject *_Tmp = _Elem.second.get();
         if (_Priority > _Tmp->priority() )
         {
-            _Ptr = _Tmp;
+            #pragma omp task
             _Priority = _Tmp->priority();
         }
     }
