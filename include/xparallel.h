@@ -25,7 +25,7 @@ void _My_tbb_parallel_for()
     tbb::concurrent_unordered_map<int,int> _CUmap;
     for (int i=0;i < _Max;i++)
     {
-        _CUmap.insert(tbb::concurrent_unordered_map<int,int>::value_type(i,i*10));
+        _CUmap.insert(tbb::concurrent_unordered_map<int,int>::value_type(i,1));
     }
 
     _Tbegin = std::chrono::system_clock::now();
