@@ -7,8 +7,10 @@
 #include <tbb/tbb.h> // 병렬
 #include "xobject_manager.h"
 
-// tbb-2018.2-9.el8.x86_64.rpm  tbb-devel-2018.2-9.el8.x86_64.rpm
-    
+// TBB 설치방법
+// tbb-2018.2-9.el8.x86_64.rpm  tbb-devel-2018.2-9.el8.x86_64.rpm 설치
+// Makefile 에 -ltbb 라이브러리 추가 
+
 void _My_tbb_parallel_for()
 {
     std::chrono::high_resolution_clock::time_point _Tbegin;
