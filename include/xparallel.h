@@ -47,6 +47,31 @@ void _My_tbb_parallel_for()
     _Tend = std::chrono::system_clock::now();
     _Tseconds = _Tend-_Tbegin;
     printf("#seq eslaped time : %f sec\n", _Tseconds.count()); 
+    
+    auto _Vec = std::vector<double>(10000);
+    
+    _Tbegin = std::chrono::system_clock::now();
+    tbb::parallel_for( tbb::blocked_range<int>(0,_Vec.size()),
+                       [&](tbb::blocked_range<int> _Range)
+    {
+        for (int i=_Range.begin(); i<_Range.end(); ++i)
+        {
+ 
+        }
+    });
+    _Tend = std::chrono::system_clock::now();
+    _Tseconds = _Tend-_Tbegin;
+    printf("#parallel eslaped time : %f sec\n", _Tseconds.count());
+
+    _Tbegin = std::chrono::system_clock::now(); 
+    for (double _Val : _Vec)
+    {
+ 
+    }
+    _Tend = std::chrono::system_clock::now();
+    _Tseconds = _Tend-_Tbegin;
+    printf("#parallel eslaped time : %f sec\n", _Tseconds.count());
+    
 }
  
 #endif /* XPARALLEL_H_ */
