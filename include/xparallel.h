@@ -13,13 +13,14 @@
 
 void _My_tbb_parallel_for()
 {
+    int _Max = 25000;
     std::chrono::system_clock::time_point _Tbegin;
     std::chrono::system_clock::time_point _Tend;
     std::chrono::duration<double> _Tseconds;
     
     // 병렬처리 25000개 이상의 루프. 그 이하는 속도저하
     tbb::concurrent_unordered_map<int,int> _CUmap;
-    for (int i=0;i < 25000;i++)
+    for (int i=0;i < _Max;i++)
     {
         _CUmap.insert(tbb::concurrent_unordered_map<int,int>::value_type(i,i*10));
     }
@@ -49,7 +50,7 @@ void _My_tbb_parallel_for()
     printf("#seq eslaped time : %f sec\n", _Tseconds.count()); 
 
     // >>>>> std::vector 
-    auto _Vec = std::vector<double>(25000);
+    auto _Vec = std::vector<double>(_Max);
     
     _Tbegin = std::chrono::system_clock::now();
     tbb::parallel_for( tbb::blocked_range<int>(0,_Vec.size()),
