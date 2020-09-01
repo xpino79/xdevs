@@ -34,7 +34,8 @@ void _My_tbb_parallel_for()
 
     _Tend = std::chrono::system_clock::now();
     _Tseconds = _Tend-_Tbegin;
-    std::cout << _Tseconds.count() << " sec" << std::endl;
+    printf("#1 : %f sec\n", _Tseconds.count());
+ 
 
     _Tbegin = std::chrono::high_resolution_clock::now();
     for (auto _Iter = _CUmap.begin(); _Iter != _CUmap.end(); _Iter++)
@@ -44,7 +45,7 @@ void _My_tbb_parallel_for()
 
     _Tend = std::chrono::system_clock::now();
     _Tseconds = _Tend-_Tbegin;
-    std::cout << _Tseconds.count() << " sec"<< std::endl;
+    printf("#1 : %f sec\n", _Tseconds.count());
  
 }
  
