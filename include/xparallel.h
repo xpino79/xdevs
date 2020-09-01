@@ -17,8 +17,9 @@ void _My_tbb_parallel_for()
     std::chrono::system_clock::time_point _Tend;
     std::chrono::duration<double> _Tseconds;
     
+    // 병렬처리 25000개 이상의 루프. 그 이하는 속도저하
     tbb::concurrent_unordered_map<int,int> _CUmap;
-    for (int i=0;i < 900000;i++)
+    for (int i=0;i < 25000;i++)
     {
         _CUmap.insert(tbb::concurrent_unordered_map<int,int>::value_type(i,i*10));
     }
