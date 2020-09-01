@@ -56,8 +56,7 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
         my::xobject_manager::instance().assign_priority_number(_Pptr);
 
         // >>>>> std::map, std::vector 병렬처리 테스트
-        // _My_map_parallel();
-        // _My_vector_parallel( _Pptr );
+        // _My_tbb_parallel_for();
         
         return 1;
     }
