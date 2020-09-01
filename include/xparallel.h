@@ -3,126 +3,50 @@
 
 #include <vector>
 #include <map>
-#include <omp.h> // 병렬
+#include <chrono>
+#include <tbb/tbb.h> // 병렬
 #include "xobject_manager.h"
 
-// https://github.com/jakaspeh/concurrency
-// https://github.com/jeonggunlee/Parallel_Programming_2018_Fall
-// https://www.ibm.com/support/knowledgecenter/en/SSXVZZ_16.1.1/com.ibm.xlcpp1611.lelinux.doc/compiler_ref/prag_omp_dis_psimd.html
-// https://github.com/TApplencourt/OvO/blob/master/test_src/cpp/hierarchical_parallelism
-// https://www.samsungsds.com/global/ko/news/story/1203227_2919.html
-// OpenMP 병렬 프로그래밍 : 멀티 코어를 위한 C, C++ 멀티스레딩의 표준
-
-void _My_map_parallel()
+// tbb-2018.2-9.el8.x86_64.rpm  tbb-devel-2018.2-9.el8.x86_64.rpm
+    
+void _My_tbb_parallel_for()
 {
-    double _Tbegin = 0.0;
-    double _Tend = 0.0;
+    std::chrono::high_resolution_clock::time_point _Tbegin;
+    std::chrono::high_resolution_clock::time_point _Tend;
+    std::chrono::nanoseconds _Tnanoseconds;
+    std::chrono::seconds _Tseconds;
     
-    std::int32_t _Priority = 100000;
-
-    _Tbegin = omp_get_wtime();
-    for (auto &_Elem : my::xobject_manager::instance().xobjects())
+    tbb::concurrent_unordered_map<int,int> _CUmap;
+    for (int i=0;i < 900000;i++)
     {
-        my::xobject *_Tmp = _Elem.second.get();
-        if (_Priority > _Tmp->priority() )
-        {
-            _Priority = _Tmp->priority();
-        }
+        _CUmap.insert(tbb::concurrent_unordered_map<int,int>::value_type(i,i*10));
     }
-    std::cout << "#1 " << _Priority << std::endl;
-    _Tend = omp_get_wtime() - _Tbegin;
-    printf( "#1 %d threads took %fs\n", 1, _Tend );
+
+    _Tbegin = std::chrono::high_resolution_clock::now();
+    tbb::parallel_for(_CUmap.range(),[](const tbb::concurrent_unordered_map<int,int>::range_type& _Range)
+    {
+        for (auto _Iter = _Range.begin(); _Iter != _Range.end(); _Iter++)
+        {
+            // printf("key : %d\t value : %d\n",_Iter->first,_Iter->second);
+        }
+    }, tbb::auto_partitioner() );
+
+    _Tend = std::chrono::high_resolution_clock::now();
+    _Tnanoseconds = _Tend-_Tbegin;
+    _Tseconds = std::chrono::duration_cast<std::chrono::seconds>(_Tnanoseconds);
+    std::cout << _Tseconds.count() << endl;
+
+    _Tbegin = std::chrono::high_resolution_clock::now();
+    for (auto _Iter = _CUmap.begin(); _Iter != _CUmap.end(); _Iter++)
+    {
+        // printf("key : %d\t value : %d\n",_Iter->first,_Iter->second);
+    }
+
+    _Tend = std::chrono::high_resolution_clock::now();
+    _Tnanoseconds = _Tend-_Tbegin;
+    _Tseconds = std::chrono::duration_cast<std::chrono::seconds>(_Tnanoseconds);
+    std::cout << _Tseconds.count() << endl;
  
-    _Priority = 100000;
-    
-    // >>>>> 방안1: 병렬 처리 <싱클코어 보다 느린 속도>
-    _Tbegin = omp_get_wtime();
-    std::int32_t _Size = my::xobject_manager::instance().xobjects().size();
-    #pragma omp parallel for schedule(dynamic)
-    for (std::int32_t _Num=0; _Num<_Size; _Num++)
-    {
-        auto _Iter =  my::xobject_manager::instance().xobjects().begin();
-        std::advance( _Iter, _Num); // 엄청느리다.
-        
-        my::xobject *_Tmp = _Iter->second.get();
-        #pragma omp critical
-        {
-            if (_Priority > _Tmp->priority() )
-            {
-                _Priority = _Tmp->priority();
-            }
-        }
-    }
-    std::cout << "#1-1 " << _Priority << std::endl;
-    _Tend = omp_get_wtime() - _Tbegin;
-    printf( "#1-1 %d threads took %fs\n", omp_get_max_threads(), _Tend );
+}
  
-    _Priority = 100000;
-    
-    // >>>>> 방안2: 병렬 처리 
-    _Tbegin = omp_get_wtime();
-    #pragma omp parallel single
-    for (auto &_Elem : my::xobject_manager::instance().xobjects())
-    {
-        my::xobject *_Tmp = _Elem.second.get();
-        if (_Priority > _Tmp->priority() )
-        {
-            #pragma omp task
-            _Priority = _Tmp->priority();
-        }
-    }
-    std::cout << "#1-2 " << _Priority << std::endl;
-    _Tend = omp_get_wtime() - _Tbegin;
-    printf( "#1-2 %d threads took %fs\n", omp_get_max_threads(), _Tend );
-}
-
-
-void _My_vector_parallel( my::xobject *_Ptr )
-{
-    double _Tbegin = 0.0;
-    double _Tend = 0.0;
-    
-    std::int32_t _Sum = 0;
-    
-    _Tbegin = omp_get_wtime();
-    for (auto &_Elem : _Ptr->submodels())
-    {
-        _Sum += _Elem;
-    }
-    std::cout << "#2 " << _Sum << std::endl;
-    _Tend = omp_get_wtime() - _Tbegin;
-    printf( "#2 %d threads took %fs\n", 1, _Tend );
-    
-    _Sum = 0;
-    
-    // >>>>> 방안1: 병렬 처리
-    _Tbegin = omp_get_wtime();
-    std::int32_t _Size = _Ptr->submodels().size();
-    #pragma omp parallel for schedule(dynamic) reduction(+:_Sum)
-    for (std::int32_t _Num=0; _Num<_Size; _Num++)
-    {
-        auto _Iter =  _Ptr->submodels().begin();
-        std::advance( _Iter, _Num);
-      
-        _Sum += *_Iter;
-    }
-    std::cout << "#2 " << _Sum << std::endl;
-    _Tend = omp_get_wtime() - _Tbegin;
-    printf( "#2-1 %d threads took %fs\n", omp_get_max_threads(), _Tend );
-
-    _Sum = 0;
-    
-    // >>>>> 방안2: 병렬 처리
-    _Tbegin = omp_get_wtime();
-    #pragma omp parallel for schedule(dynamic) reduction(+:_Sum)
-    for (auto _Iter = _Ptr->submodels().begin(); _Iter < _Ptr->submodels().end(); _Iter++)
-    {
-        _Sum += *_Iter;
-    }
-    std::cout << "#2 " << _Sum << std::endl;
-    _Tend = omp_get_wtime() - _Tbegin;
-    printf( "#2-1 %d threads took %fs\n", omp_get_max_threads(), _Tend );
-    
-}
-
 #endif /* XPARALLEL_H_ */
