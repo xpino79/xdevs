@@ -47,8 +47,9 @@ void _My_tbb_parallel_for()
     _Tend = std::chrono::system_clock::now();
     _Tseconds = _Tend-_Tbegin;
     printf("#seq eslaped time : %f sec\n", _Tseconds.count()); 
-    
-    auto _Vec = std::vector<double>(10000);
+
+    // >>>>> std::vector 
+    auto _Vec = std::vector<double>(25000);
     
     _Tbegin = std::chrono::system_clock::now();
     tbb::parallel_for( tbb::blocked_range<int>(0,_Vec.size()),
