@@ -13,7 +13,10 @@
 
 void _My_tbb_parallel_for()
 {
+
     int _Max = 25000;
+    int _Sum = 0;
+    
     std::chrono::system_clock::time_point _Tbegin;
     std::chrono::system_clock::time_point _Tend;
     std::chrono::duration<double> _Tseconds;
@@ -51,6 +54,14 @@ void _My_tbb_parallel_for()
 
     // >>>>> std::vector 
     auto _Vec = std::vector<double>(_Max);
+    tbb::parallel_for( tbb::blocked_range<int>(0,_Vec.size()),
+                       [&](tbb::blocked_range<int> _Range)
+    {
+        for (int i=_Range.begin(); i<_Range.end(); ++i)
+        {
+            _Vec[i] = 1;
+        }
+    });
     
     _Tbegin = std::chrono::system_clock::now();
     tbb::parallel_for( tbb::blocked_range<int>(0,_Vec.size()),
@@ -58,17 +69,18 @@ void _My_tbb_parallel_for()
     {
         for (int i=_Range.begin(); i<_Range.end(); ++i)
         {
- 
+             _Sum +=_Vec[i];
         }
     });
     _Tend = std::chrono::system_clock::now();
     _Tseconds = _Tend-_Tbegin;
     printf("#parallel eslaped time : %f sec\n", _Tseconds.count());
 
+    _Sum = 0;
     _Tbegin = std::chrono::system_clock::now(); 
     for (double _Val : _Vec)
     {
- 
+        _Sum +=_Val;
     }
     _Tend = std::chrono::system_clock::now();
     _Tseconds = _Tend-_Tbegin;
