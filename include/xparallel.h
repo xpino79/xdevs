@@ -35,7 +35,7 @@ void _My_tbb_parallel_for()
 
     _Tend = std::chrono::system_clock::now();
     _Tseconds = _Tend-_Tbegin;
-    printf("#1 : %f sec\n", _Tseconds.count());
+    printf("#parallel eslaped time : %f sec\n", _Tseconds.count());
  
 
     _Tbegin = std::chrono::high_resolution_clock::now();
@@ -46,8 +46,7 @@ void _My_tbb_parallel_for()
 
     _Tend = std::chrono::system_clock::now();
     _Tseconds = _Tend-_Tbegin;
-    printf("#1 : %f sec\n", _Tseconds.count());
- 
+    printf("#seq eslaped time : %f sec\n", _Tseconds.count()); 
 }
  
 #endif /* XPARALLEL_H_ */
