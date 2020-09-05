@@ -9,6 +9,8 @@
 
 // 병렬처리 속도 관련 
 // https://docs.microsoft.com/ko-kr/dotnet/standard/parallel-programming/potential-pitfalls-in-data-and-task-parallelism
+// 병렬처리 가이드 
+// https://www.kdata.or.kr/info/info_04_view.html?field=&keyword=&type=techreport&page=27&dbnum=180834&mode=detail&type=techreport
 
 // TBB 설치방법
 // tbb-2018.2-9.el8.x86_64.rpm  tbb-devel-2018.2-9.el8.x86_64.rpm 설치
