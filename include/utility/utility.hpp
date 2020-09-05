@@ -53,33 +53,34 @@ T numeric_division(T t, T u)
     return retval;
 }
 
-bool circle_line_intersect(float64_t x1, float64_t y1, float64_t x2, float64_t y2, float64_t cx, float64_t cy, float64_t cr ) 
+template <typename T>
+bool circle_line_intersect(T x1, T y1, T x2, T y2, T cx, T cy, T cr ) 
 {
-    float64_t dx = x2 - x1;
-    float64_t dy = y2 - y1;
-    float64_t a = (dx * dx) + (dy * dy);
-    float64_t b = 2.0 * (dx * (x1 - cx) + dy * (y1 - cy));
-    float64_t c = (cx * cx) + (cy * cy);
+    T dx = x2 - x1;
+    T dy = y2 - y1;
+    T a = (dx * dx) + (dy * dy);
+    T b = 2.0 * (dx * (x1 - cx) + dy * (y1 - cy));
+    T c = (cx * cx) + (cy * cy);
     c += (x1 * x1) + (y1 * y1);
     c -= (2.0 * ((cx * x1) + (cy * y1)));
     c -= (cr * cr);
-    float64_t bb4ac = (b * b) - (4.0 * a * c);
+    T bb4ac = (b * b) - (4.0 * a * c);
 
     // return false  No collision
     // return true Collision
     return (bb4ac >= 0);
 
     /*
-    if ((std::fabs(bb4ac) < std::numeric_limits<float64_t>::epsilon) || (bb4ac < 0)) 
+    if ((std::fabs(bb4ac) < std::numeric_limits<T>::epsilon) || (bb4ac < 0)) 
     {   
         return false; // No collision
     }
-    float64_t mu1 = (-b + std::sqrt(bb4ac)) / (2.0 * a);
-    float64_t mu2 = (-b - std::sqrt(bb4ac)) / (2.0 * a); 
-    float64_t sx1 = x1 + mu1 * (x2 - x1);
-    float64_t sy1 = y1 + mu1 * (y2 - y1);
-    float64_t sx2 = x1 + mu2 * (x2 - x1);
-    float64_t sy2 = y1 + mu2 * (y2 - y1);    
+    T mu1 = (-b + std::sqrt(bb4ac)) / (2.0 * a);
+    T mu2 = (-b - std::sqrt(bb4ac)) / (2.0 * a); 
+    T sx1 = x1 + mu1 * (x2 - x1);
+    T sy1 = y1 + mu1 * (y2 - y1);
+    T sx2 = x1 + mu2 * (x2 - x1);
+    T sy2 = y1 + mu2 * (y2 - y1);    
     */
     
 }
