@@ -7,6 +7,9 @@
 #include <tbb/tbb.h> // 병렬
 #include "xobject_manager.h"
 
+// 병렬처리 속도 관련 
+// https://docs.microsoft.com/ko-kr/dotnet/standard/parallel-programming/potential-pitfalls-in-data-and-task-parallelism
+
 // TBB 설치방법
 // tbb-2018.2-9.el8.x86_64.rpm  tbb-devel-2018.2-9.el8.x86_64.rpm 설치
 // Makefile 에 -ltbb 라이브러리 추가 
