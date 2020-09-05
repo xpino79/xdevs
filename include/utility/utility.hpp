@@ -54,7 +54,7 @@ T numeric_division(T t, T u)
 }
 
 template <typename T>
-bool line_circle_intersect(T x1, T y1, T x2, T y2, T cx, T cy, T cr ) 
+bool line_circle_intersection(T x1, T y1, T x2, T y2, T cx, T cy, T cr ) 
 {
     T dx = x2 - x1;
     T dy = y2 - y1;
@@ -84,6 +84,36 @@ bool line_circle_intersect(T x1, T y1, T x2, T y2, T cx, T cy, T cr )
     */
     
 }
+
+/*
+pdd line_line_intersection(pdd A, pdd B, pdd C, pdd D) 
+{ 
+    // Line AB represented as a1x + b1y = c1 
+    double a1 = B.second - A.second; 
+    double b1 = A.first - B.first; 
+    double c1 = a1*(A.first) + b1*(A.second); 
+  
+    // Line CD represented as a2x + b2y = c2 
+    double a2 = D.second - C.second; 
+    double b2 = C.first - D.first; 
+    double c2 = a2*(C.first)+ b2*(C.second); 
+  
+    double determinant = a1*b2 - a2*b1; 
+  
+    if (determinant == 0) 
+    { 
+        // The lines are parallel. This is simplified 
+        // by returning a pair of FLT_MAX 
+        return make_pair(FLT_MAX, FLT_MAX); 
+    } 
+    else
+    { 
+        double x = (b2*c1 - b1*c2)/determinant; 
+        double y = (a1*c2 - a2*c1)/determinant; 
+        return make_pair(x, y); 
+    } 
+} 
+*/
     
 }
 
