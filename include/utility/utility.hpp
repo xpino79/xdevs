@@ -54,7 +54,7 @@ T numeric_division(T t, T u)
 }
 
 template <typename T>
-bool circle_line_intersect(T x1, T y1, T x2, T y2, T cx, T cy, T cr ) 
+bool line_circle_intersect(T x1, T y1, T x2, T y2, T cx, T cy, T cr ) 
 {
     T dx = x2 - x1;
     T dy = y2 - y1;
