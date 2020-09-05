@@ -71,7 +71,7 @@ bool circle_line_intersect(T x1, T y1, T x2, T y2, T cx, T cy, T cr )
     return (bb4ac >= 0);
 
     /*
-    if ((std::fabs(bb4ac) < std::numeric_limits<T>::epsilon) || (bb4ac < 0)) 
+    if ((std::fabs(bb4ac) < std::numeric_limits<float64_t>::epsilon) || (bb4ac < 0)) 
     {   
         return false; // No collision
     }
