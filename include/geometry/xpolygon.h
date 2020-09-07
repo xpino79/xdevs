@@ -197,6 +197,42 @@ public:
             return true;
         }
 
+      
+      /*
+      bool _Val = false;
+
+      // 원이 좌표의 중심에 있도록 이동합니다.
+      _x1 -= _cx;
+      _y1 -= _cy;
+      _x2 -= _cx;
+      _y2 -= _cy;
+
+      std::float64_t dx = _x2 - _x1;
+      std::float64_t dy = _y2 - _y1;
+
+      // 직선과 원의 교차점에 대한 이차 방정식의 계수를 구성합니다.
+      // 세그먼트 [0..1]에 음수 값이 있으면 세그먼트가 원과 교차합니다.
+      std::float64_t a = (dx * dx) + (dy * dy);
+      std::float64_t b = 2. * ((_x1 * dx) + (_y1 * dy));
+      std::float64_t c = (_x1 * _x1) + (_y1 * _y1) - (_cr * _cr);
+
+      // 세그먼트 [0..1]에 솔루션이 있는지 확인하십시오.
+      if (-b < 0)
+      {
+         _Val = (c < 0);
+      }
+      else if (-b < (2. * a))
+      {
+         _Val = (((4. * a * c) - (b * b)) < 0);
+      }
+      else
+      {
+         _Val = (a + b + c < 0);
+      }
+
+      return _Val;
+      */
+        
     }
 };
 
