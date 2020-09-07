@@ -177,7 +177,7 @@ public:
         c -= _cr * _cr;
         std::float64_t bb4ac = b * b - 4.0 * a * c;
 
-        std::cout << " - " << bb4ac << std::endl;
+
         
         // return false  No collision
         // return true Collision
@@ -194,6 +194,8 @@ public:
             std::float64_t pty1 = _y1 + mu1 * (_y2 - _y1);
             std::float64_t ptx2 = _x1 + mu2 * (_x2 - _x1);
             std::float64_t pty2 = _y1 + mu2 * (_y2 - _y1);   
+            
+            std::cout << " - " << bb4ac << std::endl;
             std::cout << " - " << ptx1 << ", " << pty1 << std::endl;
             std::cout << " - " << ptx2 << ", " << pty2 << std::endl;
             return true;
