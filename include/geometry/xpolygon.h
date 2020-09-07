@@ -167,26 +167,22 @@ public:
       return _Inside;
    }
 
-   bool within(std::int32_t _X, std::int32_t _Y, std::float64_t _Radius)
+   bool intersects(std::int32_t _x, std::int32_t _y, std::float64_t _radius)
    {
-      bool _Intersect = false;
-
-      _Intersect = within(_X, _Y);
-
+      bool _Intersect = within(_x, _y);
       if (false == _Intersect)
       {
          std::int32_t _Max = this->_Mycoordinates.size();
-
          for (std::int32_t _Num = 0; _Num < _Max; ++_Num)
          {
             std::int32_t _Next = (_Num + 1) % _Max;
 
-            std::int32_t _X0 = this->_Mycoordinates[_Num]->x();
-            std::int32_t _Y0 = this->_Mycoordinates[_Num]->y();
-            std::int32_t _X1 = this->_Mycoordinates[_Next]->x();
-            std::int32_t _Y1 = this->_Mycoordinates[_Next]->y();
+            std::int32_t _x1 = this->_Mycoordinates[_Num]->x();
+            std::int32_t _y1 = this->_Mycoordinates[_Num]->y();
+            std::int32_t _x2 = this->_Mycoordinates[_Next]->x();
+            std::int32_t _y2 = this->_Mycoordinates[_Next]->y();
 
-            if (intersect(_X0, _Y0, _X1, _Y1, _X, _Y, _Radius))
+            if (intersects(_x1, _y1, _x2, _y2, _x, _y, _radius))
             {
                _Intersect = true;
                break;
@@ -197,41 +193,40 @@ public:
       return _Intersect;
    }
 
-   bool intersect(std::float64_t _X0, std::float64_t _Y0, std::float64_t _X1, std::float64_t _Y1,
-   std::float64_t _Circle_x, std::float64_t _Circle_y, std::float64_t _Radius)
+   // https://stackoverflow.com/questions/6091728/line-segment-circle-intersection
+   // https://forums.cgsociety.org/t/intersection-of-a-line-and-a-sphere/1552684/2
+   bool intersects(std::float64_t x1, std::float64_t y1, std::float64_t x2, std::float64_t y2,
+      std::float64_t_cx, std::float64_t _cy, std::float64_t _cr)
    {
-      bool _Retval = false;
+      
+       std::float64_t dx = x2 - x1;
+       std::float64_t dy = y2 - y1;
+       std::float64_t a = dx * dx + dy * dy;
+       std::float64_t b = 2.0 * (dx * (x1 - cx) + dy * (y1 - cy));
+       std::float64_t c = cx * cx + cy * cy;
+       c += x1 * x1 + y1 * y1;
+       c -= 2.0 * (cx * x1 + cy * y1);
+       c -= cr * cr;
+       std::float64_t bb4ac = b * b - 4.0 * a * c;
 
-      // 원이 좌표의 중심에 있도록 이동합니다.
-      _X0 -= _Circle_x;
-      _Y0 -= _Circle_y;
-      _X1 -= _Circle_x;
-      _Y1 -= _Circle_y;
+       // return false  No collision
+       // return true Collision
+       return (bb4ac >= 0);      
+ 
+      /*
+       if ((std::fabs(bb4ac) < std::numeric_limits<float64_t>::epsilon) || (bb4ac < 0)) 
+       {   
+           return false; // No collision
+       }
 
-      std::float64_t _Diff_x = _X1 - _X0;
-      std::float64_t _Diff_y = _Y1 - _Y0;
+       std::float64_t mu1 = (-b + std::sqrt(bb4ac)) / (2.0 * a);
+       std::float64_t mu2 = (-b - std::sqrt(bb4ac)) / (2.0 * a); 
+       std::float64_t ptx1 = x1 + mu1 * (x2 - x1);
+       std::float64_t pty1 = y1 + mu1 * (y2 - y1);
+       std::float64_t ptx2 = x1 + mu2 * (x2 - x1);
+       std::float64_t pty2 = y1 + mu2 * (y2 - y1);    
+       */
 
-      // 직선과 원의 교차점에 대한 이차 방정식의 계수를 구성합니다.
-      // 세그먼트 [0..1]에 음수 값이 있으면 세그먼트가 원과 교차합니다.
-      std::float64_t a = (_Diff_x * _Diff_x) + (_Diff_y * _Diff_y);
-      std::float64_t b = 2. * ((_X0 * _Diff_x) + (_Y0 * _Diff_y));
-      std::float64_t c = (_X0 * _X0) + (_Y0 * _Y0) - (_Radius * _Radius);
-
-      // 세그먼트 [0..1]에 솔루션이 있는지 확인하십시오.
-      if (-b < 0)
-      {
-         _Retval = (c < 0);
-      }
-      else if (-b < (2. * a))
-      {
-         _Retval = (((4. * a * c) - (b * b)) < 0);
-      }
-      else
-      {
-         _Retval = (a + b + c < 0);
-      }
-
-      return _Retval;
    }
 };
 
