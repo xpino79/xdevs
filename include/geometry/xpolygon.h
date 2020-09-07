@@ -167,6 +167,8 @@ public:
             std::float64_t _cx, std::float64_t _cy, std::float64_t _cr)
     {
 
+        std::cout << " intersects " << _x1 << ", " << _y1  << ", " << _x2 << ", " << _y2 << std::endl;
+        
         std::float64_t dx = _x2 - _x1;
         std::float64_t dy = _y2 - _y1;
         std::float64_t a = dx * dx + dy * dy;
