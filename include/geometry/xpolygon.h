@@ -181,7 +181,7 @@ public:
         // return true Collision
         // return (bb4ac >= 0);      
 
-        if ((std::fabs(bb4ac) < std::numeric_limits<std::float64_t>::epsilon) || (bb4ac < 0)) 
+        if ((std::fabs(bb4ac) < std::numeric_limits<std::float64_t>::epsilon()) || (bb4ac < 0)) 
         {   
             return false; // No collision
         }
