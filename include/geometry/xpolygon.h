@@ -45,9 +45,9 @@ public:
       return _Ptr;
    }
 
-   void push_back(std::int32_t _X, std::int32_t _Y)
+   void push_back(std::int32_t _x, std::int32_t _y)
    {
-      this->_Mycoordinates.push_back(std::make_unique<my::xcoordinate>(_X, _Y));
+      this->_Mycoordinates.push_back(std::make_unique<my::xcoordinate>(_x, _y));
    }
    void push_back(std::unique_ptr<xcoordinate> _Uptr)
    {
