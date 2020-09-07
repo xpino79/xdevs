@@ -7,6 +7,7 @@
 #include <list>
 #include <vector>
 #include <algorithm>
+#include <assert.h>
 #include <omp.h> // 병렬 
 
 // MISRA_CPP_03_09_02 기본 숫자 타입 대신 크기와 부호를 나타내는 typedef를 사용해야 함
@@ -45,7 +46,8 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
     { 
         // MISRA_CPP_18_04_01 동적 힙 메모리 할당은 사용하면 안됨
         my::xobject *_Pptr = my::xobject_manager::instance().insert(std::make_unique<my::xmaneuver>());
-        
+        assert( _Pptr != nullptr );
+     
         for (int i=0; i<10; ++i)
         {
             my::xobject *_Ptr = my::xobject_manager::instance().insert(std::make_unique<my::xmaneuver>());
