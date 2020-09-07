@@ -111,7 +111,7 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
         std::cout << "POLYGON area: " << _Puptr->area() << std::endl;
         std::cout << "POLYGON length: " << _Puptr->length() << std::endl;
         std::cout << "POLYGON within: " << _Puptr->within(10, 10) << ", " << _Puptr->within(0, 0) << ", " << _Puptr->within(1, 1) << std::endl;
-        std::cout << "POLYGON intersects: " _Puptr->intersects(3, 3, 1.5) << std::endl;
+        std::cout << "POLYGON intersects: " << _Puptr->intersects(3, 3, 1.5) << std::endl;
   
         std::unique_ptr<my::xmulti_polygon> _MPuptr = std::make_unique<my::xmulti_polygon>();
         _MPuptr->push_back( std::move(_Puptr) );
