@@ -177,6 +177,8 @@ public:
         c -= _cr * _cr;
         std::float64_t bb4ac = b * b - 4.0 * a * c;
 
+        std::cout << " - " << bb4ac << std::endl;
+        
         // return false  No collision
         // return true Collision
         // return (bb4ac >= 0);      
