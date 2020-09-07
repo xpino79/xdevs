@@ -8,9 +8,7 @@
 #include <cmath>
 #include <memory>
 #include <mutex>
-#include <vector>
-
-#include "../utility/stringtok.hpp"
+#include <vector> 
 #include "xcoordinate.h"
 
 namespace my
