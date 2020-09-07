@@ -195,18 +195,18 @@ public:
 
    // https://stackoverflow.com/questions/6091728/line-segment-circle-intersection
    // https://forums.cgsociety.org/t/intersection-of-a-line-and-a-sphere/1552684/2
-   bool intersects(std::float64_t x1, std::float64_t y1, std::float64_t x2, std::float64_t y2,
+   bool intersects(std::float64_t _x1, std::float64_t _y1, std::float64_t _x2, std::float64_t _y2,
       std::float64_t_cx, std::float64_t _cy, std::float64_t _cr)
    {
       
-       std::float64_t dx = x2 - x1;
-       std::float64_t dy = y2 - y1;
+       std::float64_t dx = _x2 - _x1;
+       std::float64_t dy = _y2 - _y1;
        std::float64_t a = dx * dx + dy * dy;
-       std::float64_t b = 2.0 * (dx * (x1 - cx) + dy * (y1 - cy));
-       std::float64_t c = cx * cx + cy * cy;
-       c += x1 * x1 + y1 * y1;
-       c -= 2.0 * (cx * x1 + cy * y1);
-       c -= cr * cr;
+       std::float64_t b = 2.0 * (dx * (_x1 - _cx) + dy * (_y1 - _cy));
+       std::float64_t c = _cx * _cx + _cy * _cy;
+       c += _x1 * _x1 + _y1 * _y1;
+       c -= 2.0 * (_cx * _x1 + _cy * _y1);
+       c -= _cr * _cr;
        std::float64_t bb4ac = b * b - 4.0 * a * c;
 
        // return false  No collision
@@ -221,10 +221,10 @@ public:
 
        std::float64_t mu1 = (-b + std::sqrt(bb4ac)) / (2.0 * a);
        std::float64_t mu2 = (-b - std::sqrt(bb4ac)) / (2.0 * a); 
-       std::float64_t ptx1 = x1 + mu1 * (x2 - x1);
-       std::float64_t pty1 = y1 + mu1 * (y2 - y1);
-       std::float64_t ptx2 = x1 + mu2 * (x2 - x1);
-       std::float64_t pty2 = y1 + mu2 * (y2 - y1);    
+       std::float64_t ptx1 = _x1 + mu1 * (_x2 - _x1);
+       std::float64_t pty1 = _y1 + mu1 * (_y2 - _y1);
+       std::float64_t ptx2 = _x1 + mu2 * (_x2 - _x1);
+       std::float64_t pty2 = _y1 + mu2 * (_y2 - _y1);    
        */
 
    }
