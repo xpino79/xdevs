@@ -185,7 +185,7 @@ public:
         {   
             return false; // No collision
         }
-        else if ( bb4ac > 0 ) {
+        else {
             std::float64_t mu1 = (-b + std::sqrt(bb4ac)) / (2.0 * a);
             std::float64_t mu2 = (-b - std::sqrt(bb4ac)) / (2.0 * a); 
             std::float64_t ptx1 = _x1 + mu1 * (_x2 - _x1);
@@ -194,14 +194,6 @@ public:
             std::float64_t pty2 = _y1 + mu2 * (_y2 - _y1);   
             std::cout << " - " << ptx1 << ", " << pty1 << std::endl;
             std::cout << " - " << ptx2 << ", " << pty2 << std::endl;
-            return true;
-        }
-        else {
-            std::float64_t mu = -b / (2.0 * a);
-            std::float64_t ptx = _x1 + mu * (_x2 - _x1);
-            std::float64_t pty = _y1 + mu * (_y2 - _y1);
-            std::cout << " - " << ptx << ", " << pty << std::endl;
-                        
             return true;
         }
 
