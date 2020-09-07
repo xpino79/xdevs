@@ -164,7 +164,7 @@ public:
    // https://stackoverflow.com/questions/6091728/line-segment-circle-intersection
    // https://forums.cgsociety.org/t/intersection-of-a-line-and-a-sphere/1552684/2
    bool intersects(std::float64_t _x1, std::float64_t _y1, std::float64_t _x2, std::float64_t _y2,
-      std::float64_t_cx, std::float64_t _cy, std::float64_t _cr)
+      std::float64_t _cx, std::float64_t _cy, std::float64_t _cr)
    {
       
        std::float64_t dx = _x2 - _x1;
