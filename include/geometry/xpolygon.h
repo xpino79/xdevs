@@ -192,7 +192,6 @@ public:
             std::float64_t pty1 = _y1 + mu1 * (_y2 - _y1);
             std::float64_t ptx2 = _x1 + mu2 * (_x2 - _x1);
             std::float64_t pty2 = _y1 + mu2 * (_y2 - _y1);   
-            std::cout << "xpolygon::intersects" << std::endl;
             std::cout << " - " << ptx1 << ", " << pty1 << std::endl;
             std::cout << " - " << ptx2 << ", " << pty2 << std::endl;
             return true;
