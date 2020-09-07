@@ -185,6 +185,7 @@ public:
 
         if ((std::fabs(bb4ac) < std::numeric_limits<std::float64_t>::epsilon()) || (bb4ac < 0)) 
         {   
+            std::cout << " > " << std::fixed << bb4ac << ", " << (std::fabs(bb4ac) < std::numeric_limits<std::float64_t>::epsilon()) << std::endl;
             return false; // No collision
         }
         else {
@@ -195,7 +196,7 @@ public:
             std::float64_t ptx2 = _x1 + mu2 * (_x2 - _x1);
             std::float64_t pty2 = _y1 + mu2 * (_y2 - _y1);   
             
-            std::cout << " - " << bb4ac << std::endl;
+            std::cout << " > " << std::fixed << bb4ac << std::endl;
             std::cout << " - " << ptx1 << ", " << pty1 << std::endl;
             std::cout << " - " << ptx2 << ", " << pty2 << std::endl;
             return true;
