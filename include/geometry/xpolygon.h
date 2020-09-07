@@ -75,38 +75,6 @@ public:
       return _Val;
    }
 
-   xcoordinate get_center()
-   {
-      
-      std::float64_t _Area = 0.0;
-      std::float64_t _Center_x = 0.0;
-      std::float64_t _Center_y = 0.0;
-      
-      std::int32_t _Max = this->_Mycoordinates.size();
-      for (std::int32_t _Num = 0; _Num < _Max; ++_Num)
-      {
-         // _Num is the index of the first vertex, _Next is the next one.
-         std::int32_t _Next = (_Num + 1) % _Max;
-
-         // The vertices of the edge we are checking.
-         std::int32_t _x1 = this->_Mycoordinates[_Num]->x();
-         std::int32_t _y1 = this->_Mycoordinates[_Num]->y();
-         std::int32_t _x2 = this->_Mycoordinates[_Next]->x();
-         std::int32_t _y2 = this->_Mycoordinates[_Next]->y();
-         
-         _Area += (_x1 * _y2);
-         _Area -= (_y1 * _x2);
-         _Center_x += ((x1 + x2) * ((x1 * y2) - (x2 * y1)));
-         _Center_y += ((y1 + y2) * ((x1 * y2) - (x2 * y1)));
-      }
-      _Area /= 2.0;
-      _Area = std::fabs(_Area);
-      _Center_x = _Center_x / (6.0 * _Area);
-      _Center_y = _Center_y / (6.0 * _Area);
-      
-      return xcoordinate(_Center_x, _Center_y);
-   }
-   
    std::float64_t length()
    {
       std::float64_t _Val = 0.0;
