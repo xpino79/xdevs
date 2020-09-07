@@ -185,7 +185,6 @@ public:
 
         if ((std::fabs(bb4ac) < std::numeric_limits<std::float64_t>::epsilon()) || (bb4ac < 0)) 
         {   
-            std::cout << " > " << std::fixed << bb4ac << ", " << (std::fabs(bb4ac) < std::numeric_limits<std::float64_t>::epsilon()) << std::endl;
             return false; // No collision
         }
         else {
