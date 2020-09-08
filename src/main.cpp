@@ -118,7 +118,8 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
         std::int32_t _Centroid_x = 0;
         std::int32_t _Centroid_y = 0;
         _Puptr->get_centroid(&_Centroid_x, &_Centroid_y);
-  
+        std::cout << "POLYGON centroid: " << _Centroid_x << ", " << _Centroid_y << std::endl;
+     
         std::unique_ptr<my::xmulti_polygon> _MPuptr = std::make_unique<my::xmulti_polygon>();
         _MPuptr->push_back( std::move(_Puptr) );
         std::cout << "MULTIPOLYGON area: " << _MPuptr->area() << std::endl;
