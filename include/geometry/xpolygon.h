@@ -193,8 +193,8 @@ public:
             std::float64_t b2x = _x1 + mu2 * (_x2 - _x1);
             std::float64_t b2y = _y1 + mu2 * (_y2 - _y1);   
             
-            std::float64_t new_x = 0;
-            std::float64_t new_x = 0;
+            std::int32_t new_x = 0;
+            std::int32_t new_y = 0;
  
             get_intersection_point_of_two_lines(
                 _x1, _y1, _x2, _y2, 
