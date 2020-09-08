@@ -199,7 +199,7 @@ public:
             get_intersection_point_of_two_lines(
                 _x1, _y1, _x2, _y2, 
                 b1x, b1y, b2x, b2y,
-                new_x, new_y);
+                &new_x, &new_y);
             
             std::cout << " - " << new_x << ", " << new_x << std::endl;    
             return true;
