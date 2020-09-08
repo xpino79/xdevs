@@ -234,37 +234,7 @@ public:
       */
         
     }
-    
-    bool get_intersection_point_of_two_lines(
-        int _a1x, int _a1y, int _a2x, int _a2y,
-        int _b1x, int _b1y, int _b2x, int _b2y,
-        int *_x, int *_y)
-    {
-
-        double a1 = _a2y - _a1y;
-        double b1 = _a1x - _a2x;
-        double c1 = a1*(_a1x) + b1*(_a1y);
-
-        double a2 = _b2y - _b1y;
-        double b2 = _b1x - _b2x;
-        double c2 = a2*(_b1x)+ b2*(_b1y);
-
-        double determinant = a1*b2 - a2*b1;
-        if (determinant == 0)
-        {
-            *_x = -1;
-            *_y = -1;
-            return false;
-        }
-        else
-        {
-            *_x = (b2*c1 - b1*c2)/determinant;
-            *_y = (a1*c2 - a2*c1)/determinant;
-            return true;
-        }
-
-    }
-    
+ 
 };
 
 } /* namespace my */
