@@ -113,8 +113,7 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
         std::cout << "POLYGON area: " << _Puptr->area() << std::endl;
         std::cout << "POLYGON length: " << _Puptr->length() << std::endl;
         std::cout << "POLYGON within: " << _Puptr->within(10, 10) << ", " << _Puptr->within(0, 0) << ", " << _Puptr->within(1, 1) << std::endl;
-        std::cout << "POLYGON intersects: " << std::endl; 
-        _Puptr->intersects(1, 2, 1);
+        std::cout << "POLYGON intersects: " << _Puptr->intersects(1, 2, 1) << std::endl; 
         std::int32_t _Centroid_x = 0;
         std::int32_t _Centroid_y = 0;
         _Puptr->get_centroid(&_Centroid_x, &_Centroid_y);
