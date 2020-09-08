@@ -234,7 +234,38 @@ public:
       */
         
     }
- 
+
+   void get_centroid(std::int32_t *_centroid_x, std::int32_t *_centroid_y)
+   {
+      
+      std::float64_t _area = 0.0;
+      std::float64_t _center_x = 0.0;
+      std::float64_t _center_y = 0.0;
+      
+      std::int32_t _Max = this->_Mycoordinates.size();
+      for (std::int32_t _Num = 0; _Num < _Max; ++_Num)
+      {
+         // _Num is the index of the first vertex, _Next is the next one.
+         std::int32_t _Next = (_Num + 1) % _Max;
+
+         // The vertices of the edge we are checking.
+         std::int32_t _x1 = this->_Mycoordinates[_Num]->x();
+         std::int32_t _y1 = this->_Mycoordinates[_Num]->y();
+         std::int32_t _x2 = this->_Mycoordinates[_Next]->x();
+         std::int32_t _y2 = this->_Mycoordinates[_Next]->y();
+         
+         _area += (_x1 * _y2);
+         _area -= (_y1 * _x2);
+         _center_x += ((_x1 + _x2) * ((_x1 * _y2) - (_x2 * _y1)));
+         _center_y += ((_y1 + _y2) * ((_x1 * _y2) - (_x2 * _y1)));
+      }
+      _area /= 2.0;
+      _area = std::fabs(_area);
+      *_centroid_x = _center_x / (6.0 * _area);
+      *_centroid_y = _center_y / (6.0 * _area);
+
+   }
+    
 };
 
 } /* namespace my */
