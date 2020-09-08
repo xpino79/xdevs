@@ -240,7 +240,7 @@ public:
    void get_centroid(std::int32_t *_Centroid_x, std::int32_t *_Centroid_y)
    {
       
-      std::float64_t _area = 0.0;
+      std::float64_t _signed_area = 0.0;
       std::float64_t _center_x = 0.0;
       std::float64_t _center_y = 0.0;
       
@@ -256,15 +256,15 @@ public:
          std::int32_t _x2 = this->_Mycoordinates[_Next]->x();
          std::int32_t _y2 = this->_Mycoordinates[_Next]->y();
          
-         _area += (_x1 * _y2);
-         _area -= (_y1 * _x2);
+         _signed_area += (_x1 * _y2);
+         _signed_area -= (_y1 * _x2);
          _center_x += ((_x1 + _x2) * ((_x1 * _y2) - (_x2 * _y1)));
          _center_y += ((_y1 + _y2) * ((_x1 * _y2) - (_x2 * _y1)));
       }
-      _area /= 2.0;
-      _area = std::fabs(_area);
-      *_Centroid_x = _center_x / (6.0 * _area);
-      *_Centroid_y = _center_y / (6.0 * _area);
+      _signed_area /= 2.0;
+      _signed_area = std::fabs(_signed_area);
+      *_Centroid_x = _center_x / (6.0 * _signed_area);
+      *_Centroid_y = _center_y / (6.0 * _signed_area);
 
    }
     
