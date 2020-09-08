@@ -192,16 +192,8 @@ public:
             std::int32_t b1y = _y1 + mu1 * (_y2 - _y1);
             std::int32_t b2x = _x1 + mu2 * (_x2 - _x1);
             std::int32_t b2y = _y1 + mu2 * (_y2 - _y1);   
-            
-            std::int32_t new_x = 0;
-            std::int32_t new_y = 0;
- 
-            get_intersection_point_of_two_lines(
-                _x1, _y1, _x2, _y2, 
-                b1x, b1y, b2x, b2y,
-                &new_x, &new_y);
-            
-            std::cout << " > " << new_x << ", " << new_x << std::endl;    
+             
+            std::cout << " > " << b1x << ", " << b1y << ", " << b2x << ", " << b2y << std::endl;    
             return true;
         }
 
