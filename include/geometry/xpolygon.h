@@ -237,7 +237,7 @@ public:
         
     }
 
-   void get_centroid(std::int32_t *_centroid_x, std::int32_t *_centroid_y)
+   void get_centroid(std::int32_t *_Centroid_x, std::int32_t *_Centroid_y)
    {
       
       std::float64_t _area = 0.0;
@@ -263,8 +263,8 @@ public:
       }
       _area /= 2.0;
       _area = std::fabs(_area);
-      *_centroid_x = _center_x / (6.0 * _area);
-      *_centroid_y = _center_y / (6.0 * _area);
+      *_Centroid_x = _center_x / (6.0 * _area);
+      *_Centroid_y = _center_y / (6.0 * _area);
 
    }
     
