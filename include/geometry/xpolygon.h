@@ -186,14 +186,16 @@ public:
             return false; // No collision
         }
         else {
+            /*
             std::float64_t mu1 = (-b + std::sqrt(bb4ac)) / (2.0 * a);
             std::float64_t mu2 = (-b - std::sqrt(bb4ac)) / (2.0 * a); 
             std::int32_t b1x = _x1 + mu1 * (_x2 - _x1);
             std::int32_t b1y = _y1 + mu1 * (_y2 - _y1);
             std::int32_t b2x = _x1 + mu2 * (_x2 - _x1);
             std::int32_t b2y = _y1 + mu2 * (_y2 - _y1);   
-             
             std::cout << " > " << b1x << ", " << b1y << ", " << b2x << ", " << b2y << std::endl;    
+            */
+            
             return true;
         }
 
