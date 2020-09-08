@@ -164,9 +164,7 @@ public:
     bool intersects(std::float64_t _x1, std::float64_t _y1, std::float64_t _x2, std::float64_t _y2,
             std::float64_t _cx, std::float64_t _cy, std::float64_t _cr)
     {
-
-        std::cout << " intersects " << _x1 << ", " << _y1  << ", " << _x2 << ", " << _y2 << std::endl;
-        
+ 
         std::float64_t dx = _x2 - _x1;
         std::float64_t dy = _y2 - _y1;
         std::float64_t a = dx * dx + dy * dy;
@@ -190,14 +188,20 @@ public:
         else {
             std::float64_t mu1 = (-b + std::sqrt(bb4ac)) / (2.0 * a);
             std::float64_t mu2 = (-b - std::sqrt(bb4ac)) / (2.0 * a); 
-            std::float64_t ptx1 = _x1 + mu1 * (_x2 - _x1);
-            std::float64_t pty1 = _y1 + mu1 * (_y2 - _y1);
-            std::float64_t ptx2 = _x1 + mu2 * (_x2 - _x1);
-            std::float64_t pty2 = _y1 + mu2 * (_y2 - _y1);   
+            std::float64_t b1x = _x1 + mu1 * (_x2 - _x1);
+            std::float64_t b1y = _y1 + mu1 * (_y2 - _y1);
+            std::float64_t b2x = _x1 + mu2 * (_x2 - _x1);
+            std::float64_t b2y = _y1 + mu2 * (_y2 - _y1);   
             
-            std::cout << " > " << std::fixed << bb4ac << std::endl;
-            std::cout << " - " << ptx1 << ", " << pty1 << std::endl;
-            std::cout << " - " << ptx2 << ", " << pty2 << std::endl;
+            std::float64_t new_x = 0;
+            std::float64_t new_x = 0;
+ 
+            get_intersection_point_of_two_lines(
+                _x1, _y1, _x2, _y2, 
+                b1x, b1y, b2x, b2y,
+                new_x, new_x);
+            
+            std::cout << " - " << new_x << ", " << new_x << std::endl;    
             return true;
         }
 
@@ -238,6 +242,37 @@ public:
       */
         
     }
+    
+    bool get_intersection_point_of_two_lines(
+        int _a1x, int _a1y, int _a2x, int _a2y,
+        int _b1x, int _b1y, int _b2x, int _b2y,
+        int *_x, int *_y)
+    {
+
+        double a1 = _a2y - _a1y;
+        double b1 = _a1x - _a2x;
+        double c1 = a1*(_a1x) + b1*(_a1y);
+
+        double a2 = _b2y - _b1y;
+        double b2 = _b1x - _b2x;
+        double c2 = a2*(_b1x)+ b2*(_b1y);
+
+        double determinant = a1*b2 - a2*b1;
+        if (determinant == 0)
+        {
+            *_x = -1;
+            *_y = -1;
+            return false;
+        }
+        else
+        {
+            *_x = (b2*c1 - b1*c2)/determinant;
+            *_y = (a1*c2 - a2*c1)/determinant;
+            return true;
+        }
+
+    }
+    
 };
 
 } /* namespace my */
