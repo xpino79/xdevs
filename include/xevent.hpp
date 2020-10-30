@@ -11,5 +11,5 @@ public:
     std::float64_t ta() { return _Myta; }
     set_ta(std::float64_t _Val) { _Myta = _Val; }
     
-    virtual void run() {}
+    virtual void run() = 0; /// 이벤트 실행 순수 가상한수
 };
