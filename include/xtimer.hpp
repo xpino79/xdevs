@@ -1,11 +1,10 @@
 #include "xtypedefs.h"
+#include "xevent.hpp"
 
-class xtimer
+class xtimer : public xevent
 {
 private:
-    /// 싱글톤
 public:
-    /// 현 모의시간 변수
-    /// 시간진행 함수
+    void run();
 
 };
