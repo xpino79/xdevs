@@ -7,7 +7,9 @@ private:
 public:
     xevent() = default;
     ~xevent() = default;
-
-    get_ta() { return _Myta; }
-
+     
+    diuble ta() { return _Myta; }
+    set_ta(double _Val) { _Myta = _Val; }
+    
+    void run() {}
 };
