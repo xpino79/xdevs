@@ -3,8 +3,9 @@
 
 class xevent_manager
 {
-    /// 싱글톤 
-
+private:
+    /// 싱글톤
+public:
     /// 이벤트 등록 함수
     /// 이벤트 실행 함수
     /// 이벤트 취소 함수
