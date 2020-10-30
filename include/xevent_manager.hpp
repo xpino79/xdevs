@@ -9,7 +9,9 @@ private:
 
     xpriority_queue _Myqueue;
 public:
-    
+    static xobject_manager& instance()
+    {
+    }
     /// 이벤트 등록 함수
     /// 이벤트 실행 함수
     /// 이벤트 취소 함수
