@@ -1,5 +1,6 @@
 #include <queue>
 #include <vector>
+#include "xevent.hpp"
 
 class xcompare
 {
