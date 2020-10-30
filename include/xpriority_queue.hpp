@@ -8,7 +8,7 @@ public:
 
 };
 
-class xpriority_queue
+class xpriority_queue : public std::priority_queue<xevent *, std::vector<xevent *>, xcompare >
 {
 
 };
