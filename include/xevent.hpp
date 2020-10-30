@@ -8,7 +8,7 @@ public:
     xevent() = default;
     virtual ~xevent() = default;
      
-    std:: float64_t ta() { return _Myta; }
+    std::float64_t ta() { return _Myta; }
     set_ta(std::float64_t _Val) { _Myta = _Val; }
     
     virtual void run() {}
