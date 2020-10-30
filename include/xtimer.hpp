@@ -5,6 +5,8 @@ class xtimer : public xevent
 {
 private:
 public:
-    void run();
+    virtual void run() final
+    {
+    }
 
 };
