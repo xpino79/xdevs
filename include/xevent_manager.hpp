@@ -4,7 +4,6 @@
 class xevent_manager
 {
 private:
-    /// 싱글톤
     xevent_manager() = default;
     xpriority_queue _Myqueue;
 
