@@ -1,4 +1,0 @@
-
-class tcp_server
-{
-}
