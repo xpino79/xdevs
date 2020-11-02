@@ -1,5 +1,0 @@
-
-class xtime_manager
-{
-
-};
