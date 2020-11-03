@@ -4,6 +4,8 @@
 #include <memory>
 #include <mutex>
 
+// https://github.com/gabime/spdlog/tree/v1.x/include/spdlog
+
 #include "spdlog/spdlog.h"
 
 namespace my
