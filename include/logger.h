@@ -9,12 +9,6 @@
 namespace my
 {
 
-    /**
- * @class logger
- * @date 2020. 01. 01.
- * @author death@aresinfo.com
- * @brief 로그 관리 클래스
- */
     class logger 
     {
     private:
