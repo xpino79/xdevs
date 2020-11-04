@@ -14,7 +14,7 @@ std::once_flag xlogger::_Myonce_flag;
  * @brief 인스턴스 반환
  * @return
  */
-std::shared_ptr<spdlog::logger> xlogger::instance()
+std::shared_ptr<spdlog::logger> &xlogger::instance()
 {
     std::call_once(_Myonce_flag, []() {
         spdlog::flush_every(std::chrono::seconds(1));
