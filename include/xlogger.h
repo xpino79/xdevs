@@ -24,9 +24,16 @@ private:
 
 public:
     ~xlogger() = default;
-    static std::shared_ptr<spdlog::logger> instance();
+    static std::shared_ptr<spdlog::logger>& instance();
     static void release_instance();
 };
+
+// macros			
+#define TRACE(...) ::xlogger::instance()->trace(__VA_ARGS__)
+#define INFO(...) ::xlogger::instance()->info(__VA_ARGS__)
+#define WARN(...) ::xlogger::instance()->warn(__VA_ARGS__)
+#define ERROR(...) ::xlogger::instance()->error(__VA_ARGS__)
+#define FATAL(...) ::xlogger::instance()->fatal(__VA_ARGS__)
 
 } // namespace my
 
