@@ -1,4 +1,5 @@
-/* rhel8 gcc10 -std=c++17 -lstdc++ */
+/* dnf install gcc-toolset-10 */
+/* gcc -std=c++17 -lstdc++ */
 
 #include <execution>
 #include <algorithm>
