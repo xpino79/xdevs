@@ -1,15 +1,17 @@
 #include <execution>
 #include <algorithm>
+#include <mutex>
 
 void _My_parallel_stl_for_each()
 {
-  int num[] = {1, 2, 3};
-  std::vector a = { 4, 5, 6 };
+  int sum = 0;
+  std::vector<int> v = { 1, 2, 3 };
   std::mutex m;
  
-  std::for_each(std::execution::par, std::begin(num), std::end(num),
-    [&](auto v) {
+  std::for_each(std::execution::par, std::begin(v), std::end(v),
+    [&](auto i) {
 	std::lock_guard lock(m);
-	a.push_back(v + 1); // OK
+	sum += i;
   });
+
 }
