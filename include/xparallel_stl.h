@@ -1,7 +1,7 @@
 #include <execution>
 #include <algorithm>
 
-void _My_for_each()
+void _My_parallel_stl_for_each()
 {
   int num[] = {1, 2, 3};
   std::vector a = { 4, 5, 6 };
