@@ -1,9 +1,13 @@
 /* dnf install gcc-toolset-10 */
 /* gcc -std=c++17 -lstdc++ */
 
-#include <execution>
+#include <stdio.h>
+#include <vector>
+#include <map>
 #include <algorithm>
-#include <mutex>
+#include <iostream>
+#include <execution>
+#include <chrono>
 
 void _My_parallel_stl_for_each()
 {
@@ -15,6 +19,11 @@ void _My_parallel_stl_for_each()
     [&](auto i) {
 	std::lock_guard lock(m);
 	sum += i;
+  });
+	
+  std::map<int, int> m{{1, 2}, {3, 4}, {5, 6}, {7, 8}};
+  std::for_each(std::begin(m), std::end(m), [](const auto &pair) {
+    std::cout << "first " << pair.first << " second " << pair.second << std::endl;
   });
 
 }
