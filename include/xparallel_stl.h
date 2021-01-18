@@ -22,7 +22,7 @@ void _My_parallel_stl_for_each()
   });
 	
   std::map<int, int> m{{1, 2}, {3, 4}, {5, 6}, {7, 8}};
-  std::for_each(std::begin(m), std::end(m), [](const auto &pair) {
+  std::for_each(std::execution::par, std::begin(m), std::end(m), [](const auto &pair) {
     std::cout << "first " << pair.first << " second " << pair.second << std::endl;
   });
 
