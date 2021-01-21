@@ -31,12 +31,10 @@ uninitialized_copy, uninitialized_copy_n, uninitialized_fill, uninitialized_fill
 void _My_pstl_remove()
 {
     std::vector<int> _Vec;
-    _Vec.push_back(5);
     _Vec.push_back(3);
     _Vec.push_back(1);
     _Vec.push_back(2);
     _Vec.push_back(3);
-    _Vec.push_back(4);
     _Vec.erase(std::remove(_Vec.begin(), _Vec.end(), 3), _Vec.end());
 }
 void _My_pstl_remove_if()
