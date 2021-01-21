@@ -11,6 +11,10 @@
 #include <chrono>
 #include <mutex>
 
+/*
+http://ithare.com/using-parallel-algorithm-without-a-clue-90x-performance-loss-instead-of-8x-gain/
+*/
+
 /* 병렬 실행을 지원하는 표준 알고리즘
 adjacent_difference, adjacent_find, all_of, any_of, 
 copy, copy_if, copy_n, count, count_if, 
