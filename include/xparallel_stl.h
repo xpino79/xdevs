@@ -12,19 +12,22 @@
 
 void _My_parallel_stl_for_each()
 {
-  int sum = 0;
-  std::vector<int> v = { 1, 2, 3 };
-  std::mutex m;
+  int _Sum = 0;
+  std::vector<int> _Vec = { 1, 2, 3 };
+  std::mutex _Mutex;
  
-  std::for_each(std::execution::par, std::begin(v), std::end(v),
-    [&](auto i) {
-	std::lock_guard lock(m);
-	sum += i;
-  });
-	
-  std::map<int, int> m{{1, 2}, {3, 4}, {5, 6}, {7, 8}};
-  std::for_each(std::execution::par, std::begin(m), std::end(m), [](const auto &pair) {
-    std::cout << "first " << pair.first << " second " << pair.second << std::endl;
-  });
+  std::for_each(std::execution::par, std::begin(_Vec), std::end(_Vec),
+								[&](auto _Num) {
+									std::lock_guard _Guard(_Mutex);
+									Sum += _Num;
+								});
+
+  std::map<int, int> _Map{{1, 2}, {3, 4}, {5, 6}, {7, 8}};
+  std::for_each(std::execution::par, std::begin(_Map), std::end(_Map), 
+								[](const auto &_Pair) {
+									std::cout << "first " << _Pair.first << " second " << _Pair.second << std::endl;
+									std::lock_guard _Guard(_Mutex);
+									Sum += _Num;
+								});
 
 }
