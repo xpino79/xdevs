@@ -11,23 +11,21 @@
 #include <chrono>
 #include <mutex>
 
-/*
+/* 병렬 실행을 지원하는 표준 알고리즘
 adjacent_difference, adjacent_find, all_of, any_of, 
 copy, copy_if, copy_n, count, count_if, 
 equal, exclusive_scan, 
-fill, fill_n, 
-find, find_end, find_first_of, find_if, find_if_not, 
-for_each, for_each_n, 
-generate, generate_n, includes, inclusive_scan, inner_product, inplace_merge, , is_heap, is_heap_until, is_partitioned, is_sorted, is_sorted_until, 
-lexicographical_compare, max_element, merge, min_element, minmax_element, mismatch, move, none_of, nth_element, 
-partial_sort, partial_sort_copy, partition, partition_copy, reduce, 
-remove, , remove_copy, remove_copy_if, remove_if, 
-replace, replace_copy, replace_copy_if, replace_if, reverse, reverse_copy, 
-rotate, rotate_copy, 
-search, search_n, 
-set_difference, set_intersection, set_symmetric_difference, set_union, sort, stable_partition, stable_sort, swap_ranges, 
-transform, transform_exclusive_scan, transform_inclusive_scan, transform_reduce, uninitialized_copy, uninitialized_copy_n, uninitialized_fill, 
-uninitialized_fill_n, unique, unique_copy
+fill, fill_n, find, find_end, find_first_of, find_if, find_if_not, for_each, for_each_n, 
+generate, generate_n, 
+includes, inclusive_scan, inner_product, inplace_merge, , is_heap, is_heap_until, is_partitioned, is_sorted, is_sorted_until, 
+lexicographical_compare, 
+max_element, merge, min_element, minmax_element, mismatch, move, 
+none_of, nth_element, 
+partial_sort, partial_sort_copy, partition, partition_copy, 
+reduce, remove, , remove_copy, remove_copy_if, remove_if, replace, replace_copy, replace_copy_if, replace_if, reverse, reverse_copy, rotate, rotate_copy, 
+search, search_n, set_difference, set_intersection, set_symmetric_difference, set_union, sort, stable_partition, stable_sort, swap_ranges, 
+transform, transform_exclusive_scan, transform_inclusive_scan, transform_reduce, 
+uninitialized_copy, uninitialized_copy_n, uninitialized_fill, uninitialized_fill_n, unique, unique_copy
 */
 
 void _My_parallel_stl_for_each()
@@ -51,10 +49,10 @@ void _My_parallel_stl_for_each()
                   });
 }
 
-void _My_parallel_stl_accumulate()
+void _My_accumulate()
 {
     int _Sum = 0;
 
     std::vector<int> _Vec = {1, 2, 3};
-    _Sum = std::accumulate(std::execution::par, std::begin(_Vec), std::end(_Vec), 0);
+    _Sum = std::accumulate(std::begin(_Vec), std::end(_Vec), 0);
 }
