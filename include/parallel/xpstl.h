@@ -28,6 +28,27 @@ transform, transform_exclusive_scan, transform_inclusive_scan, transform_reduce,
 uninitialized_copy, uninitialized_copy_n, uninitialized_fill, uninitialized_fill_n, unique, unique_copy
 */
 
+void _My_pstl_for_each()
+{
+    int _Sum = 0;
+    std::mutex _Mutex;
+
+    std::vector<int> _Vec = {1, 2, 3};
+    std::for_each(std::execution::par, std::begin(_Vec), std::end(_Vec),
+                  [&](auto _Num) {
+                      std::lock_guard _Guard(_Mutex);
+                      Sum += _Num;
+                  });
+
+    std::map<int, int> _Map{{1, 2}, {3, 4}, {5, 6}, {7, 8}};
+    std::for_each(std::execution::par, std::begin(_Map), std::end(_Map),
+                  [](const auto &_Pair) {
+                      std::cout << "first " << _Pair.first << " second " << _Pair.second << std::endl;
+                      std::lock_guard _Guard(_Mutex);
+                      Sum += _Num;
+                  });
+}
+
 void _My_pstl_remove()
 {
     std::vector<int> _Vec;
@@ -54,27 +75,6 @@ void _My_pstl_remove_if()
                                  return false;
                              }),
               _Vec.end());    
-}
-
-void _My_pstl_for_each()
-{
-    int _Sum = 0;
-    std::mutex _Mutex;
-
-    std::vector<int> _Vec = {1, 2, 3};
-    std::for_each(std::execution::par, std::begin(_Vec), std::end(_Vec),
-                  [&](auto _Num) {
-                      std::lock_guard _Guard(_Mutex);
-                      Sum += _Num;
-                  });
-
-    std::map<int, int> _Map{{1, 2}, {3, 4}, {5, 6}, {7, 8}};
-    std::for_each(std::execution::par, std::begin(_Map), std::end(_Map),
-                  [](const auto &_Pair) {
-                      std::cout << "first " << _Pair.first << " second " << _Pair.second << std::endl;
-                      std::lock_guard _Guard(_Mutex);
-                      Sum += _Num;
-                  });
 }
 
 void _My_accumulate()
