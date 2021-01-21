@@ -87,7 +87,13 @@ void _My_pstl_remove_if()
                              }),
               _Vec.end());    
 }
+void _My_pstl_reduce()
+{
+    int _Sum = 0;
 
+    std::vector<int> _Vec = {1, 2, 3};
+    _Sum = std::reduce(std::execution::par, std::begin(_Vec), std::end(_Vec);
+}
 void _My_accumulate()
 {
     int _Sum = 0;
