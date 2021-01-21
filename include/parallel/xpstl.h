@@ -35,7 +35,8 @@ void _My_pstl_remove()
     _Vec.push_back(1);
     _Vec.push_back(2);
     _Vec.push_back(3);
-    _Vec.erase(std::remove(_Vec.begin(), _Vec.end(), 3), _Vec.end());
+    // _Vec.erase(std::remove(_Vec.begin(), _Vec.end(), 3), _Vec.end());
+    _Vec.erase(std::remove(std::execution::par, _Vec.begin(), _Vec.end(), 3), _Vec.end());
 }
 void _My_pstl_remove_if()
 {
