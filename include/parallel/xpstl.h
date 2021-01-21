@@ -32,7 +32,8 @@ void _My_pstl_for_each()
 {
     int _Sum{0};
     std::mutex _Mutex;
-
+    
+    /* 순차보다 느리다 */
     std::vector<int> _Vec = {1, 2, 3};
     std::for_each(std::execution::par, std::begin(_Vec), std::end(_Vec),
                   [&](auto _Num) {
@@ -41,12 +42,20 @@ void _My_pstl_for_each()
                       Sum += _Num;
                   });
     
+    /* 순차보다 느리다 */
     std::map<int, int> _Map{{1, 2}, {3, 4}, {5, 6}, {7, 8}};
     std::for_each(std::execution::par, std::begin(_Map), std::end(_Map),
                   [](const auto &_Pair) {
                       // std::cout << "first " << _Pair.first << " second " << _Pair.second << std::endl;
                       std::lock_guard _Lock(_Mutex);
                       Sum += _Pair.second;
+                  });
+
+    /* 순차보다 느리다 */
+    std::atomic<int> _Tot{0};
+    std::for_each(std::execution::par, std::begin(_Vec), std::end(_Vec),
+                  [&](auto _Num) {
+                      _Tot += _Num;
                   });
     
 }
