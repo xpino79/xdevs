@@ -40,7 +40,20 @@ void _My_pstl_remove()
 }
 void _My_pstl_remove_if()
 {
-    
+    std::vector<int> vec;
+    vec.push_back(1);
+    vec.push_back(2);
+    vec.push_back(3);
+    vec.push_back(4);
+    vec.erase(std::remove_if(vec.begin(), vec.end(),
+                             [](int i) {
+                                 if (i % 2 == 1)
+                                 {
+                                     return true;
+                                 }
+                                 return false;
+                             }),
+              vec.end());    
 }
 
 void _My_pstl_for_each()
