@@ -10,6 +10,7 @@
 #include <iostream>
 #include <chrono>
 #include <mutex>
+#include <atomic>
 
 /*
 http://ithare.com/using-parallel-algorithm-without-a-clue-90x-performance-loss-instead-of-8x-gain/
@@ -59,7 +60,7 @@ void _My_pstl_for_each()
     std::atomic<int> _Tot{0};
     std::for_each(std::execution::par, std::begin(_Vec), std::end(_Vec),
                   [&](auto _Num) {
-                      _Tot += _Num;
+                      _Tot.fetch_add(_Num, std::memory_order_relaxed);
                   });
     
 }
