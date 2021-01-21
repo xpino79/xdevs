@@ -36,6 +36,7 @@ void _My_pstl_for_each()
     std::vector<int> _Vec = {1, 2, 3};
     std::for_each(std::execution::par, std::begin(_Vec), std::end(_Vec),
                   [&](auto _Num) {
+                      /* 경쟁 상태 */
                       std::lock_guard _Lock(_Mutex);
                       Sum += _Num;
                   });
