@@ -30,7 +30,7 @@ uninitialized_copy, uninitialized_copy_n, uninitialized_fill, uninitialized_fill
 
 void _My_pstl_for_each()
 {
-    int _Sum = 0;
+    int _Sum{0};
     std::mutex _Mutex;
 
     std::vector<int> _Vec = {1, 2, 3};
@@ -39,7 +39,7 @@ void _My_pstl_for_each()
                       std::lock_guard _Lock(_Mutex);
                       Sum += _Num;
                   });
-
+    
     std::map<int, int> _Map{{1, 2}, {3, 4}, {5, 6}, {7, 8}};
     std::for_each(std::execution::par, std::begin(_Map), std::end(_Map),
                   [](const auto &_Pair) {
@@ -47,6 +47,7 @@ void _My_pstl_for_each()
                       std::lock_guard _Lock(_Mutex);
                       Sum += _Num;
                   });
+    
 }
 
 void _My_pstl_remove()
