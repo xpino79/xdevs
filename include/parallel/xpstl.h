@@ -36,7 +36,7 @@ void _My_pstl_for_each()
     std::vector<int> _Vec = {1, 2, 3};
     std::for_each(std::execution::par, std::begin(_Vec), std::end(_Vec),
                   [&](auto _Num) {
-                      std::lock_guard _Guard(_Mutex);
+                      std::lock_guard _Lock(_Mutex);
                       Sum += _Num;
                   });
 
@@ -44,7 +44,7 @@ void _My_pstl_for_each()
     std::for_each(std::execution::par, std::begin(_Map), std::end(_Map),
                   [](const auto &_Pair) {
                       std::cout << "first " << _Pair.first << " second " << _Pair.second << std::endl;
-                      std::lock_guard _Guard(_Mutex);
+                      std::lock_guard _Lock(_Mutex);
                       Sum += _Num;
                   });
 }
