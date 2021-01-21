@@ -5,6 +5,7 @@
 #include <vector>
 #include <map>
 #include <algorithm>
+#include <numeric>
 #include <execution>
 #include <iostream>
 #include <chrono>
