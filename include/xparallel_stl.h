@@ -30,3 +30,11 @@ void _My_parallel_stl_for_each()
                       Sum += _Num;
                   });
 }
+
+void _My_parallel_stl_accumulate()
+{
+    int _Sum = 0;
+
+    std::vector<int> _Vec = {1, 2, 3};
+    _Sum = std::accumulate(std::execution::par, std::begin(_Vec), std::end(_Vec), 0);
+}
