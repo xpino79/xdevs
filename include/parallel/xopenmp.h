@@ -21,6 +21,7 @@ void _My_openmp_for()
         }
     }
 
+    /* 순차보다 느리다 */
     int _Max = 0;
 #pragma omp for schedule(static)
     for (int _Idx = 0; _Idx < 10; ++_Idx)
