@@ -13,9 +13,9 @@
 void _My_parallel_stl_for_each()
 {
   int _Sum = 0;
-  std::vector<int> _Vec = { 1, 2, 3 };
   std::mutex _Mutex;
  
+  std::vector<int> _Vec = { 1, 2, 3 };
   std::for_each(std::execution::par, std::begin(_Vec), std::end(_Vec),
 								[&](auto _Num) {
 									std::lock_guard _Guard(_Mutex);
