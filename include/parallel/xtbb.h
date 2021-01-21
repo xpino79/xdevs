@@ -1,11 +1,11 @@
-#ifndef XPARALLEL_H_
-#define XPARALLEL_H_
+#ifndef XTBB_H_
+#define XTBB_H_
 
 #include <vector>
 #include <map>
 #include <chrono>
 #include <tbb/tbb.h> // 병렬
-#include "xobject_manager.h"
+
 
 // 병렬처리 속도 관련 
 // https://docs.microsoft.com/ko-kr/dotnet/standard/parallel-programming/potential-pitfalls-in-data-and-task-parallelism
@@ -93,4 +93,4 @@ void _My_tbb_for()
     
 }
  
-#endif /* XPARALLEL_H_ */
+#endif /* XTBB_H_ */
