@@ -1,5 +1,5 @@
 /* dnf install gcc-toolset-10 */
-/* gcc -std=c++17 -lstdc++ */
+/* gcc -std=c++17 -lstdc++ -ltbb -fopenmp */
 
 #include <stdio.h>
 #include <vector>
