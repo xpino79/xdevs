@@ -28,7 +28,16 @@ transform, transform_exclusive_scan, transform_inclusive_scan, transform_reduce,
 uninitialized_copy, uninitialized_copy_n, uninitialized_fill, uninitialized_fill_n, unique, unique_copy
 */
 
-void _My_parallel_stl_for_each()
+void _My_pstl_remove()
+{
+    
+}
+void _My_pstl_remove_if()
+{
+    
+}
+
+void _My_pstl_for_each()
 {
     int _Sum = 0;
     std::mutex _Mutex;
