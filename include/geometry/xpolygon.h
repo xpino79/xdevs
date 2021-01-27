@@ -96,7 +96,7 @@ public:
 
     // https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm
     // https://wrf.ecse.rpi.edu//Research/Short_Notes/pnpoly.html
-    bool within(std::int32_t _x, std::int32_t _y)
+    bool contains(std::int32_t _x, std::int32_t _y)
     {
         // If we never cross any lines we're inside.
         bool _Inside = false;
@@ -135,7 +135,7 @@ public:
 
     bool intersects(std::int32_t _x, std::int32_t _y, std::float64_t _radius)
     {
-        bool _Intersect = within(_x, _y);
+        bool _Intersect = contains(_x, _y);
         if (false == _Intersect)
         {
             std::int32_t _Max = this->_Mycoordinates.size();
