@@ -56,13 +56,13 @@ public:
         return _Val;     
     }
     
-    bool within(std::int32_t _X, std::int32_t _Y)
+    bool contains(std::int32_t _X, std::int32_t _Y)
     {
         bool _Val = false;
         for(auto &_Elem : _Mypolygons)
         {
             xpolygon *_Ptr = _Elem.get();
-            if( _Ptr->within(_X, _Y))
+            if( _Ptr->contains(_X, _Y))
             {
                 _Val = true;
                 break;
