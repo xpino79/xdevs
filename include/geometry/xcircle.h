@@ -31,11 +31,11 @@ namespace my
         double _Myr{};
 
     public:
-        explicit circle(std::int32_t _Pos_x, std::int32_t _Pos_y, double _Radius)
+        explicit xcircle(std::int32_t _Pos_x, std::int32_t _Pos_y, double _Radius)
             : _Myx(_Pos_x), _Myy(_Pos_y), _Myr(_Radius)
         {
         }
-        ~circle() = default;
+        ~xcircle() = default;
 
         std::int32_t x() const noexcept
         {
