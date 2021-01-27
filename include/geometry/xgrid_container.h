@@ -210,7 +210,7 @@ public:
                 std::int32_t _End_y = std::min(_Off->y()+_Interval, _Mymaximum_y-1);
  
                 // >>>>> 병렬 테스트
-                #pragma omp parallel for schedule(static) collapse(2)
+                // #pragma omp parallel for schedule(static) collapse(2)
                 for (auto _Idx_y = _Begin_y; _Idx_y <= _End_y; ++_Idx_y)
                 {
                     for (auto _Idx_x = _Begin_x; _Idx_x <= _End_x; ++_Idx_x)
