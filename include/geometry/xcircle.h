@@ -1,7 +1,7 @@
 /**
  * Copyright 2021. xpino79@gmail.com All rights reserved.
  *
- * @file coordinate.h
+ * @file circle.h
  * @date 2021. 01. 01.
  * @author xpino79@gmail.com
  * @brief 원 클래스 헤더파일
