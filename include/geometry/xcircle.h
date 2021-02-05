@@ -71,6 +71,36 @@ namespace my
             }
             return _Inside;
         }
+        /**
+         * @brief 한점이 부채꼴의 주어진 각도 안에 들어있는지 확인한다.
+         * 
+         * @param _Pos_x 
+         * @param _Pos_y 
+         * @param _Dir 부채꼴 중심각 
+         * @param _Range 부채꼴 중심각으로부터 양 범위(degree)
+         * @return true 
+         * @return false 
+         */
+        bool contains(std::int32_t _Pos_x, std::int32_t _Pos_y, std::int32_t _Dir, std::int32_t _Range ) const
+        {
+            bool _Inside = false;
+            if (contains(_Pos_x, _Pos_y))
+            {
+                const std::float64_t RAD_TO_DEG = 57.295779513082321;
+                const std::float64_t DEG_TO_RAD = 0.017453292519943296;
+                const std::float64_t _Midpoint_x = static_cast<float64_t>(_Myx) + (std::cos( ((450.0-_Dir)*DEG_TO_RAD) )*_Myr);
+                const std::float64_t _Midpoint_y = static_cast<float64_t>(_Myy) + (std::sin( ((450.0-_Dir)*DEG_TO_RAD) )*_Myr);
+
+                // https://m.blog.naver.com/PostView.nhn?blogId=tobsysco&logNo=90189688655&proxyReferer=https:%2F%2Fwww.google.com%2F
+                std::float64_t _Angle = std::atan( (_Midpoint_y-_Myy) / (_Midpoint_x-_Myx) ) - std::atan( (_Pos_x-_Myy) / (_Pos_y-_Myx) );
+                _Angle = _Angle * RAD_TO_DEG;
+                if (_Angle <= _Range)
+                {
+                    _Inside = true;
+                }                
+            }
+            return _Inside;
+        }
         bool contains(const circle &_Right) const
         {
             bool _Inside = false;
