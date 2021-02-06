@@ -69,6 +69,7 @@ namespace my
             // 원의 중심에서 x y의 변화량 산출
             // 원의 중심과 점과의 거리
             double _Distance = std::sqrt((_Myx - _Pos_x) * (_Myx - _Pos_x) + (_Myy - _Pos_y) * (_Myy - _Pos_y));
+            // 원의 중심부터 점과의 거리가 원의 반지름보다 크면 충돌이 아니다
             if (_Distance <= _Myr)
             {
                 _Inside = true;
