@@ -80,6 +80,7 @@ namespace my
         {
             bool _Inside = false;
             double _Distance = std::sqrt((_Myx - _Right._Myx) * (_Myx - _Right._Myx) + (_Myy - _Right._Myy) * (_Myy - _Right._Myy));
+            // 원의 중심간의 가리가 두 원의 반지름 합보다 크다면 충돌이 아니다
             if ((_Distance + _Right._Myr) <= _Myr)
             {
                 _Inside = true;
