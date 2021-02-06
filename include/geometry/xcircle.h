@@ -15,6 +15,8 @@
 #include <limits>
 #include <iostream>
 
+// https://skmagic.tistory.com/313
+
 namespace my
 {
     /**
