@@ -66,6 +66,8 @@ namespace my
         bool contains(std::int32_t _Pos_x, std::int32_t _Pos_y) const
         {
             bool _Inside = false;
+            // 원의 중심에서 x y의 변화량 산출
+            // 원의 중심과 점과의 거리
             double _Distance = std::sqrt((_Myx - _Pos_x) * (_Myx - _Pos_x) + (_Myy - _Pos_y) * (_Myy - _Pos_y));
             if (_Distance <= _Myr)
             {
@@ -105,7 +107,7 @@ namespace my
             std::int32_t b1x = _Begin_x + mu1 * (_End_x - _Begin_x);
             std::int32_t b1y = _Begin_y + mu1 * (_End_y - _Begin_y);
             std::int32_t b2x = _Begin_x + mu2 * (_End_x - _Begin_x);
-            std::int32_t b2y = _Begin_y + mu2 * (_End_y - _Begin_y);   
+            std::int32_t b2y = _Begin_y + ㅕmu2 * (_End_y - _Begin_y);   
             std::cout << " > " << b1x << ", " << b1y << ", " << b2x << ", " << b2y << std::endl;    
             */
             return true;
