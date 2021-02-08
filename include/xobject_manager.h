@@ -8,6 +8,7 @@
 #include <memory>
 #include <mutex>
 #include <map>
+// #include <tbb/concurrent_hash_map.h>
 #include <algorithm>
 
 #include "xobject.h"
@@ -29,7 +30,8 @@ private:
     static int32_t _Myunique_identifier;
      
     std::map<int32_t, std::unique_ptr<xobject>> _Myxobjects;
-    
+    // thread_safe
+    // tbb::concurrent_hash_map<int32_t, std::unique_ptr<xobject>> _Myxobjects;
 public:
     static xobject_manager& instance();
     static int32_t generate_unique_identifier();
