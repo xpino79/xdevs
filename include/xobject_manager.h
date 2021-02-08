@@ -8,8 +8,10 @@
 #include <memory>
 #include <mutex>
 #include <map>
-// #include <tbb/concurrent_hash_map.h>
 #include <algorithm>
+
+// http://sweeper.egloos.com/3053897
+// #include <tbb/concurrent_hash_map.h>
 
 #include "xobject.h"
 
