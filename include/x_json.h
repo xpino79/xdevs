@@ -7,12 +7,35 @@ const std::string file_path = "json.txt";
  
 void _My_write_json_data_into_string()
 {
-    boost::property_tree::ptree item;
-    item.put("a","2");
+
+    boost::property_tree::ptree pt;
+    boost::property_tree::ptree children;
+    boost::property_tree::ptree child1, child2, child3;
+
+    // { \"firstName\": \"Brett\", \"lastName\":\"McLaughlin\", \"email\": \"aaaa\" }
+    child1.put("firstName", "Brett");
+    child1.put("lastName", "McLaughlin");
+    child1.put("email", "aaaa");
+    // { \"firstName\": \"Jason\", \"lastName\":\"Hunter\", \"email\": \"bbbb\"}
+    child2.put("firstName", "Jason");
+    child2.put("lastName", "Hunter");
+    child2.put("email", "bbbb");
+    // { \"firstName\": \"Elliotte\", \"lastName\":\"Harold\", \"email\": \"cccc\" }
+    child3.put("firstName", "Elliotte");
+    child3.put("lastName", "Harold");
+    child3.put("email", "cccc");
+
+    children.push_back(std::make_pair("", child1));
+    children.push_back(std::make_pair("", child2));
+    children.push_back(std::make_pair("", child3));
+
+    pt.put("count", "10");
+    pt.add_child("people", children);
+
     std::stringstream is;
-    boost::property_tree::write_json(is,item);
-    std::string s = is.str();
-    cout<<"json s:"<<s<<endl;
+    boost::property_tree::write_json(is, pt);
+    std::cout << is.str() << std::endl; 
+ 
 }
 void _My_read_json_data_from_string()
 {
@@ -23,13 +46,16 @@ void _My_read_json_data_from_string()
     boost::property_tree::read_json(stream, props);
  
     std::cout << "count" << ":" << props.get<std::string>("count") << std::endl;
-    auto it = props.get_child("people");
-    for (auto &kv : it)
+    auto c = props.get_child("people");
+    for (auto &kv : c)
     {
-        auto field = kv.second;
-        for (auto &v : field)
+        // kv is of type ptree::value_type
+        // kv.first is the name of the child
+        // kv.second is the child tree
+        auto ct = kv.second;
+        for (auto &v : ct)
         {
-            std::cout << v.first << ":" << field.get<std::string>(v.first) << std::endl;
+            std::cout << v.first << ":" << ct.get<std::string>(v.first) << std::endl;
         }
     }
 }
