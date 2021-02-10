@@ -58,4 +58,12 @@ void _My_read_json_data_from_string()
             std::cout << v.first << ":" << ct.get<std::string>(v.first) << std::endl;
         }
     }
+    /*
+ 	  const auto &node = json.get_child("people", boost::property_tree::ptree{});
+	   std::cout << node.size() << " " << (node.begin() == node.end()) << std::endl;
+
+	   for (const auto &[k, v] : node) {
+		    std::cout << k << " " << v << std::endl;
+    }
+    */
 }
