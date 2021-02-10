@@ -55,26 +55,7 @@ void _My_read_json_data_from_string()
     std::stringstream str_stream(str_json);
     boost::property_tree::ptree root;
     boost::property_tree::read_json(str_stream,root);
-    root.put("upid","001");
-  
-    boost::property_tree::ptree exif_array;
-    boost::property_tree::ptree array1, array2, array3;
-    array1.put("Make", "NIKON");
-    array2.put("DateTime", "2011:05:31 06:47:09");
-    array3.put("Software", "Ver.1.01");
- 
-    //   exif_array.push_back(std::make_pair("Make", "NIKON"));
-    //   exif_array.push_back(std::make_pair("DateTime", "2011:05:31 06:47:09"));
-    //   exif_array.push_back(std::make_pair("Software", "Ver.1.01"));
- 
-    exif_array.push_back(std::make_pair("", array1));
-    exif_array.push_back(std::make_pair("", array2));
-    exif_array.push_back(std::make_pair("", array3));
- 
-    root.put_child("exifs", exif_array);
-    std::stringstream str_stream_temp;
-    boost::property_tree::write_json(str_stream_temp, root);
-    //write_json(str_stream_temp, root);
-    std::string str = str_stream_temp.str();
-    cout<<str<<endl;
+    
+    auto count = root.get<std::string>("count");
+    auto people = root.get<std::string>("people");
 }
