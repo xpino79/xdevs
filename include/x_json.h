@@ -18,17 +18,18 @@ void _My_read_json_data_from_string()
 {
     std::string json_str = "{\"count\":10,\"people\":[{ \"firstName\": \"Brett\", \"lastName\":\"McLaughlin\", \"email\": \"aaaa\" },{ \"firstName\": \"Jason\", \"lastName\":\"Hunter\", \"email\": \"bbbb\"},{ \"firstName\": \"Elliotte\", \"lastName\":\"Harold\", \"email\": \"cccc\" }]}";
     std::stringstream stream(json_str);
-    boost::property_tree::ptree root;
-    boost::property_tree::read_json(stream, root);
  
-    std::cout << "count" << ":" << root.get<std::string>("count") << std::endl;
-    auto ptree = root.get_child("people");
-    for (auto elem : ptree)
+    boost::property_tree::ptree props;
+    boost::property_tree::read_json(stream, props);
+ 
+    std::cout << "count" << ":" << props.get<std::string>("count") << std::endl;
+    auto it = props.get_child("people");
+    for (auto &kv : it)
     {
-        auto inner = elem.second;
-        for (auto inner_elem : inner)
+        auto field = kv.second;
+        for (auto &v : field)
         {
-            std::cout << inner_elem.first << ":" << inner.get<std::string>(inner_elem.first) << std::endl;
+            std::cout << v.first << ":" << field.get<std::string>(v.first) << std::endl;
         }
     }
 }
