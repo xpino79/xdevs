@@ -59,7 +59,7 @@ void _My_read_json_data_from_string()
         }
     }
     /*
- 	  const auto &node = json.get_child("people", boost::property_tree::ptree{});
+ 	  const auto &node = props.get_child("people", boost::property_tree::ptree{});
 	   std::cout << node.size() << " " << (node.begin() == node.end()) << std::endl;
 
 	   for (const auto &[k, v] : node) {
