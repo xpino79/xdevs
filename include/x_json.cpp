@@ -51,11 +51,4 @@ void _My_write_json_data_into_string()
 void _My_read_json_data_from_string()
 {
  
-    std::string str_json = "{\"count\":10,\"people\":[{ \"firstName\": \"Brett\", \"lastName\":\"McLaughlin\", \"email\": \"aaaa\" },{ \"firstName\": \"Jason\", \"lastName\":\"Hunter\", \"email\": \"bbbb\"},{ \"firstName\": \"Elliotte\", \"lastName\":\"Harold\", \"email\": \"cccc\" }]}";
-    std::stringstream str_stream(str_json);
-    boost::property_tree::ptree root;
-    boost::property_tree::read_json(str_stream,root);
-    
-    auto count = root.get<std::string>("count");
-    auto people = root.get<std::string>("people");
 }
