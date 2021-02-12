@@ -76,6 +76,15 @@ namespace my
             }
             return _Inside;
         }
+        // 한점이 부채꼴 범위 내 존재 여부
+        // 부채꼴 중심각, 좌우 범위
+        bool contains(std::int32_t _Pos_x, std::int32_t _Pos_y, std::int32_t _Direction, std::int32_t _Range) const
+        {
+            // https://rangsub.tistory.com/15
+            bool _Inside = false;
+            return _Inside;
+        }
+        
         bool contains(const circle &_Right) const
         {
             bool _Inside = false;
