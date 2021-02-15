@@ -80,6 +80,7 @@ namespace my
         // 부채꼴 중심각, 좌우 범위
         bool contains(std::int32_t _Pos_x, std::int32_t _Pos_y, std::int32_t _Direction, std::int32_t _Range) const
         {
+            // https://m.blog.naver.com/winterwolfs/10165506488
             // https://rangsub.tistory.com/15
             // https://neoplanetz.tistory.com/entry/C-%EB%91%90-%EB%B2%A1%ED%84%B0%EC%9D%98-%EA%B0%81-%EA%B5%AC%ED%95%98%EA%B8%B0Calculate-degree-between-two-vectors
             bool _Inside = false;
