@@ -95,9 +95,8 @@ std::int32_t main(std::int32_t argc, std::char_t *argv[])
           auto _Iter = std::find(_List.begin(), _List.end(), _Key);
           if ( _Iter != _List.end() )
           {
-                _Iter = _List.erase( _Iter );
-                // _Iter 변수 >>> MISRA_CPP_00_01_06 변수 값 할당 후에 한 번도 사용하지 않는 프로세스 금지 
-                // 해결방안 ?
+                // [[maybe_unused]] auto _UNUSED = _List.erase( _Iter );
+                (void)_List.erase( _Iter );
           }
     }
 
