@@ -9,12 +9,13 @@ namespace my
 #include <cmath>
 #include "typedefs.h"
 
-template <typename T>
-void ignore_unused(T const&)
+template <typename... T>
+void ignore_unused(T const& ...)
 {}
-template <typename T>
+template <typename... T>
 void ignore_unused()
 {}
+
     
 template<typename T>
 static bool nearly_equal(const T t, const T u)
