@@ -17,6 +17,20 @@
 #include "../include/geometry/xmulti_polygon.h"
 // #include "../include/xparallel.h"
 
+// compilers
+#if defined(__GNUC__)
+    #if defined(__MINGW32__) || defined(__MINGW64__)
+        #define COMPILER "MinGW GCC %d.%d.%d"
+    #else
+        #define COMPILER "GCC %d.%d.%d"
+    #endif
+#endif
+
+#if defined(_MSC_VER)
+    #define COMPILER "Microsoft C / Visual C++ compiler %d.%d"
+    #define COMP_VERSION _MSC_VER / 100, _MSC_VER % 100
+#endif
+
 std::int32_t main(std::int32_t argc, std::char_t *argv[])
 {
  
