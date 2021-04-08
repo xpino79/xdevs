@@ -18,6 +18,7 @@ void _My_async()
   std::vector<std::future<void>> v_async;
   v_async.reserve(2000);
 
+  // async는 future로 받지 않을 경우 sequential이라 생각하고 순서대로 진행이 된다.
   for (size_t i = 0; i < 2000; i++)
   {
     // launch::async 옵션을 주면 바로 그 자리에서 쓰레드를 생성해서 실행
