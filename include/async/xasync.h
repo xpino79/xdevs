@@ -20,6 +20,8 @@ void _My_async()
 
   for (size_t i = 0; i < 2000; i++)
   {
+    // launch::async 옵션을 주면 바로 그 자리에서 쓰레드를 생성해서 실행
+    // launch::deferred 옵션을 주면, future 의 get 을 하였을 때 비로소 (동기적으로) 실행
     v_async.emplace_back(std::async(std::launch::async, _My_for_print, i));
   }
   for (size_t i = 0; i < 2000; i++)
