@@ -8,6 +8,8 @@ namespace my {
 #include <future>
 #include <cstdio>
 
+// https://www.slideshare.net/SangHeonLee9/ndc2016-tera-modern-c
+  
 void _My_for_print(int num) {
   for (int i = 0; i < 100; i++)
     printf("%d번 Thread : %d\n", num, i);
