@@ -13,6 +13,7 @@ void _My_for_print(int num) {
     printf("%d번 Thread : %d\n", num, i);
 }
 
+  // 분산작엄 예제
 void _My_async()
 {
   std::vector<std::future<void>> v_async;
