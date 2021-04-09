@@ -9,6 +9,7 @@ namespace my {
 #include <cstdio>
 
 // https://www.slideshare.net/SangHeonLee9/ndc2016-tera-modern-c
+// https://www.slideshare.net/sangkikim9/ndc2016-64837136
   
 void _My_for_print(int num) {
   for (int i = 0; i < 100; i++)
