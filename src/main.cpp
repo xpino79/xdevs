@@ -2,6 +2,8 @@
  * Copyright 2020. xpino79@gmail.com All rights reserved.
  */
 
+// https://www.slideshare.net/dojeongchan/2-202235185
+
 #include <string>
 #include <map>
 #include <list>
