@@ -61,6 +61,15 @@ T numeric_division(T t, T u)
     return retval;
 }
 
+template <typename _Fn, typename... _Args>
+inline auto
+async_launch(_Fn &&__fn, _Args &&...__args)
+{
+    return std::async(std::launch::async,
+                  std::forward<_Fn>(__fn),
+                  std::forward<_Args>(__args)...);
+}
+
 template <typename T>
 bool line_circle_intersection(T x1, T y1, T x2, T y2, T cx, T cy, T cr ) 
 {
