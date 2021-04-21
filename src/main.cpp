@@ -33,6 +33,16 @@
     #define COMP_VERSION _MSC_VER / 100, _MSC_VER % 100
 #endif
 
+std::string _Mycurrent_time()
+{
+    auto now = std::chrono::system_clock::now();
+    auto in_time_t = std::chrono::system_clock::to_time_t(now);
+
+    std::stringstream ss;
+    ss << std::put_time(std::localtime(&in_time_t), "%Y-%m-%d %X");
+    return ss.str();
+}
+
 std::int32_t main(std::int32_t argc, std::char_t *argv[])
 {
  
