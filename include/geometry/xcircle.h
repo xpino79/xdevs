@@ -11,6 +11,7 @@
 #define CIRCLE_H_
 
 #include <cstdint>
+#include <vector>
 #include <cmath>
 #include <limits>
 #include <iostream>
@@ -125,11 +126,102 @@ namespace my
             */
             return true;
         }
+        
         void print() const
         {
             std::cout << _Myx << " " << _Myy << " " << _Myr << std::endl;
         }
     };
+
+
+    /**
+     * @brief 한 원과 직선이 만나는 교점
+     *
+     * @param __x 원의 x 좌표: 35
+     * @param __y 원의 y 좌표: 40
+     * @param __r 원의 반경: 60
+     * @param __p1x 첫번째 점의 x 좌표: 4
+     * @param __p1y 첫번째 점의 y 좌표: 5
+     * @param __p2x 두번째 점의 x 좌표: 60
+     * @param __p2y 두번째 점의 y 좌표: 73
+     * @return std::vector<std::pair<double, double>> (-4.42439, -5.22961) (71.8306, 87.3657)
+     */
+    std::vector<std::pair<double, double>> intersection_point(
+        double __x, double __y, double __r,
+        double __p1x, double __p1y,
+        double __p2x, double __p2y)
+    {
+        // 교점의 좌표
+        std::vector<std::pair<double, double>> xy;
+        // M, N : 두점을 지나는 직선의 기울기와 절편
+        auto M = 0.0, N = 0.0;
+        // A, B1, C 원과 직선으로부터 얻어지는 2차방정식의 계수들
+        auto A = 0.0, B1 = 0.0, C = 0.0;
+        // D : 판별식
+        auto D = 0.0;
+        // X,Y : 교점의 좌표
+        auto X = 0.0, Y = 0.0;
+
+        // A,B1,C,D 계산
+        if (__p2x != __p1x)
+        {
+            // M, N 계산
+            M = (__p2y - __p1y) / (__p2x - __p1x);
+            N = (__p1y * __p2x - __p1x * __p2y) / (__p2x - __p1x);
+
+            A = M * M + 1;
+            B1 = (M * N - M * __y - __x);
+            C = (__x * __x + __y * __y - __r * __r + N * N - 2 * N * __y);
+            D = B1 * B1 - A * C;
+
+            if (D < 0)
+            {
+                xy.clear();
+            }
+            else if (D == 0)
+            {
+                X = -B1 / A;
+                Y = M * X + N;
+                xy.push_back(std::make_pair(X, Y));
+            }
+            else
+            {
+                X = -(B1 + sqrt(D)) / A;
+                Y = M * X + N;
+                xy.push_back(std::make_pair(X, Y));
+
+                X = -(B1 - sqrt(D)) / A;
+                Y = M * X + N;
+                xy.push_back(std::make_pair(X, Y));
+            }
+        }
+        else
+        {
+            // 근이 없음
+            if (__p1x < (__x - __r) || __p1x > (__x + __r))
+            {
+                xy.clear();
+            }
+            // 하나의 중근
+            else if (__p1x == (__x - __r) || __p1x == (__x + __r))
+            {
+                X = __p1x;
+                Y = __y;
+                xy.push_back(std::make_pair(X, Y));
+            }
+            // 두개의 근
+            else
+            {
+                X = __p1x;
+                Y = __y + sqrt(__r * __r - (__p1x - __x) * (__p1x - __x));
+                xy.push_back(std::make_pair(X, Y));
+
+                Y = __y - sqrt(__r * __r - (__p1x - __x) * (__p1x - __x));
+                xy.push_back(std::make_pair(X, Y));
+            }
+        }
+        return xy;
+    }
 
 } /* namespace my */
 
